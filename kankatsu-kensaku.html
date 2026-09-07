@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管轄警察署を住所から調べる｜大阪府警察署管轄チェック</title>
+<meta name="description" content="出店予定地や現在地の住所を入力すると、大阪府内で管轄する警察署が分かります。大阪府条例に基づく町丁目単位のデータで判定します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .lookup-box{
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 28px;
+    margin-bottom: 10px;
+  }
+  .lookup-box label{ display:block; font-size:.85rem; color:var(--ink-soft); margin-bottom:8px; }
+  .lookup-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .lookup-row input{
+    flex: 1 1 260px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font-family: var(--sans);
+  }
+  .lookup-row input:focus{ outline:2px solid var(--brass); border-color:var(--brass); }
+  .lookup-row button{
+    padding: 14px 22px;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 2px;
+    font-size: .95rem;
+    cursor: pointer;
+    border-bottom: 3px solid var(--brass);
+  }
+  .lookup-row button:hover{ background: var(--navy-deep); }
+  .geo-btn{
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 10px;
+  }
+  .geo-btn:hover{ border-color: var(--brass); color: var(--brass); background: transparent; }
+
+  .result-card{
+    margin-top: 26px;
+    padding: 28px;
+    border: 1px solid var(--brass-soft);
+    background: var(--paper-deep);
+    display: none;
+  }
+  .result-card.show{ display: block; }
+  .result-card .result-label{ font-size:.8rem; color:var(--brass); margin-bottom:6px; }
+  .result-card h3{ margin: 0 0 14px; }
+  .result-card table{ width:100%; border-collapse: collapse; font-size:.92rem; }
+  .result-card td{ padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .result-card td:first-child{ width: 30%; color: var(--ink-soft); }
+  .result-empty{
+    margin-top: 26px;
+    padding: 24px;
+    border-left: 3px solid var(--alert);
+    background: #F4E9E5;
+    display: none;
+    font-size: .92rem;
+  }
+  .result-empty.show{ display: block; }
+  .example-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .example-list button{
+    font-size: .82rem;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .example-list button:hover{ border-color: var(--brass); color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">大阪府警察署管轄チェック<small>OSAKA POLICE JURISDICTION GUIDE</small></a>
+    <nav class="site-nav">
+      <a href="kankatsu-kensaku.html">管轄検索</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="index.html#articles">手続きガイド</a>
+      <a href="about.html">運営者情報</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:20px;">
+  <div class="wrap">
+    <p class="section-label">住所から調べる</p>
+    <h1>その住所は、どこの警察署の管轄？</h1>
+    <p class="lead">出店予定地や現在地の住所を入力してください。大阪府条例「大阪府警察署の名称、位置及び管轄区域に関する条例」に定められた町丁目単位のデータをもとに、管轄警察署を判定します。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="lookup-box">
+      <label for="addr">住所（市区町村・町名まで入力すると精度が上がります）</label>
+      <div class="lookup-row">
+        <input type="text" id="addr" placeholder="例：大阪市北区曽根崎2-16-14／東大阪市稲葉1丁目">
+        <button id="searchBtn">管轄署を調べる</button>
+      </div>
+      <button id="geoBtn" class="geo-btn" style="padding:10px 18px; font-size:.85rem;">📍 現在地から調べる</button>
+      <div class="example-list">
+        <span style="font-size:.82rem; color:var(--ink-soft); align-self:center;">例：</span>
+        <button data-ex="大阪市中央区南船場3-1-1">大阪市中央区南船場3-1-1</button>
+        <button data-ex="堺市西区鳳東町4-388">堺市西区鳳東町4-388</button>
+        <button data-ex="東大阪市稲葉1丁目7-1">東大阪市稲葉1丁目7-1</button>
+        <button data-ex="豊中市服部本町3丁目">豊中市服部本町3丁目</button>
+      </div>
+    </div>
+
+    <div class="result-card" id="resultCard">
+      <p class="result-label">管轄警察署</p>
+      <h3 id="resultStation"></h3>
+      <table>
+        <tr><td>住所</td><td id="resultAddr"></td></tr>
+        <tr><td>電話番号</td><td id="resultTel"></td></tr>
+        <tr><td>公式ページ</td><td id="resultUrl"></td></tr>
+      </table>
+      <p id="resultCaveat" style="margin-top:14px; font-size:.88rem; color:var(--ink-soft); display:none;"></p>
+    </div>
+
+    <div class="result-empty" id="resultEmpty">
+      <strong>該当する警察署が見つかりませんでした。</strong><br>
+      市区町村名（例：「東大阪市」「堺市西区」）と町名を入力してみてください。番地・丁目だけでは判定できない場合があります。それでも見つからない場合は、<a href="keisatsusho.html">警察署一覧ページ</a>から直接お探しいただくか、大阪府警本部（06-6943-1234）にお問い合わせください。
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>この検索の仕組みと限界について</h2>
+    <p>この検索は、大阪府条例に記載された町丁目単位の管轄区域データをもとに、入力された住所の文字列と照合しています。ほとんどの住所で正確な管轄署を判定できますが、以下のようなケースは住所のテキストだけでは判定できません。</p>
+    <ul>
+      <li>河川・道路・水路を境界とする区域（例：「◯◯川左岸以南」「◯◯線東側以東」など、地図上の位置関係で決まる境界）</li>
+      <li>同じ町丁目の中でも、道路や水路でさらに細かく分かれている場合</li>
+      <li>条例改正や地名変更が、このデータの作成時点より後に行われた場合</li>
+    </ul>
+    <p>該当する可能性がある結果には、注記を表示しています。正式な手続き（許可・届出の提出、車庫証明の申請など）の前には、必ず表示された警察署の公式ページ、または電話で最終確認をお願いします。</p>
+    <div class="callout">
+      <strong>データの出典</strong><br>
+      大阪府警察署の名称、位置及び管轄区域に関する条例（昭和29年大阪府条例第25号、最新改正を反映した条文）。
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="about.html">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p class="footer-note">当サイトは大阪府警察の公式サイトではありません。掲載情報は参考情報であり、正式な手続きにあたっては必ず管轄警察署または大阪府警察本部の公式発表をご確認ください。「現在地から調べる」機能を使うと、緯度・経度が住所変換のため外部サービス（OpenStreetMap Nominatim）に送信されます。当サイト自身のサーバーには位置情報を保存・記録しません。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+  </div>
+</footer>
+
+<script src="assets/stations.js"></script>
+<script src="assets/jurisdiction-data.js"></script>
+<script src="assets/jurisdiction-match.js"></script>
+<script>
+const addrInput = document.getElementById('addr');
+const searchBtn = document.getElementById('searchBtn');
+const geoBtn = document.getElementById('geoBtn');
+const resultCard = document.getElementById('resultCard');
+const resultEmpty = document.getElementById('resultEmpty');
+
+function findStationDetail(name){
+  return STATIONS.find(s => s.name === name);
+}
+
+function showResult(addr){
+  const result = matchStation(addr, JURISDICTION_RULES);
+  resultCard.classList.remove('show');
+  resultEmpty.classList.remove('show');
+
+  if(!result){
+    resultEmpty.classList.add('show');
+    return;
+  }
+
+  const detail = findStationDetail(result.station);
+  document.getElementById('resultStation').textContent = result.station;
+  document.getElementById('resultAddr').textContent = detail ? `〒${detail.zip} ${detail.addr}` : '（一覧データなし）';
+  document.getElementById('resultTel').innerHTML = detail ? `<a href="tel:${detail.tel.replace(/-/g,'')}">${detail.tel}</a>` : '-';
+  document.getElementById('resultUrl').innerHTML = detail ? `<a href="${detail.url}" target="_blank" rel="noopener">大阪府警本部サイトで見る</a>` : '-';
+
+  const caveatEl = document.getElementById('resultCaveat');
+  if(result.rule.caveat){
+    caveatEl.style.display = 'block';
+    caveatEl.textContent = '※ ' + result.rule.caveat;
+  } else {
+    caveatEl.style.display = 'none';
+  }
+
+  resultCard.classList.add('show');
+  resultCard.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+searchBtn.addEventListener('click', () => {
+  if(addrInput.value.trim()) showResult(addrInput.value.trim());
+});
+addrInput.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') searchBtn.click();
+});
+
+document.querySelectorAll('.example-list button[data-ex]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    addrInput.value = btn.dataset.ex;
+    showResult(btn.dataset.ex);
+  });
+});
+
+// ---- 現在地から調べる（逆ジオコーディングにはOpenStreetMap Nominatimを利用） ----
+geoBtn.addEventListener('click', () => {
+  if(!navigator.geolocation){
+    alert('お使いのブラウザは位置情報に対応していません。住所を直接入力してください。');
+    return;
+  }
+  geoBtn.textContent = '📍 現在地を取得中…';
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const { latitude, longitude } = pos.coords;
+    try{
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&accept-language=ja&zoom=18`);
+      const data = await res.json();
+      const addr = data.display_name || '';
+      addrInput.value = addr;
+      showResult(addr);
+    } catch(e){
+      alert('住所の取得に失敗しました。お手数ですが住所を直接入力してください。');
+    } finally {
+      geoBtn.textContent = '📍 現在地から調べる';
+    }
+  }, () => {
+    alert('位置情報を取得できませんでした。ブラウザの設定をご確認のうえ、住所を直接入力してください。');
+    geoBtn.textContent = '📍 現在地から調べる';
+  });
+});
+</script>
+</body>
+</html>
