@@ -5,20 +5,25 @@
 
 :root{
   --paper:      #EBEAE6;  /* 本文背景：白がまぶしくならないよう、ほんのりグレーみの生成り色 */
-  --paper-deep: #E0DFD8;  /* セクション濃淡用（暖色寄り） */
-  --paper-cool: #E4E8EA;  /* セクション濃淡用（寒色寄り） */
+  --paper-deep: #DAD5C8;  /* セクション濃淡用（暖色寄り、はっきり区別できる濃さに） */
+  --paper-cool: #D6E1E8;  /* セクション濃淡用（寒色寄り、はっきり区別できる濃さに） */
   --card:       #F7F6F3;  /* カード・入力欄など「白」の代わりに使う、ごく薄いグレー */
   --ink:        #1B2333;
   --ink-soft:   #4A5266;
   --navy:       #0B3B5C;
   --navy-deep:  #082A42;
-  --band:       #2B5F94;  /* ヘッダー・フッターの帯色（すっきりとした、まぶしくない青） */
-  --band-deep:  #1F4A78;
+  --band:       #3E7BC4;  /* ヘッダー・フッターの帯色（明るく、まぶしくないブルー） */
+  --band-deep:  #2C5F9E;
   --brass:      #9C7A3C;
-  --brass-soft: #C9AD79;
+  --brass-soft: #E7C877;  /* 帯の上でも読みやすい、明るいゴールド */
   --line:       #D3D1C8;
   --alert:      #8C3A2B;
   --white:      #FFFFFF;
+
+  /* 府県ごとの識別色（タブ・アクセントに使用） */
+  --pref-osaka: #2C5F9E;  /* 大阪＝ブルー */
+  --pref-kyoto: #8A2E3E;  /* 京都＝えんじ色 */
+  --pref-hyogo: #1B7A5A;  /* 兵庫＝グリーン（海・港のイメージ） */
 
   --serif: "Shippori Mincho", "Noto Serif JP", serif;
   --sans:  "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
@@ -93,12 +98,13 @@ img{ max-width: 100%; }
   flex-wrap: wrap;
 }
 .site-nav a{
-  color: var(--paper);
+  color: var(--white);
   font-size: .9rem;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   padding-bottom: 2px;
   white-space: nowrap;
+  font-weight: 500;
 }
 .site-nav a:hover, .site-nav a.current{ color: var(--brass-soft); border-bottom-color: var(--brass-soft); }
 
@@ -363,7 +369,16 @@ table.info-table th{
   flex-wrap: wrap;
   margin-bottom: 18px;
 }
-.footer-note{ color: #D7DEE3; line-height: 1.8; }
+.footer-note{ color: #F0F3F6; line-height: 1.8; }
+
+/* ---------- 府県タブの色分け ---------- */
+/* 各ページの .pref-tab.is-active（青一色）より詳細度が高いため、こちらが優先されます */
+.pref-tab.is-active[data-pref="osaka"]{ background: var(--pref-osaka); border-color: var(--pref-osaka); }
+.pref-tab.is-active[data-pref="kyoto"]{ background: var(--pref-kyoto); border-color: var(--pref-kyoto); }
+.pref-tab.is-active[data-pref="hyogo"]{ background: var(--pref-hyogo); border-color: var(--pref-hyogo); }
+.pref-tab[data-pref="osaka"]:not(.is-active):hover{ border-color: var(--pref-osaka); color: var(--pref-osaka); }
+.pref-tab[data-pref="kyoto"]:not(.is-active):hover{ border-color: var(--pref-kyoto); color: var(--pref-kyoto); }
+.pref-tab[data-pref="hyogo"]:not(.is-active):hover{ border-color: var(--pref-hyogo); color: var(--pref-hyogo); }
 
 /* ---------- イラスト付きアイコングリッド ---------- */
 .icon-grid{
