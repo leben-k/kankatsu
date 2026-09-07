@@ -3,22 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大阪府警察署管轄チェック｜出店・開業前に管轄警察署と手続きを確認</title>
-<meta name="description" content="大阪府内で出店・開業する際に必要な、風俗営業許可・深夜酒類提供・警備業・探偵業・道路使用許可・車庫証明などの手続きと、管轄警察署の調べ方をまとめました。">
+<title>警察署管轄ガイド（大阪・京都・兵庫版）｜住所から管轄警察署を調べる</title>
+<meta name="description" content="大阪府内で出店・開業する際に、住所から管轄警察署がすぐにわかります。風俗営業許可・深夜酒類提供・警備業・探偵業・道路使用許可・車庫証明などの手続きガイドも掲載。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+  .lookup-box{
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 26px;
+    margin-top: 8px;
+  }
+  .lookup-box label{ display:block; font-size:.85rem; color:var(--ink-soft); margin-bottom:8px; }
+  .lookup-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .lookup-row input{
+    flex: 1 1 260px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font-family: var(--sans);
+    background: var(--white);
+  }
+  .lookup-row input:focus{ outline:2px solid var(--brass); border-color:var(--brass); }
+  .lookup-row button{
+    padding: 14px 22px;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 2px;
+    font-size: .95rem;
+    cursor: pointer;
+    border-bottom: 3px solid var(--brass);
+  }
+  .lookup-row button:hover{ background: var(--navy-deep); }
+  .geo-btn{
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--line);
+    margin-top: 10px;
+  }
+  .geo-btn:hover{ border-color: var(--brass); color: var(--brass); background: transparent; }
+  .result-card{
+    margin-top: 22px;
+    padding: 26px;
+    border: 1px solid var(--brass-soft);
+    background: var(--paper-deep);
+    display: none;
+  }
+  .result-card.show{ display: block; }
+  .result-card .result-label{ font-size:.8rem; color:var(--brass); margin-bottom:6px; }
+  .result-card h3{ margin: 0 0 14px; }
+  .result-card table{ width:100%; border-collapse: collapse; font-size:.92rem; }
+  .result-card td{ padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .result-card td:first-child{ width: 30%; color: var(--ink-soft); }
+  .result-empty{
+    margin-top: 22px;
+    padding: 22px;
+    border-left: 3px solid var(--alert);
+    background: #F4E9E5;
+    display: none;
+    font-size: .92rem;
+  }
+  .result-empty.show{ display: block; }
+  .example-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .example-list button{
+    font-size: .8rem;
+    padding: 6px 12px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .example-list button:hover{ border-color: var(--brass); color: var(--brass); }
+  .pref-tabs{
+    display: flex;
+    gap: 8px;
+    margin: 22px 0 6px;
+    flex-wrap: wrap;
+  }
+  .pref-tab{
+    padding: 10px 20px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink-soft);
+    border-radius: 2px;
+    font-family: var(--serif);
+    font-size: .95rem;
+    cursor: pointer;
+  }
+  .pref-tab.is-active{
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+  .pref-tab:not(.is-active):hover{ border-color: var(--brass); color: var(--brass); }
+  .loading-note{ font-size: .82rem; color: var(--ink-soft); margin-top: 8px; }
+</style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html">大阪府警察署管轄チェック<small>OSAKA POLICE JURISDICTION GUIDE</small></a>
+    <a class="brand" href="index.html">警察署管轄ガイド<small>大阪・京都・兵庫版</small></a>
     <nav class="site-nav">
-      <a href="kankatsu-kensaku.html">管轄検索</a>
-      <a href="#articles">手続きガイド</a>
+      <a href="index.html" class="current">トップ</a>
       <a href="keisatsusho.html">警察署一覧</a>
-      <a href="honbu-ka-taiou.html">本部と署の課対応</a>     
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
       <a href="about.html">運営者情報</a>
     </nav>
   </div>
@@ -26,91 +119,324 @@
 
 <section class="hero">
   <div class="wrap">
-    <p class="section-label">大阪府 66警察署 対応</p>
-    <h1>出店・開業の前に、<br>管轄警察署と必要な手続きを確認する。</h1>
-    <p class="lead">風俗営業、深夜における酒類提供飲食店営業、警備業、探偵業の届出、道路使用許可、車庫証明――これらはすべて、営業所や作業場所を管轄する警察署への申請・届出が必要です。しかし大阪府だけで66の警察署があり、区や町丁目によって管轄が分かれることも少なくありません。まずは管轄警察署を調べ、そのうえで各手続きの流れを確認しましょう。</p>
-    <a class="hero-cta" href="kankatsu-kensaku.html">住所から管轄警察署を調べる</a>
+    <p class="section-label">大阪・京都・兵庫　136警察署 対応</p>
+    <h1>その住所は、<br>どこの警察署の管轄？</h1>
+    <p class="lead">出店予定地や現在地の住所を入力してください。各府県の公式データにもとづき、管轄警察署をその場で判定します。風俗営業、警備業、探偵業の届出、道路使用許可、車庫証明など、開業前に必要な手続きの解説もあわせてご覧いただけます。</p>
+
+    <div class="pref-tabs" id="prefTabs">
+      <button type="button" data-pref="osaka" class="pref-tab is-active">大阪府</button>
+      <button type="button" data-pref="kyoto" class="pref-tab">京都府</button>
+      <button type="button" data-pref="hyogo" class="pref-tab">兵庫県</button>
+    </div>
+
+    <div class="lookup-box">
+      <label for="addr">住所（市区町村・町名まで入力すると精度が上がります）</label>
+      <div class="lookup-row">
+        <input type="text" id="addr" placeholder="例：大阪市北区曽根崎2-16-14／東大阪市稲葉1丁目">
+        <button id="searchBtn">管轄署を調べる</button>
+      </div>
+      <button id="geoBtn" class="geo-btn" style="padding:10px 18px; font-size:.85rem;">📍 現在地から調べる</button>
+      <div class="example-list" id="exampleList">
+        <span style="font-size:.8rem; color:var(--ink-soft); align-self:center;">例：</span>
+      </div>
+
+      <div class="result-card" id="resultCard">
+        <p class="result-label">管轄警察署</p>
+        <h3 id="resultStation"></h3>
+        <table>
+          <tr><td>住所</td><td id="resultAddr"></td></tr>
+          <tr><td>電話番号</td><td id="resultTel"></td></tr>
+          <tr><td>公式ページ</td><td id="resultUrl"></td></tr>
+        </table>
+        <p id="resultCaveat" style="margin-top:14px; font-size:.88rem; color:var(--ink-soft); display:none;"></p>
+      </div>
+
+      <div class="result-empty" id="resultEmpty">
+        <strong>該当する警察署が見つかりませんでした。</strong><br>
+        市区町村名（例：「東大阪市」「堺市西区」）と町名を入力してみてください。それでも見つからない場合は、<a href="keisatsusho.html">警察署一覧ページ</a>からお探しいただくか、選択中の都道府県警察本部にお問い合わせください。
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="articles">
+<section class="section-cool" id="articles">
   <div class="wrap">
     <p class="section-label">手続きガイド</p>
-    <h2>大阪府で開業前に知っておきたい6つの手続き</h2>
-    <div class="registry">
-      <a class="registry-row" href="fuzoku-eigyo.html">
-        <span class="registry-num">01</span>
-        <span>
-          <span class="registry-title">風俗営業許可（風営法）</span>
-          <span class="registry-desc">キャバレー、バー、麻雀店、パチンコ店などの営業許可の基本と申請の流れ</span>
-        </span>
-        <span class="registry-tag">飲食・遊技</span>
+    <h2>開業前に知っておきたいこと</h2>
+    <div class="icon-grid">
+
+      <a class="icon-card" href="fuzoku-eigyo.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 14 H48 L34 34 V50" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="24" y1="50" x2="44" y2="50" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="34" y1="34" x2="34" y2="50" stroke="var(--navy)" stroke-width="2.5"/>
+          <circle cx="46" cy="14" r="4" stroke="var(--brass)" stroke-width="2.2"/>
+        </svg>
+        <span class="icon-title">風俗営業許可</span>
+        <span class="icon-desc">キャバレー・バー・遊技場などの営業許可</span>
       </a>
-      <a class="registry-row" href="shinya-inshoku.html">
-        <span class="registry-num">02</span>
-        <span>
-          <span class="registry-title">深夜における酒類提供飲食店営業の届出</span>
-          <span class="registry-desc">深夜0時以降にお酒を提供するバー・居酒屋などに必要な届出</span>
-        </span>
-        <span class="registry-tag">飲食</span>
+
+      <a class="icon-card" href="shinya-inshoku.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 12 A16 16 0 1 0 40 44 A13 13 0 1 1 40 12 Z" stroke="var(--brass)" stroke-width="2.3" stroke-linejoin="round"/>
+          <path d="M16 34 H32 L28 50 H20 Z" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="24" y1="50" x2="24" y2="56" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="18" y1="56" x2="30" y2="56" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="icon-title">深夜酒類提供の届出</span>
+        <span class="icon-desc">深夜0時以降にお酒を出すお店の届出</span>
       </a>
-      <a class="registry-row" href="keibigyo.html">
-        <span class="registry-num">03</span>
-        <span>
-          <span class="registry-title">警備業の認定</span>
-          <span class="registry-desc">警備業を開始する前に必要な公安委員会の認定手続き</span>
-        </span>
-        <span class="registry-tag">警備</span>
+
+      <a class="icon-card" href="keibigyo.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 8 L52 16 V30 C52 44 44 52 32 56 C20 52 12 44 12 30 V16 Z" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M24 31 L30 37 L42 24" stroke="var(--brass)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="icon-title">警備業の認定</span>
+        <span class="icon-desc">警備業を始めるための公安委員会の認定</span>
       </a>
-      <a class="registry-row" href="tanteigyo.html">
-        <span class="registry-num">04</span>
-        <span>
-          <span class="registry-title">探偵業の届出</span>
-          <span class="registry-desc">探偵業を営むために必要な公安委員会への届出と遵守事項</span>
-        </span>
-        <span class="registry-tag">探偵</span>
+
+      <a class="icon-card" href="tanteigyo.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 24 C14 24 20 14 32 14 C44 14 50 24 50 24 L54 26 L10 26 Z" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <ellipse cx="32" cy="27" rx="24" ry="3" stroke="var(--navy)" stroke-width="2.2"/>
+          <circle cx="30" cy="44" r="9" stroke="var(--brass)" stroke-width="2.5"/>
+          <line x1="36.5" y1="50.5" x2="44" y2="58" stroke="var(--brass)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="icon-title">探偵業の届出</span>
+        <span class="icon-desc">探偵業を営むための届出と遵守事項</span>
       </a>
-      <a class="registry-row" href="doro-shiyo.html">
-        <span class="registry-num">05</span>
-        <span>
-          <span class="registry-title">道路使用許可</span>
-          <span class="registry-desc">工事、イベント、看板設置などで道路を使用する際の許可申請</span>
-        </span>
-        <span class="registry-tag">道路</span>
+
+      <a class="icon-card" href="doro-shiyo.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 10 L10 54 H24 L30 10 Z" stroke="var(--navy)" stroke-width="2.3" stroke-linejoin="round"/>
+          <path d="M42 10 L54 54 H40 L34 10 Z" stroke="var(--navy)" stroke-width="2.3" stroke-linejoin="round"/>
+          <line x1="27" y1="30" x2="37" y2="30" stroke="var(--brass)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="25" y1="42" x2="39" y2="42" stroke="var(--brass)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="icon-title">道路使用許可</span>
+        <span class="icon-desc">工事・イベント・看板設置などの許可</span>
       </a>
-      <a class="registry-row" href="shako-shomei.html">
-        <span class="registry-num">06</span>
-        <span>
-          <span class="registry-title">車庫証明（自動車保管場所証明）</span>
-          <span class="registry-desc">事業用車両の購入時に必要な保管場所証明の取り方</span>
-        </span>
-        <span class="registry-tag">車両</span>
+
+      <a class="icon-card" href="shako-shomei.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 28 L32 12 L56 28" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M12 28 V52 H52 V28" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="20" y="38" width="24" height="10" rx="3" stroke="var(--brass)" stroke-width="2.3"/>
+          <circle cx="25" cy="48" r="2.2" fill="var(--brass)"/>
+          <circle cx="39" cy="48" r="2.2" fill="var(--brass)"/>
+        </svg>
+        <span class="icon-title">車庫証明</span>
+        <span class="icon-desc">事業用車両の保管場所証明の取り方</span>
       </a>
+
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
+    <p class="section-label">サイト内を調べる</p>
+    <h2>警察署一覧・組織のしくみ</h2>
+    <div class="icon-grid">
+
+      <a class="icon-card" href="keisatsusho.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="26" width="36" height="28" stroke="var(--navy)" stroke-width="2.5"/>
+          <path d="M10 26 L32 12 L54 26" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="28" y="38" width="8" height="16" stroke="var(--brass)" stroke-width="2.5"/>
+          <line x1="20" y1="34" x2="20" y2="46" stroke="var(--navy)" stroke-width="2"/>
+          <line x1="44" y1="34" x2="44" y2="46" stroke="var(--navy)" stroke-width="2"/>
+        </svg>
+        <span class="icon-title">警察署一覧（66署）</span>
+        <span class="icon-desc">名称・住所・電話番号・公式ページ</span>
+      </a>
+
+      <a class="icon-card" href="honbu-ka-taiou.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="24" y="8" width="16" height="10" rx="1" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="32" y1="18" x2="32" y2="26" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="14" y1="26" x2="50" y2="26" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="14" y1="26" x2="14" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="32" y1="26" x2="32" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="50" y1="26" x2="50" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <rect x="6" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+          <rect x="24" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+          <rect x="42" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+        </svg>
+        <span class="icon-title">本部と署の課対応</span>
+        <span class="icon-desc">本部の課が、署では何課にあたるか</span>
+      </a>
+
+      <a class="icon-card" href="about.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="22" r="10" stroke="var(--navy)" stroke-width="2.5"/>
+          <path d="M12 54 C12 40 20 34 32 34 C44 34 52 40 52 54" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="icon-title">運営者情報</span>
+        <span class="icon-desc">このサイトについて</span>
+      </a>
+
+      <a class="icon-card" href="contact.html">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="16" width="44" height="32" rx="2" stroke="var(--navy)" stroke-width="2.5"/>
+          <path d="M10 18 L32 36 L54 18" stroke="var(--brass)" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+        <span class="icon-title">お問い合わせ</span>
+        <span class="icon-desc">誤り指摘・ご意見はこちら</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-deep">
+  <div class="wrap">
     <p class="section-label">このサイトについて</p>
     <h2>なぜ管轄警察署を先に確認する必要があるのか</h2>
     <p>風俗営業や警備業などの許可・届出書類は、原則として営業所の所在地を管轄する警察署の生活安全課などの窓口に提出します。道路使用許可は道路交通法にもとづき、道路を管轄する警察署（交通課）が窓口です。車庫証明も同様に、保管場所を管轄する警察署に申請します。つまり<strong>「どこの警察署に行けばよいか」を最初に間違えると、手続きが二度手間になってしまいます。</strong></p>
-    <p>とくに大阪市内は区ごとに警察署が分かれ、さらに同じ区の中でも町丁目単位で管轄が変わる場所があります（例：東淀川区の一部など）。まずは<a href="keisatsusho.html">警察署一覧・検索ページ</a>で管轄署の見当をつけ、実際の申請前には該当警察署の公式ページや電話で最終確認することをおすすめします。</p>
+    <p>とくに大阪市内は区ごとに警察署が分かれ、さらに同じ区の中でも町丁目単位で管轄が変わる場所があります。このページ上部の検索で管轄署の見当をつけ、実際の申請前には該当警察署の公式ページや電話で最終確認することをおすすめします。</p>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-links">
-      <a href="kankatsu-kensaku.html">管轄検索</a>
+      <a href="index.html">トップ</a>
       <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
       <a href="about.html">運営者情報</a>
       <a href="privacy.html">プライバシーポリシー</a>
       <a href="contact.html">お問い合わせ</a>
     </div>
-    <p class="footer-note">当サイトは大阪府警察の公式サイトではなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または大阪府警察本部の公式発表をご確認ください。</p>
+    <p class="footer-note">当サイトはいずれの府県警察の公式サイトでもなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。「現在地から調べる」機能を使うと、緯度・経度が住所変換のため外部サービス（OpenStreetMap Nominatim）に送信されます。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
   </div>
 </footer>
 
+<script src="assets/jurisdiction-match.js"></script>
+<script src="assets/prefectures.js"></script>
+<script>
+const addrInput = document.getElementById('addr');
+const searchBtn = document.getElementById('searchBtn');
+const geoBtn = document.getElementById('geoBtn');
+const resultCard = document.getElementById('resultCard');
+const resultEmpty = document.getElementById('resultEmpty');
+const exampleList = document.getElementById('exampleList');
+const prefTabs = document.getElementById('prefTabs');
+
+let currentPref = getPrefById('osaka');
+
+function renderExamples(){
+  exampleList.querySelectorAll('button[data-ex]').forEach(b => b.remove());
+  currentPref.examples.forEach(ex => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.dataset.ex = ex;
+    b.textContent = ex;
+    b.addEventListener('click', () => { addrInput.value = ex; showResult(ex); });
+    exampleList.appendChild(b);
+  });
+}
+
+async function switchPref(prefId, {silent}={}){
+  currentPref = getPrefById(prefId);
+  prefTabs.querySelectorAll('.pref-tab').forEach(t => {
+    t.classList.toggle('is-active', t.dataset.pref === prefId);
+  });
+  resultCard.classList.remove('show');
+  resultEmpty.classList.remove('show');
+  addrInput.placeholder = `例：${currentPref.examples[0]}`;
+  if(!silent){
+    addrInput.value = '';
+  }
+  searchBtn.disabled = true;
+  searchBtn.textContent = '読み込み中…';
+  try{
+    await loadPrefData(prefId);
+  } catch(e){
+    alert('データの読み込みに失敗しました。通信環境をご確認のうえ、再度お試しください。');
+  }
+  searchBtn.disabled = false;
+  searchBtn.textContent = '管轄署を調べる';
+  renderExamples();
+  try{ localStorage.setItem('kankatsu_pref', prefId); } catch(e){}
+}
+
+function findStationDetail(name){
+  return STATIONS.find(s => s.name === name);
+}
+
+function showResult(addr){
+  const result = matchStation(addr, JURISDICTION_RULES);
+  resultCard.classList.remove('show');
+  resultEmpty.classList.remove('show');
+
+  if(!result){
+    resultEmpty.classList.add('show');
+    return;
+  }
+
+  const detail = findStationDetail(result.station);
+  document.getElementById('resultStation').textContent = result.station;
+  document.getElementById('resultAddr').textContent = detail ? `〒${detail.zip} ${detail.addr}` : '（一覧データなし）';
+  document.getElementById('resultTel').innerHTML = detail ? `<a href="tel:${detail.tel.replace(/-/g,'')}">${detail.tel}</a>` : '-';
+  document.getElementById('resultUrl').innerHTML = detail ? `<a href="${detail.url}" target="_blank" rel="noopener">${currentPref.label}警察の公式サイトで見る</a>` : '-';
+
+  const caveatEl = document.getElementById('resultCaveat');
+  if(result.rule.caveat){
+    caveatEl.style.display = 'block';
+    caveatEl.textContent = '※ ' + result.rule.caveat;
+  } else {
+    caveatEl.style.display = 'none';
+  }
+
+  resultCard.classList.add('show');
+  resultCard.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+searchBtn.addEventListener('click', () => {
+  if(addrInput.value.trim()) showResult(addrInput.value.trim());
+});
+addrInput.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') searchBtn.click();
+});
+
+prefTabs.querySelectorAll('.pref-tab').forEach(tab => {
+  tab.addEventListener('click', () => switchPref(tab.dataset.pref));
+});
+
+geoBtn.addEventListener('click', () => {
+  if(!navigator.geolocation){
+    alert('お使いのブラウザは位置情報に対応していません。住所を直接入力してください。');
+    return;
+  }
+  geoBtn.textContent = '📍 現在地を取得中…';
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const { latitude, longitude } = pos.coords;
+    try{
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&accept-language=ja&zoom=18`);
+      const data = await res.json();
+      const addr = data.display_name || '';
+      addrInput.value = addr;
+      showResult(addr);
+    } catch(e){
+      alert('住所の取得に失敗しました。お手数ですが住所を直接入力してください。');
+    } finally {
+      geoBtn.textContent = '📍 現在地から調べる';
+    }
+  }, () => {
+    alert('位置情報を取得できませんでした。ブラウザの設定をご確認のうえ、住所を直接入力してください。');
+    geoBtn.textContent = '📍 現在地から調べる';
+  });
+});
+
+// 初期表示：前回選んだ府県があればそれを、なければ大阪府を読み込む
+let initialPref = 'osaka';
+try{
+  const saved = localStorage.getItem('kankatsu_pref');
+  if(saved && PREFECTURES.some(p => p.id === saved)) initialPref = saved;
+} catch(e){}
+switchPref(initialPref, {silent:true});
+</script>
 </body>
 </html>

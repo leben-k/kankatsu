@@ -3,21 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大阪府警察署 一覧・検索（66署）｜大阪府警察署管轄チェック</title>
-<meta name="description" content="大阪府内66警察署の名称・住所・電話番号を一覧掲載。市区町村名やキーワードで絞り込み、管轄警察署をすばやく確認できます。">
+<title>警察署 一覧・検索（大阪・京都・兵庫）｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
+<meta name="description" content="大阪府・京都府・兵庫県、あわせて136警察署の名称・住所・電話番号を一覧掲載。市区町村名やキーワードで絞り込み、管轄警察署をすばやく確認できます。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+  .pref-tabs{ display:flex; gap:8px; margin: 22px 0 6px; flex-wrap:wrap; }
+  .pref-tab{
+    padding:10px 20px; border:1px solid var(--line); background:var(--card);
+    color:var(--ink-soft); border-radius:2px; font-family:var(--serif);
+    font-size:.95rem; cursor:pointer;
+  }
+  .pref-tab.is-active{ background:var(--navy); color:var(--white); border-color:var(--navy); }
+  .pref-tab:not(.is-active):hover{ border-color:var(--brass); color:var(--brass); }
+</style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html">大阪府警察署管轄チェック<small>OSAKA POLICE JURISDICTION GUIDE</small></a>
+    <a class="brand" href="index.html">警察署管轄ガイド<small>大阪・京都・兵庫版</small></a>
     <nav class="site-nav">
-      <a href="kankatsu-kensaku.html">管轄検索</a>
-      <a href="keisatsusho.html">警察署一覧</a>
-      <a href="index.html#articles">手続きガイド</a>
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html" class="current">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
       <a href="about.html">運営者情報</a>
     </nav>
   </div>
@@ -25,9 +35,27 @@
 
 <section class="hero" style="padding-bottom:20px;">
   <div class="wrap">
-    <p class="section-label">大阪府警察 66署</p>
+    <div class="article-head-inner" style="margin-bottom:6px;">
+      <div class="article-head-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="26" width="36" height="28" stroke="var(--navy)" stroke-width="2.5"/>
+          <path d="M10 26 L32 12 L54 26" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="28" y="38" width="8" height="16" stroke="var(--brass)" stroke-width="2.5"/>
+          <line x1="20" y1="34" x2="20" y2="46" stroke="var(--navy)" stroke-width="2"/>
+          <line x1="44" y1="34" x2="44" y2="46" stroke="var(--navy)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="article-head-text">
+    <p class="section-label">大阪・京都・兵庫　136警察署</p>
     <h1>警察署を探す</h1>
-    <p class="lead">大阪府内の警察署66署（大阪市内28署・大阪市外38署）を一覧にしました。市区町村名や町名で絞り込み、電話番号や公式ページへすぐにアクセスできます。出店予定地や現在地の住所を入力してみてください。</p>
+    <p class="lead">府県を選んで、市区町村名や町名で絞り込み検索できます。住所からピンポイントで管轄署を調べたい場合は<a href="index.html">トップページの検索</a>もご利用ください。</p>
+      </div>
+    </div>
+    <div class="pref-tabs" id="prefTabs">
+      <button type="button" data-pref="osaka" class="pref-tab is-active">大阪府</button>
+      <button type="button" data-pref="kyoto" class="pref-tab">京都府</button>
+      <button type="button" data-pref="hyogo" class="pref-tab">兵庫県</button>
+    </div>
   </div>
 </section>
 
@@ -35,7 +63,7 @@
   <div class="wrap">
     <div class="search-box">
       <label for="q" style="display:block; font-size:.85rem; color:var(--ink-soft); margin-bottom:8px;">市区町村名・地名・警察署名で検索</label>
-      <input type="text" id="q" placeholder="例：中央区、堺市、枚方、風営法 など" autocomplete="off">
+      <input type="text" id="q" placeholder="例：中央区、市之郷、伏見 など" autocomplete="off">
       <p class="search-meta" id="count"></p>
     </div>
 
@@ -43,13 +71,13 @@
   </div>
 </section>
 
-<section>
+<section class="section-deep">
   <div class="wrap">
     <h2>この一覧の使い方</h2>
-    <p>各署名をタップすると、大阪府警本部公式サイトの当該警察署ページが開き、より詳細な管轄区域（町丁目単位）をご確認いただけます。風俗営業許可、警備業・探偵業の届出、道路使用許可、車庫証明などは、いずれも<strong>営業所・作業場所・保管場所の所在地を管轄する警察署</strong>への提出が必要です。同じ市内でも区や町丁目によって管轄署が分かれる場合があるため、必ず公式ページまたは電話で最終確認をお願いします。</p>
-    <div class="callout">
+    <p>各署名をタップすると、各府県警察の公式サイトの当該警察署ページが開き、より詳細な管轄区域（町丁目単位）をご確認いただけます。風俗営業許可、警備業・探偵業の届出、道路使用許可、車庫証明などは、いずれも<strong>営業所・作業場所・保管場所の所在地を管轄する警察署</strong>への提出が必要です。同じ市内でも区や町丁目によって管轄署が分かれる場合があるため、必ず公式ページまたは電話で最終確認をお願いします。</p>
+    <div class="callout" id="sourceNote">
       <strong>データの出典</strong><br>
-      大阪府警本部公式サイト「大阪府内の警察署等のご案内」（大阪市内の警察署一覧／大阪市外の警察署一覧）をもとに作成しています。住所・電話番号は掲載時点のものです。移転や組織改編により変更される場合がありますので、正式な手続きの際は必ず公式情報をご確認ください。
+      各府県警察の公式サイトをもとに作成しています。住所・電話番号は掲載時点のものです。移転や組織改編により変更される場合がありますので、正式な手続きの際は必ず公式情報をご確認ください。
     </div>
   </div>
 </section>
@@ -58,19 +86,25 @@
   <div class="wrap">
     <div class="footer-links">
       <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
       <a href="about.html">運営者情報</a>
       <a href="privacy.html">プライバシーポリシー</a>
       <a href="contact.html">お問い合わせ</a>
     </div>
-    <p class="footer-note">当サイトは大阪府警察の公式サイトではありません。掲載情報は参考情報であり、正式な手続きにあたっては必ず管轄警察署または大阪府警察本部の公式発表をご確認ください。</p>
+    <p class="footer-note">当サイトは各府県警察の公式サイトではなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。</p>
   </div>
 </footer>
 
-<script src="assets/stations.js"></script>
+<script src="assets/prefectures.js"></script>
 <script>
 const q = document.getElementById('q');
 const list = document.getElementById('list');
 const count = document.getElementById('count');
+const prefTabs = document.getElementById('prefTabs');
+const sourceNote = document.getElementById('sourceNote');
+
+let currentPref = getPrefById('osaka');
 
 function render(items){
   list.innerHTML = items.map(s => `
@@ -95,8 +129,25 @@ function search(){
   render(filtered);
 }
 
+async function switchPref(prefId){
+  currentPref = getPrefById(prefId);
+  prefTabs.querySelectorAll('.pref-tab').forEach(t => {
+    t.classList.toggle('is-active', t.dataset.pref === prefId);
+  });
+  list.innerHTML = '';
+  count.textContent = '読み込み中…';
+  await loadPrefData(prefId);
+  sourceNote.innerHTML = `<strong>データの出典</strong><br>${currentPref.source}をもとに作成しています。住所・電話番号は掲載時点のものです。移転や組織改編により変更される場合がありますので、正式な手続きの際は必ず公式情報をご確認ください。`;
+  q.value = '';
+  render(STATIONS);
+}
+
 q.addEventListener('input', search);
-render(STATIONS);
+prefTabs.querySelectorAll('.pref-tab').forEach(tab => {
+  tab.addEventListener('click', () => switchPref(tab.dataset.pref));
+});
+
+switchPref('osaka');
 </script>
 </body>
 </html>

@@ -3,112 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>警察本部の「課」は警察署の何課？｜大阪府警察 本部・署 課対応ガイド</title>
+<title>警察本部の「課」は警察署の何課？｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
 <meta name="description" content="大阪府警察本部にある交通第一課・第二課、捜査第一課・第二課、組対課などがどの警察署の課に相当し、それぞれ何を担当しているのかを、大阪府警察組織規則に基づいて解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 <style>
   :root{
-    --navy-deep:#0f2138;
-    --navy:#1c3a5e;
-    --navy-soft:#2c4d73;
-    --gold:#a9832c;
-    --gold-soft:#c9a45c;
-    --bg:#f5f6f3;
-    --paper:#ffffff;
-    --line:#e2e4de;
-    --ink:#1d2226;
-    --ink-soft:#565f66;
-    --ink-faint:#8791997c;
+    --gold:#9C7A3C;
+    --gold-soft:#C9AD79;
     --radius:4px;
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
-    line-height:1.8;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;}
+  body{ font-family: var(--sans); }
+  a{ color: var(--navy); }
   img{max-width:100%;}
 
-  /* ---------- header ---------- */
-  header.site{
-    background:var(--navy-deep);
-    color:#eef1f4;
-  }
-  .site-top{
-    max-width:1080px;
-    margin:0 auto;
-    padding:16px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    flex-wrap:wrap;
-  }
-  .brand{
-    font-size:15px;
-    font-weight:700;
-    letter-spacing:.02em;
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-  }
-  .brand small{
-    display:block;
-    font-weight:400;
-    font-size:11px;
-    color:#9aa7b5;
-    letter-spacing:.08em;
-  }
-  nav.site-nav{
-    display:flex;
-    gap:22px;
-    font-size:13.5px;
-    flex-wrap:wrap;
-  }
-  nav.site-nav a{
-    text-decoration:none;
-    color:#c7d0d9;
-    border-bottom:1px solid transparent;
-    padding-bottom:2px;
-  }
-  nav.site-nav a.current{
-    color:#ffffff;
-    border-bottom:1px solid var(--gold-soft);
-  }
-  .badge-line{
-    background:var(--navy);
-    color:#dfe6ec;
-    font-size:12.5px;
-    padding:7px 20px;
-  }
-  .badge-line .inner{
-    max-width:1080px;
-    margin:0 auto;
-  }
-
-  /* ---------- hero ---------- */
-  .hero{
-    max-width:1080px;
-    margin:0 auto;
-    padding:56px 20px 40px;
-  }
+  /* ---------- hero（このページ固有の要素） ---------- */
   .hero .eyebrow{
     color:var(--gold);
     font-size:13.5px;
     font-weight:700;
     margin:0 0 14px;
-  }
-  .hero h1{
-    font-size:clamp(26px,4vw,38px);
-    line-height:1.5;
-    margin:0 0 22px;
-    font-weight:800;
-    letter-spacing:.01em;
-    color:var(--navy-deep);
   }
   .hero p{
     font-size:15.5px;
@@ -123,7 +38,7 @@
     margin-top:28px;
   }
   .hero-stats div{
-    background:var(--paper);
+    background:var(--card);
     border:1px solid var(--line);
     border-radius:var(--radius);
     padding:14px 18px;
@@ -142,7 +57,7 @@
 
   /* ---------- intro note ---------- */
   .note{
-    max-width:1080px;
+    max-width:880px;
     margin:0 auto;
     padding:0 20px 10px;
   }
@@ -158,7 +73,7 @@
 
   /* ---------- jump nav ---------- */
   .jumpnav{
-    max-width:1080px;
+    max-width:880px;
     margin:34px auto 0;
     padding:0 20px;
   }
@@ -173,7 +88,7 @@
   .jumpnav a{
     display:block;
     text-decoration:none;
-    background:var(--paper);
+    background:var(--card);
     border:1px solid var(--line);
     border-left:3px solid var(--navy);
     padding:12px 14px;
@@ -191,7 +106,7 @@
 
   /* ---------- overview table ---------- */
   .section-wrap{
-    max-width:1080px;
+    max-width:880px;
     margin:0 auto;
     padding:56px 20px;
   }
@@ -219,7 +134,7 @@
   table.overview{
     width:100%;
     border-collapse:collapse;
-    background:var(--paper);
+    background:var(--card);
     font-size:13.5px;
     border:1px solid var(--line);
   }
@@ -245,7 +160,7 @@
 
   /* ---------- detail cards ---------- */
   .ka-card{
-    background:var(--paper);
+    background:var(--card);
     border:1px solid var(--line);
     border-radius:var(--radius);
     margin-bottom:28px;
@@ -300,7 +215,7 @@
     padding:14px 16px;
     background:#f7f8f5;
     border-radius:var(--radius);
-    border-left:3px solid var(--navy-soft);
+    border-left:3px solid var(--band);
   }
   dl.duties dt{
     font-weight:700;
@@ -345,9 +260,9 @@
     gap:14px;
   }
   .tai-item{
-    background:var(--paper);
+    background:var(--card);
     border:1px solid var(--line);
-    border-top:3px solid var(--navy-soft);
+    border-top:3px solid var(--band);
     border-radius:var(--radius);
     padding:16px 18px;
   }
@@ -374,65 +289,73 @@
     margin-bottom:8px;
   }
 
-  /* ---------- footer ---------- */
-  footer.site{
-    background:var(--navy-deep);
-    color:#c7d0d9;
-    margin-top:20px;
+
+
+  .pref-tabs{ display:flex; gap:8px; margin: 20px 0 6px; flex-wrap:wrap; }
+  .pref-tab{
+    padding:9px 18px; border:1px solid var(--line); background:var(--card);
+    color:var(--ink-soft); border-radius:2px; font-family:var(--serif);
+    font-size:.9rem; cursor:pointer; text-decoration:none; display:inline-block;
   }
-  .footer-inner{
-    max-width:1080px;
-    margin:0 auto;
-    padding:36px 20px;
-    font-size:13px;
-  }
-  .footer-nav{
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap;
-    margin-bottom:18px;
-  }
-  .footer-nav a{text-decoration:none;color:#dfe6ec;}
-  .disclaimer{
-    color:#93a0ac;
-    line-height:1.9;
-    border-top:1px solid #2b4360;
-    padding-top:16px;
-  }
+  .pref-tab.is-active{ background:var(--navy); color:var(--white); border-color:var(--navy); }
+  .pref-tab:not(.is-active):hover{ border-color:var(--brass); color:var(--brass); }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="site-top">
-    <div class="brand">大阪府警察署管轄チェック
-      <small>OSAKA POLICE JURISDICTION GUIDE</small>
-    </div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">警察署管轄ガイド<small>大阪・京都・兵庫版</small></a>
     <nav class="site-nav">
-      <a href="index.html">TOP</a>
-      <a href="kankatsu-kensaku.html">管轄検索</a>
+      <a href="index.html">トップ</a>
       <a href="keisatsusho.html">警察署一覧</a>
       <a href="honbu-ka-taiou.html" class="current">本部と署の課対応</a>
       <a href="about.html">運営者情報</a>
     </nav>
   </div>
-  <div class="badge-line"><div class="inner">大阪府 66警察署 対応｜本部組織ガイド</div></div>
 </header>
 
-<div class="hero">
-  <p class="eyebrow">組織ガイド</p>
+<div class="wrap" style="padding-top:18px;">
+  <div class="pref-tabs">
+    <a href="honbu-ka-taiou.html" class="pref-tab is-active">大阪府警察</a>
+    <a href="honbu-ka-taiou-kyoto.html" class="pref-tab">京都府警察</a>
+    <a href="honbu-ka-taiou-hyogo.html" class="pref-tab">兵庫県警察</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="article-head-inner" style="margin-bottom:10px;">
+      <div class="article-head-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="24" y="8" width="16" height="10" rx="1" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="32" y1="18" x2="32" y2="26" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="14" y1="26" x2="50" y2="26" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="14" y1="26" x2="14" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="32" y1="26" x2="32" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="50" y1="26" x2="50" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <rect x="6" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+          <rect x="24" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+          <rect x="42" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <div class="article-head-text">
+  <p class="eyebrow">組織ガイド（大阪府警察の場合）</p>
   <h1>「交通第一課」「捜査第二課」…<br>警察本部の課は、警察署では何課？</h1>
   <p>
     大阪府警察本部には、交通部・刑事部・生活安全部・警備部など複数の部があり、その下に「交通指導課」「捜査第一課」「組織犯罪対策本部」といった聞き慣れない課が数多く置かれています。
     一方、街の警察署にあるのは総務課・会計課・生活安全課・地域課・刑事課・交通課・警備課の7つだけ。
     ここでは大阪府警察組織規則にもとづき、<strong>本部のどの課が、署のどの課の仕事に対応しているのか</strong>、そして<strong>本部のその課が実際に何をしているのか</strong>を整理しました。
   </p>
+      </div>
+    </div>
   <div class="hero-stats">
     <div><div class="num">7</div><div class="label">警察署の基本の課</div></div>
     <div><div class="num">6</div><div class="label">対応する本部の部門</div></div>
     <div><div class="num">30+</div><div class="label">本部側の個別の課</div></div>
   </div>
-</div>
+  </div>
+</section>
 
 <div class="note">
   <div class="box">
@@ -737,18 +660,19 @@
 
 </div>
 
-<footer class="site">
-  <div class="footer-inner">
-    <div class="footer-nav">
-      <a href="kankatsu-kensaku.html">管轄検索</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
       <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
       <a href="about.html">運営者情報</a>
       <a href="privacy.html">プライバシーポリシー</a>
       <a href="contact.html">お問い合わせ</a>
     </div>
-    <div class="disclaimer">
+    <p class="footer-note">
       当サイトは大阪府警察の公式サイトではなく、個人が運営する情報サイトです。掲載内容は大阪府警察組織規則（大阪府公安委員会規則）等の公開情報をもとにまとめた一般的な参考情報であり、内部の係の名称や事務分担は改正により変更される場合があります。正確な最新情報は、必ず大阪府警察本部または各警察署の公式発表をご確認ください。
-    </div>
+    </p>
   </div>
 </footer>
 

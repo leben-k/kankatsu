@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>京都府警察本部の「課」は警察署の何課？｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
+<meta name="description" content="京都府警察本部にある生活安全企画課・人身安全対策課・捜査第一〜五課などがどの警察署の課に相当し、それぞれ何を担当しているのかを、京都府警察公式サイトの案内に基づいて解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  :root{
+    --gold:#9C7A3C;
+    --gold-soft:#C9AD79;
+    --radius:4px;
+  }
+  body{ font-family: var(--sans); }
+  a{ color: var(--navy); }
+  img{max-width:100%;}
+
+  /* ---------- hero（このページ固有の要素） ---------- */
+  .hero .eyebrow{
+    color:var(--gold);
+    font-size:13.5px;
+    font-weight:700;
+    margin:0 0 14px;
+  }
+  .hero p{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    max-width:700px;
+    margin:0 0 14px;
+  }
+  .hero-stats{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  .hero-stats div{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:14px 18px;
+    min-width:150px;
+  }
+  .hero-stats .num{
+    font-size:22px;
+    font-weight:800;
+    color:var(--navy);
+  }
+  .hero-stats .label{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  /* ---------- intro note ---------- */
+  .note{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 20px 10px;
+  }
+  .note .box{
+    background:#fbf6ea;
+    border:1px solid #e7d9b3;
+    border-radius:var(--radius);
+    padding:18px 22px;
+    font-size:14px;
+    color:#4a3f22;
+  }
+  .note .box strong{color:#6b4f14;}
+
+  /* ---------- jump nav ---------- */
+  .jumpnav{
+    max-width:880px;
+    margin:34px auto 0;
+    padding:0 20px;
+  }
+  .jumpnav ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+  }
+  .jumpnav a{
+    display:block;
+    text-decoration:none;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:3px solid var(--navy);
+    padding:12px 14px;
+    font-size:13.5px;
+    color:var(--navy-deep);
+    font-weight:700;
+  }
+  .jumpnav a span{
+    display:block;
+    font-weight:400;
+    color:var(--ink-soft);
+    font-size:12px;
+    margin-top:3px;
+  }
+
+  /* ---------- overview table ---------- */
+  .section-wrap{
+    max-width:880px;
+    margin:0 auto;
+    padding:56px 20px;
+  }
+  .section-head{
+    margin-bottom:26px;
+  }
+  .section-head .kicker{
+    font-size:12.5px;
+    color:var(--gold);
+    font-weight:700;
+    margin:0 0 8px;
+  }
+  .section-head h2{
+    font-size:23px;
+    margin:0 0 10px;
+    color:var(--navy-deep);
+    font-weight:800;
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    max-width:720px;
+    margin:0;
+  }
+  table.overview{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--card);
+    font-size:13.5px;
+    border:1px solid var(--line);
+  }
+  table.overview th,table.overview td{
+    border:1px solid var(--line);
+    padding:11px 12px;
+    text-align:left;
+    vertical-align:top;
+  }
+  table.overview thead th{
+    background:var(--navy-deep);
+    color:#fff;
+    font-weight:700;
+    font-size:12.5px;
+  }
+  table.overview tbody tr:nth-child(even){background:#fafaf7;}
+  table.overview td.ka-name{
+    font-weight:700;
+    color:var(--navy-deep);
+    white-space:nowrap;
+  }
+  .scroll-x{overflow-x:auto;}
+
+  /* ---------- detail cards ---------- */
+  .ka-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    margin-bottom:28px;
+    scroll-margin-top:20px;
+    overflow:hidden;
+  }
+  .ka-head{
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+    padding:24px 26px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fbfbf9,#ffffff);
+  }
+  .ka-num{
+    font-size:13px;
+    font-weight:800;
+    color:var(--gold);
+    letter-spacing:.03em;
+    min-width:34px;
+  }
+  .ka-head h3{
+    margin:0 0 6px;
+    font-size:19px;
+    color:var(--navy-deep);
+    font-weight:800;
+  }
+  .ka-head .maps-to{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .ka-head .maps-to b{
+    color:var(--navy);
+  }
+  .ka-body{
+    padding:22px 26px 26px;
+  }
+  .ka-body > p.lead{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  dl.duties{
+    margin:0;
+    display:grid;
+    gap:14px;
+  }
+  dl.duties .row{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:14px;
+    padding:14px 16px;
+    background:#f7f8f5;
+    border-radius:var(--radius);
+    border-left:3px solid var(--band);
+  }
+  dl.duties dt{
+    font-weight:700;
+    font-size:14px;
+    color:var(--navy-deep);
+    margin:0;
+  }
+  dl.duties dd{
+    margin:0;
+    font-size:13.5px;
+    color:var(--ink);
+  }
+  @media (max-width:600px){
+    dl.duties .row{grid-template-columns:1fr;}
+    .ka-head{flex-direction:column;gap:6px;}
+  }
+
+  /* ---------- tai (units) section ---------- */
+  .tai-group{
+    margin-bottom:28px;
+  }
+  .tai-group h3.group-title{
+    font-size:15px;
+    font-weight:800;
+    color:var(--navy-deep);
+    margin:0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .tai-group h3.group-title::before{
+    content:"";
+    display:inline-block;
+    width:10px;
+    height:10px;
+    background:var(--gold);
+    border-radius:2px;
+  }
+  .tai-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:14px;
+  }
+  .tai-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-top:3px solid var(--band);
+    border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .tai-item h4{
+    margin:0 0 6px;
+    font-size:14.5px;
+    color:var(--navy-deep);
+    font-weight:800;
+  }
+  .tai-item p{
+    margin:0;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .tai-item .tag{
+    display:inline-block;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:700;
+    background:#fbf6ea;
+    border:1px solid #e7d9b3;
+    padding:2px 8px;
+    border-radius:2px;
+    margin-bottom:8px;
+  }
+
+
+
+  .pref-tabs{ display:flex; gap:8px; margin: 20px 0 6px; flex-wrap:wrap; }
+  .pref-tab{
+    padding:9px 18px; border:1px solid var(--line); background:var(--card);
+    color:var(--ink-soft); border-radius:2px; font-family:var(--serif);
+    font-size:.9rem; cursor:pointer; text-decoration:none; display:inline-block;
+  }
+  .pref-tab.is-active{ background:var(--navy); color:var(--white); border-color:var(--navy); }
+  .pref-tab:not(.is-active):hover{ border-color:var(--brass); color:var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">警察署管轄ガイド<small>大阪・京都・兵庫版</small></a>
+    <nav class="site-nav">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html" class="current">本部と署の課対応</a>
+      <a href="about.html">運営者情報</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap" style="padding-top:18px;">
+  <div class="pref-tabs">
+    <a href="honbu-ka-taiou.html" class="pref-tab">大阪府警察</a>
+    <a href="honbu-ka-taiou-kyoto.html" class="pref-tab is-active">京都府警察</a>
+    <a href="honbu-ka-taiou-hyogo.html" class="pref-tab">兵庫県警察</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="article-head-inner" style="margin-bottom:10px;">
+      <div class="article-head-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="24" y="8" width="16" height="10" rx="1" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="32" y1="18" x2="32" y2="26" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="14" y1="26" x2="50" y2="26" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="14" y1="26" x2="14" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="32" y1="26" x2="32" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="50" y1="26" x2="50" y2="34" stroke="var(--navy)" stroke-width="2.5"/>
+          <rect x="6" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+          <rect x="24" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+          <rect x="42" y="34" width="16" height="10" rx="1" stroke="var(--brass)" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <div class="article-head-text">
+  <p class="eyebrow">組織ガイド（京都府警察の場合）</p>
+  <h1>警察本部の課は、京都府警察の警察署では何課？</h1>
+  <p>
+    京都府警察本部には、総務部・警務部・生活安全部・地域部・刑事部・交通部・警備部やサイバー対策本部など複数の部門があり、その下に「情報管理課」「人身安全対策課」「捜査第五課」といった課が置かれています。
+    一方、街の警察署にあるのは警務課・会計課・生活安全課・地域課・刑事課・交通課・警備課の7つだけです。
+    ここでは京都府警察公式サイトの案内にもとづき、<strong>本部のどの部門が、署のどの課の仕事に対応しているのか</strong>、そして<strong>本部のその部門が実際に何をしているのか</strong>を整理しました。
+  </p>
+      </div>
+    </div>
+  <div class="hero-stats">
+    <div><div class="num">7</div><div class="label">警察署の基本の課</div></div>
+    <div><div class="num">7</div><div class="label">対応する本部の部門</div></div>
+    <div><div class="num">30+</div><div class="label">本部側の個別の課</div></div>
+  </div>
+  </div>
+</section>
+
+<div class="note">
+  <div class="box">
+    <strong>読み方のポイント：</strong>京都府警察は、大阪府警察と少し違う分け方をしています。大阪の「総務課」にあたる仕事を、京都では<strong>「警務課」（総務部のうち会計以外）と「会計課」（総務部の会計業務）</strong>の2つに分けて担当しています。京都府警本部公式サイトでは、本部の各部門ごとに「警察署では、〇〇課がこの部の業務を担当しています」と明記されているので、その対応関係をそのまま整理しました。
+  </div>
+</div>
+
+<div class="jumpnav">
+  <ul>
+    <li><a href="#soumu">01 警務課<span>総務部＋警務部</span></a></li>
+    <li><a href="#kaikei">02 会計課<span>総務部 会計課</span></a></li>
+    <li><a href="#seikatsu">03 生活安全課<span>生活安全部</span></a></li>
+    <li><a href="#chiiki">04 地域課<span>地域部</span></a></li>
+    <li><a href="#keiji">05 刑事課<span>刑事部</span></a></li>
+    <li><a href="#koutsu">06 交通課<span>交通部</span></a></li>
+    <li><a href="#keibi">07 警備課<span>警備部</span></a></li>
+    <li><a href="#tai">サイバー対策本部・市警察部<span>部に属さない組織</span></a></li>
+  </ul>
+</div>
+
+<div class="section-wrap">
+  <div class="section-head">
+    <p class="kicker">全体像</p>
+    <h2>警察署の課と、本部の部門の対応一覧</h2>
+    <p>京都府警察公式サイト「京都府警察のしくみ」で示されている、警察署の分課（7課）と、それに対応する警察本部の部・主な課をまとめた早見表です。詳しい仕事内容は、この下の各セクションで解説しています。</p>
+  </div>
+  <div class="scroll-x">
+    <table class="overview">
+      <thead>
+        <tr>
+          <th style="width:14%">警察署の課</th>
+          <th style="width:16%">対応する本部の部門</th>
+          <th>本部の主な課（一例）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ka-name">警務課</td>
+          <td>総務部（会計除く）＋警務部</td>
+          <td>総務課、情報管理課、広報応接課、装備課、留置管理課、警務課、事務管理課、厚生課、教養課、監察官室</td>
+        </tr>
+        <tr>
+          <td class="ka-name">会計課</td>
+          <td>総務部</td>
+          <td>会計課</td>
+        </tr>
+        <tr>
+          <td class="ka-name">生活安全課</td>
+          <td>生活安全部</td>
+          <td>生活安全企画課、人身安全対策課、少年課、生活保安課</td>
+        </tr>
+        <tr>
+          <td class="ka-name">地域課</td>
+          <td>地域部</td>
+          <td>地域課、通信指令課、機動警ら課、鉄道警察隊</td>
+        </tr>
+        <tr>
+          <td class="ka-name">刑事課</td>
+          <td>刑事部</td>
+          <td>刑事企画課、捜査第一〜五課、犯罪情報分析課、鑑識課、科学捜査研究所、機動捜査隊</td>
+        </tr>
+        <tr>
+          <td class="ka-name">交通課</td>
+          <td>交通部</td>
+          <td>交通企画課、交通規制課、交通指導課、交通捜査課、運転免許試験課</td>
+        </tr>
+        <tr>
+          <td class="ka-name">警備課</td>
+          <td>警備部</td>
+          <td>警備第一課、警備第二課、公安課、警衛警護課、外事課、機動隊</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section-wrap" style="padding-top:0;">
+
+  <div class="ka-card" id="soumu">
+    <div class="ka-head">
+      <div class="ka-num">01</div>
+      <div>
+        <h3>警務課</h3>
+        <div class="maps-to">本部側の対応部門：<b>総務部</b>（会計課を除く）＋<b>警務部</b>（総務課・情報管理課・広報応接課・装備課・留置管理課・警務課・事務管理課・厚生課・教養課・監察官室）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">京都府警察の警察署には「総務課」という名前の課はありません。かわりに<strong>警務課</strong>が、公文書管理や広報、職員の人事・研修・福利厚生など、本部の総務部（会計を除く）と警務部にまたがる業務をまとめて担当しています。京都府警察公式サイトでも「警察署では、警務課が本部の総務部（会計業務を除く）及び警務部の業務を担当しています」と説明されています。</p>
+      <dl class="duties">
+        <div class="row"><dt>総務課</dt><dd>公安委員会の庶務、文書の管理や情報公開、府警ホームページの運用など、警察行政の基盤に関わる事務を担当します。</dd></div>
+        <div class="row"><dt>情報管理課</dt><dd>情報システムの管理や、各種照会業務など、デジタル技術を活用した業務の合理化を担当します。</dd></div>
+        <div class="row"><dt>広報応接課</dt><dd>報道機関との連絡調整、音楽隊による広報活動、警察安全相談や苦情への対応を担当します。</dd></div>
+        <div class="row"><dt>装備課</dt><dd>拳銃・車両・被服など、警察装備全般の調達・管理を担当します。</dd></div>
+        <div class="row"><dt>留置管理課</dt><dd>留置施設の管理や、被留置者の護送などを担当します。</dd></div>
+        <div class="row"><dt>警務課</dt><dd>警察官・警察事務職員の採用や人事、犯罪被害者等への支援を担当します。</dd></div>
+        <div class="row"><dt>事務管理課</dt><dd>職員の給与・福利厚生に関する事務手続きなどを担当します。</dd></div>
+        <div class="row"><dt>厚生課</dt><dd>職員の健康管理をはじめとする福利厚生を担当します。</dd></div>
+        <div class="row"><dt>教養課</dt><dd>職員研修や、柔道・剣道・逮捕術などの警察術科指導を担当します。</dd></div>
+        <div class="row"><dt>監察官室</dt><dd>各所属に対する指導・監察を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="kaikei">
+    <div class="ka-head">
+      <div class="ka-num">02</div>
+      <div>
+        <h3>会計課</h3>
+        <div class="maps-to">本部側の対応部門：<b>総務部 会計課</b></div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の会計課は、日々の会計事務（遺失・拾得物の取扱いを含む）を担当します。本部の会計課は、これを府警察全体の予算・決算の視点で管理しています。</p>
+      <dl class="duties">
+        <div class="row"><dt>会計課</dt><dd>予算の編成・執行・決算、警察手数料の管理、遺失物の取扱いなど、お金とモノに関する事務全般を府警察全体で統括します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="seikatsu">
+    <div class="ka-head">
+      <div class="ka-num">03</div>
+      <div>
+        <h3>生活安全課</h3>
+        <div class="maps-to">本部側の対応部門：<b>生活安全部</b>（生活安全企画課・人身安全対策課・少年課・生活保安課）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の生活安全課は、防犯・少年問題・風俗営業関係の許認可・ストーカーやDVなど、「暮らしの安全」に関わる幅広い業務をまとめて扱う課です。本部の生活安全部では、これを分野ごとに専門の課へ分けています。</p>
+      <dl class="duties">
+        <div class="row"><dt>生活安全企画課</dt><dd>生活安全警察全体の企画・調査・研究を担当します。</dd></div>
+        <div class="row"><dt>人身安全対策課</dt><dd>ストーカーやDV事案など、被害者の安全を早急に確保する必要がある事案への対応を担当します。</dd></div>
+        <div class="row"><dt>少年課</dt><dd>少年による事件の捜査や補導、少年サポートセンターの運営など、少年に関わる業務全般を担当します。</dd></div>
+        <div class="row"><dt>生活保安課</dt><dd>風俗営業等の許可、悪質商法や風俗事犯の取締りなど、営業許認可に関わる業務を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="chiiki">
+    <div class="ka-head">
+      <div class="ka-num">04</div>
+      <div>
+        <h3>地域課</h3>
+        <div class="maps-to">本部側の対応部門：<b>地域部</b>（地域課・通信指令課・機動警ら課・鉄道警察隊）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の地域課は、交番・駐在所を拠点にした活動や巡回連絡など、いわゆる「おまわりさん」の活動を担う課です。本部の地域部は、その運用の企画立案と、110番通報の受理・指令を担当します。</p>
+      <dl class="duties">
+        <div class="row"><dt>地域課</dt><dd>パトカーや平安騎馬隊による活動の企画、地域警察活動全体の運用を統括します。</dd></div>
+        <div class="row"><dt>通信指令課</dt><dd>110番通報の受理と、警察署等への指令業務を担当します。府民の通報が最初に届く司令塔です。</dd></div>
+        <div class="row"><dt>機動警ら課</dt><dd>自動車警ら隊や沿岸警ら隊の運用を担当します。</dd></div>
+        <div class="row"><dt>鉄道警察隊</dt><dd>鉄道施設や列車内における警戒・検挙活動を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="keiji">
+    <div class="ka-head">
+      <div class="ka-num">05</div>
+      <div>
+        <h3>刑事課</h3>
+        <div class="maps-to">本部側の対応部門：<b>刑事部</b>（刑事企画課・捜査第一〜五課・犯罪情報分析課・鑑識課・科学捜査研究所・機動捜査隊）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の刑事課は「刑事事件全般」を扱いますが、本部の刑事部では、事件の種類ごとに課が細かく分かれています。京都府警察は捜査第五課まであるのが特徴で、薬物・銃器・国際犯罪を専門に扱っています。</p>
+      <dl class="duties">
+        <div class="row"><dt>刑事企画課</dt><dd>刑事警察全体の企画や、捜査の指導を担当します。</dd></div>
+        <div class="row"><dt>捜査第一課</dt><dd>殺人・強盗など、凶悪犯罪の捜査を担当します。</dd></div>
+        <div class="row"><dt>捜査第二課</dt><dd>詐欺・横領など、知能犯罪の捜査を担当します。</dd></div>
+        <div class="row"><dt>捜査第三課</dt><dd>空き巣や車上ねらいなど、窃盗犯罪の捜査を担当します。</dd></div>
+        <div class="row"><dt>捜査第四課</dt><dd>暴力団等による組織犯罪への対策を担当します。</dd></div>
+        <div class="row"><dt>捜査第五課</dt><dd>薬物・銃器犯罪や、来日外国人による国際犯罪の取締りを担当します。</dd></div>
+        <div class="row"><dt>犯罪情報分析課</dt><dd>犯罪に関する情報の収集・分析を担当します。</dd></div>
+        <div class="row"><dt>鑑識課</dt><dd>事件現場での指紋採取やDNA型鑑定など、鑑識活動を担当します。</dd></div>
+        <div class="row"><dt>科学捜査研究所</dt><dd>鑑定・鑑識に関する科学的な調査研究を担当します。</dd></div>
+        <div class="row"><dt>機動捜査隊</dt><dd>覆面パトカーの機動力を生かした、事件発生直後の初動捜査を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="koutsu">
+    <div class="ka-head">
+      <div class="ka-num">06</div>
+      <div>
+        <h3>交通課</h3>
+        <div class="maps-to">本部側の対応部門：<b>交通部</b>（交通企画課・交通規制課・交通指導課・交通捜査課・運転免許試験課・交通機動隊・高速道路交通警察隊）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の交通課は、交通取締りから道路使用許可、交通事故の捜査まで、交通に関する業務を一手に担います。本部の交通部では、これを機能ごとに分けています。道路使用許可や車庫証明を申請する際に窓口となるのも、この系統の業務です。</p>
+      <dl class="duties">
+        <div class="row"><dt>交通企画課</dt><dd>幼児から高齢者までの交通安全教育など、交通警察全体の企画を担当します。</dd></div>
+        <div class="row"><dt>交通規制課</dt><dd>速度規制や信号機・横断歩道等の交通安全施設の整備を担当します。</dd></div>
+        <div class="row"><dt>交通指導課</dt><dd>白バイやパトカー等による交通指導取締りを担当します。</dd></div>
+        <div class="row"><dt>交通捜査課</dt><dd>交通事故事件の捜査や交通鑑識を担当します。</dd></div>
+        <div class="row"><dt>運転免許試験課</dt><dd>運転免許に関する事務を担当します。</dd></div>
+        <div class="row"><dt>交通機動隊</dt><dd>白バイ・パトカーによる交通指導取締りの専門部隊です。</dd></div>
+        <div class="row"><dt>高速道路交通警察隊</dt><dd>高速道路の交通取締り・事故捜査を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="keibi">
+    <div class="ka-head">
+      <div class="ka-num">07</div>
+      <div>
+        <h3>警備課</h3>
+        <div class="maps-to">本部側の対応部門：<b>警備部</b>（警備第一課・警備第二課・公安課・警衛警護課・外事課・機動隊）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の警備課は、要人警護や災害対応、デモ・集会への対応などを担う課です。本部の警備部は、京都に入洛する国内外の要人の警護や、災害警備、テロ対策などを担当します。</p>
+      <dl class="duties">
+        <div class="row"><dt>警備第一課</dt><dd>集会・デモ行進の許可、機動隊の運用などを担当します。</dd></div>
+        <div class="row"><dt>警備第二課</dt><dd>災害対策の企画や、災害警備の実施を担当します。</dd></div>
+        <div class="row"><dt>公安課</dt><dd>国際テロリストや極左暴力集団等に関する警備情報の収集を担当します。</dd></div>
+        <div class="row"><dt>警衛警護課</dt><dd>京都に入洛する国内外の要人の警護（警衛・警護）を担当します。</dd></div>
+        <div class="row"><dt>外事課</dt><dd>密入国者の取締りなど、外国人に関する警備情報の収集を担当します。</dd></div>
+        <div class="row"><dt>機動隊</dt><dd>大規模警備や雑踏警備、災害警備を専門に担う部隊です。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="tai">
+    <div class="ka-head">
+      <div class="ka-num">＋</div>
+      <div>
+        <h3>サイバー対策本部・市警察部</h3>
+        <div class="maps-to">7つの課とは別枠で置かれている、<b>本部長直属の組織</b>です</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">
+        京都府警察には、7つの部とは別に「サイバー対策本部」と「京都市警察部」という組織があります。これらは特定の警察署の課に1対1で対応するものではなく、複数の課にまたがる業務や、京都市域に特化した調整業務を担う組織です。
+      </p>
+
+      <div class="tai-group">
+        <h3 class="group-title">サイバー対策本部</h3>
+        <div class="tai-list">
+          <div class="tai-item">
+            <span class="tag">サイバー企画課</span>
+            <h4>サイバー企画課</h4>
+            <p>サイバー人材の育成や、官民連携による被害防止対策を担当します。警察署では、生活安全課またはサイバー対策係がこの業務を担当します。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">サイバー捜査課</span>
+            <h4>サイバー捜査課</h4>
+            <p>サイバー犯罪捜査や証拠品の解析支援を担当します。警察署では、生活安全課またはサイバー対策係がこの業務を担当します。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">サイバー攻撃対策課</span>
+            <h4>サイバー攻撃対策課</h4>
+            <p>重要インフラ事業者を狙ったサイバーテロ対策を担当します。警察署では、警備課がこの業務を担当します。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tai-group">
+        <h3 class="group-title">市警察部</h3>
+        <div class="tai-list">
+          <div class="tai-item">
+            <span class="tag">企画課</span>
+            <h4>京都市警察部 企画課</h4>
+            <p>警察法にもとづき設置された組織で、京都市や関係機関との連絡調整、京都市域における警察運営の総合企画を担当します。京都市内の警察署と連携して、京都市との協定に基づく治安対策を推進します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <a href="about.html">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p class="footer-note">
+      当サイトは京都府警察の公式サイトではなく、個人が運営する情報サイトです。掲載内容は京都府警察公式サイト「京都府警察のしくみ」等の公開情報をもとにまとめた一般的な参考情報であり、内部の係の名称や事務分担は改正により変更される場合があります。正確な最新情報は、必ず京都府警察本部または各警察署の公式発表をご確認ください。
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

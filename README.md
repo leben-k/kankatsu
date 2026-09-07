@@ -1,23 +1,26 @@
-# 大阪府警察署管轄チェック
+# 警察署管轄ガイド（大阪版）
 
-大阪府内で開業・出店する際に、管轄警察署と関連する届出・許可手続き（風俗営業、深夜酒類提供飲食店営業、警備業、探偵業、道路使用許可、車庫証明）を確認できる静的サイトです。
+大阪府内で開業・出店する際に、管轄警察署と関連する届出・許可手続き（風俗営業、深夜酒類提供飲食店営業、警備業、探偵業、道路使用許可、車庫証明）を確認できる静的サイトです。トップページで住所（または現在地）を入力すると、その場で管轄警察署が判定されます。
+
+将来的には京都府・兵庫県のデータも追加し、「警察署管轄ガイド（大阪・京都・兵庫版）」として提供エリアを拡大する予定です。
 
 ## ファイル構成
 
 ```
-index.html          トップページ
-kankatsu-kensaku.html 住所（または現在地）から管轄警察署を判定するページ ★新機能
-keisatsusho.html     警察署一覧・キーワード検索ページ（大阪府66署）
-fuzoku-eigyo.html    風俗営業許可の解説
-shinya-inshoku.html  深夜酒類提供飲食店営業の届出の解説
-keibigyo.html        警備業の認定の解説
-tanteigyo.html       探偵業の届出の解説
-doro-shiyo.html      道路使用許可の解説
-shako-shomei.html    車庫証明の解説
-about.html           運営者情報
-privacy.html         プライバシーポリシー
-contact.html         お問い合わせ
-assets/style.css             共通スタイルシート
+index.html            トップページ（住所・現在地からの管轄検索を統合）
+kankatsu-kensaku.html  旧URL互換のためのリダイレクトページ（index.htmlへ転送）
+keisatsusho.html       警察署一覧・キーワード検索ページ（大阪府66署）
+honbu-ka-taiou.html    警察本部の「課」と警察署の「課」の対応関係の解説
+fuzoku-eigyo.html      風俗営業許可の解説
+shinya-inshoku.html    深夜酒類提供飲食店営業の届出の解説
+keibigyo.html          警備業の認定の解説
+tanteigyo.html         探偵業の届出の解説
+doro-shiyo.html        道路使用許可の解説
+shako-shomei.html      車庫証明の解説
+about.html             運営者情報
+privacy.html           プライバシーポリシー
+contact.html           お問い合わせ
+assets/style.css              共通スタイルシート（アイコングリッド・レスポンシブ対応含む）
 assets/stations.js            警察署データ（66署、住所・電話番号・公式ページURL）
 assets/jurisdiction-data.js   管轄区域データ（大阪府条例に基づく町丁目単位のルール）
 assets/jurisdiction-match.js  住所文字列→管轄警察署の判定ロジック
