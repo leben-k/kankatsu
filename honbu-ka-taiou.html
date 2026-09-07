@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>警察本部の「課」は警察署の何課？｜大阪府警察 本部・署 課対応ガイド</title>
+<meta name="description" content="大阪府警察本部にある交通第一課・第二課、捜査第一課・第二課、組対課などがどの警察署の課に相当し、それぞれ何を担当しているのかを、大阪府警察組織規則に基づいて解説します。">
+<style>
+  :root{
+    --navy-deep:#0f2138;
+    --navy:#1c3a5e;
+    --navy-soft:#2c4d73;
+    --gold:#a9832c;
+    --gold-soft:#c9a45c;
+    --bg:#f5f6f3;
+    --paper:#ffffff;
+    --line:#e2e4de;
+    --ink:#1d2226;
+    --ink-soft:#565f66;
+    --ink-faint:#8791997c;
+    --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+
+  /* ---------- header ---------- */
+  header.site{
+    background:var(--navy-deep);
+    color:#eef1f4;
+  }
+  .site-top{
+    max-width:1080px;
+    margin:0 auto;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.02em;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .brand small{
+    display:block;
+    font-weight:400;
+    font-size:11px;
+    color:#9aa7b5;
+    letter-spacing:.08em;
+  }
+  nav.site-nav{
+    display:flex;
+    gap:22px;
+    font-size:13.5px;
+    flex-wrap:wrap;
+  }
+  nav.site-nav a{
+    text-decoration:none;
+    color:#c7d0d9;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  nav.site-nav a.current{
+    color:#ffffff;
+    border-bottom:1px solid var(--gold-soft);
+  }
+  .badge-line{
+    background:var(--navy);
+    color:#dfe6ec;
+    font-size:12.5px;
+    padding:7px 20px;
+  }
+  .badge-line .inner{
+    max-width:1080px;
+    margin:0 auto;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    max-width:1080px;
+    margin:0 auto;
+    padding:56px 20px 40px;
+  }
+  .hero .eyebrow{
+    color:var(--gold);
+    font-size:13.5px;
+    font-weight:700;
+    margin:0 0 14px;
+  }
+  .hero h1{
+    font-size:clamp(26px,4vw,38px);
+    line-height:1.5;
+    margin:0 0 22px;
+    font-weight:800;
+    letter-spacing:.01em;
+    color:var(--navy-deep);
+  }
+  .hero p{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    max-width:700px;
+    margin:0 0 14px;
+  }
+  .hero-stats{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  .hero-stats div{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:14px 18px;
+    min-width:150px;
+  }
+  .hero-stats .num{
+    font-size:22px;
+    font-weight:800;
+    color:var(--navy);
+  }
+  .hero-stats .label{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  /* ---------- intro note ---------- */
+  .note{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 20px 10px;
+  }
+  .note .box{
+    background:#fbf6ea;
+    border:1px solid #e7d9b3;
+    border-radius:var(--radius);
+    padding:18px 22px;
+    font-size:14px;
+    color:#4a3f22;
+  }
+  .note .box strong{color:#6b4f14;}
+
+  /* ---------- jump nav ---------- */
+  .jumpnav{
+    max-width:1080px;
+    margin:34px auto 0;
+    padding:0 20px;
+  }
+  .jumpnav ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+  }
+  .jumpnav a{
+    display:block;
+    text-decoration:none;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:3px solid var(--navy);
+    padding:12px 14px;
+    font-size:13.5px;
+    color:var(--navy-deep);
+    font-weight:700;
+  }
+  .jumpnav a span{
+    display:block;
+    font-weight:400;
+    color:var(--ink-soft);
+    font-size:12px;
+    margin-top:3px;
+  }
+
+  /* ---------- overview table ---------- */
+  .section-wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:56px 20px;
+  }
+  .section-head{
+    margin-bottom:26px;
+  }
+  .section-head .kicker{
+    font-size:12.5px;
+    color:var(--gold);
+    font-weight:700;
+    margin:0 0 8px;
+  }
+  .section-head h2{
+    font-size:23px;
+    margin:0 0 10px;
+    color:var(--navy-deep);
+    font-weight:800;
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    max-width:720px;
+    margin:0;
+  }
+  table.overview{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--paper);
+    font-size:13.5px;
+    border:1px solid var(--line);
+  }
+  table.overview th,table.overview td{
+    border:1px solid var(--line);
+    padding:11px 12px;
+    text-align:left;
+    vertical-align:top;
+  }
+  table.overview thead th{
+    background:var(--navy-deep);
+    color:#fff;
+    font-weight:700;
+    font-size:12.5px;
+  }
+  table.overview tbody tr:nth-child(even){background:#fafaf7;}
+  table.overview td.ka-name{
+    font-weight:700;
+    color:var(--navy-deep);
+    white-space:nowrap;
+  }
+  .scroll-x{overflow-x:auto;}
+
+  /* ---------- detail cards ---------- */
+  .ka-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    margin-bottom:28px;
+    scroll-margin-top:20px;
+    overflow:hidden;
+  }
+  .ka-head{
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+    padding:24px 26px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fbfbf9,#ffffff);
+  }
+  .ka-num{
+    font-size:13px;
+    font-weight:800;
+    color:var(--gold);
+    letter-spacing:.03em;
+    min-width:34px;
+  }
+  .ka-head h3{
+    margin:0 0 6px;
+    font-size:19px;
+    color:var(--navy-deep);
+    font-weight:800;
+  }
+  .ka-head .maps-to{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .ka-head .maps-to b{
+    color:var(--navy);
+  }
+  .ka-body{
+    padding:22px 26px 26px;
+  }
+  .ka-body > p.lead{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  dl.duties{
+    margin:0;
+    display:grid;
+    gap:14px;
+  }
+  dl.duties .row{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:14px;
+    padding:14px 16px;
+    background:#f7f8f5;
+    border-radius:var(--radius);
+    border-left:3px solid var(--navy-soft);
+  }
+  dl.duties dt{
+    font-weight:700;
+    font-size:14px;
+    color:var(--navy-deep);
+    margin:0;
+  }
+  dl.duties dd{
+    margin:0;
+    font-size:13.5px;
+    color:var(--ink);
+  }
+  @media (max-width:600px){
+    dl.duties .row{grid-template-columns:1fr;}
+    .ka-head{flex-direction:column;gap:6px;}
+  }
+
+  /* ---------- tai (units) section ---------- */
+  .tai-group{
+    margin-bottom:28px;
+  }
+  .tai-group h3.group-title{
+    font-size:15px;
+    font-weight:800;
+    color:var(--navy-deep);
+    margin:0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .tai-group h3.group-title::before{
+    content:"";
+    display:inline-block;
+    width:10px;
+    height:10px;
+    background:var(--gold);
+    border-radius:2px;
+  }
+  .tai-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:14px;
+  }
+  .tai-item{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:3px solid var(--navy-soft);
+    border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .tai-item h4{
+    margin:0 0 6px;
+    font-size:14.5px;
+    color:var(--navy-deep);
+    font-weight:800;
+  }
+  .tai-item p{
+    margin:0;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .tai-item .tag{
+    display:inline-block;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:700;
+    background:#fbf6ea;
+    border:1px solid #e7d9b3;
+    padding:2px 8px;
+    border-radius:2px;
+    margin-bottom:8px;
+  }
+
+  /* ---------- footer ---------- */
+  footer.site{
+    background:var(--navy-deep);
+    color:#c7d0d9;
+    margin-top:20px;
+  }
+  .footer-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:36px 20px;
+    font-size:13px;
+  }
+  .footer-nav{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+  }
+  .footer-nav a{text-decoration:none;color:#dfe6ec;}
+  .disclaimer{
+    color:#93a0ac;
+    line-height:1.9;
+    border-top:1px solid #2b4360;
+    padding-top:16px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-top">
+    <div class="brand">大阪府警察署管轄チェック
+      <small>OSAKA POLICE JURISDICTION GUIDE</small>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">TOP</a>
+      <a href="kankatsu-kensaku.html">管轄検索</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html" class="current">本部と署の課対応</a>
+      <a href="about.html">運営者情報</a>
+    </nav>
+  </div>
+  <div class="badge-line"><div class="inner">大阪府 66警察署 対応｜本部組織ガイド</div></div>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">組織ガイド</p>
+  <h1>「交通第一課」「捜査第二課」…<br>警察本部の課は、警察署では何課？</h1>
+  <p>
+    大阪府警察本部には、交通部・刑事部・生活安全部・警備部など複数の部があり、その下に「交通指導課」「捜査第一課」「組織犯罪対策本部」といった聞き慣れない課が数多く置かれています。
+    一方、街の警察署にあるのは総務課・会計課・生活安全課・地域課・刑事課・交通課・警備課の7つだけ。
+    ここでは大阪府警察組織規則にもとづき、<strong>本部のどの課が、署のどの課の仕事に対応しているのか</strong>、そして<strong>本部のその課が実際に何をしているのか</strong>を整理しました。
+  </p>
+  <div class="hero-stats">
+    <div><div class="num">7</div><div class="label">警察署の基本の課</div></div>
+    <div><div class="num">6</div><div class="label">対応する本部の部門</div></div>
+    <div><div class="num">30+</div><div class="label">本部側の個別の課</div></div>
+  </div>
+</div>
+
+<div class="note">
+  <div class="box">
+    <strong>読み方のポイント：</strong>警察署の課は「地域の総合窓口」、本部の課は「分野ごとの専門部隊」というイメージです。
+    たとえば署の「刑事課」1つに対して、本部側は捜査第一課（殺人・強盗）、捜査第二課（詐欺・汚職）、捜査第三課（窃盗）、捜査第四課（暴力団）…というように、事件の種類ごとに課が細分化されています。
+  </div>
+</div>
+
+<div class="jumpnav">
+  <ul>
+    <li><a href="#soumu">01 総務課<span>総務部</span></a></li>
+    <li><a href="#kaikei">02 会計課<span>総務部 会計課</span></a></li>
+    <li><a href="#seikatsu">03 生活安全課<span>生活安全部</span></a></li>
+    <li><a href="#chiiki">04 地域課<span>地域部</span></a></li>
+    <li><a href="#keiji">05 刑事課<span>刑事部／組対本部</span></a></li>
+    <li><a href="#koutsu">06 交通課<span>交通部</span></a></li>
+    <li><a href="#keibi">07 警備課<span>警備部</span></a></li>
+    <li><a href="#tai">課に属さない「隊」<span>署長・部長直轄</span></a></li>
+  </ul>
+</div>
+
+<div class="section-wrap">
+  <div class="section-head">
+    <p class="kicker">全体像</p>
+    <h2>警察署の課と、本部の部門の対応一覧</h2>
+    <p>大阪府警察組織規則で定められた、警察署の分課（7課）と、それに対応する警察本部の部・主な課をまとめた早見表です。詳しい仕事内容は、この下の各セクションで解説しています。なお、機動捜査隊や交通機動隊のような「隊」は課には属さず、署長・部長直轄の別枠の組織です（詳しくはページ下部で解説）。</p>
+  </div>
+  <div class="scroll-x">
+    <table class="overview">
+      <thead>
+        <tr>
+          <th style="width:14%">警察署の課</th>
+          <th style="width:16%">対応する本部の部門</th>
+          <th>本部の主な課（一例）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ka-name">総務課</td>
+          <td>総務部</td>
+          <td>総務課、広報課、施設課、装備課、留置管理課、府民応接センター</td>
+        </tr>
+        <tr>
+          <td class="ka-name">会計課</td>
+          <td>総務部</td>
+          <td>会計課</td>
+        </tr>
+        <tr>
+          <td class="ka-name">生活安全課</td>
+          <td>生活安全部</td>
+          <td>生活安全総務課、府民安全対策課、サイバー犯罪捜査課、保安課、生活経済課、生活環境課、少年課</td>
+        </tr>
+        <tr>
+          <td class="ka-name">地域課</td>
+          <td>地域部</td>
+          <td>地域総務課、通信指令室</td>
+        </tr>
+        <tr>
+          <td class="ka-name">刑事課</td>
+          <td>刑事部／組織犯罪対策本部</td>
+          <td>刑事総務課、捜査第一〜四課、薬物対策課、国際捜査課、特殊詐欺捜査課、捜査共助課、鑑識課、検視調査課</td>
+        </tr>
+        <tr>
+          <td class="ka-name">交通課</td>
+          <td>交通部</td>
+          <td>交通総務課、交通規制課、駐車管理課、交通指導課、交通捜査課、運転免許課</td>
+        </tr>
+        <tr>
+          <td class="ka-name">警備課</td>
+          <td>警備部</td>
+          <td>警備総務課、警備第一・第二課、公安第一〜三課、外事課</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section-wrap" style="padding-top:0;">
+
+  <div class="ka-card" id="soumu">
+    <div class="ka-head">
+      <div class="ka-num">01</div>
+      <div>
+        <h3>総務課</h3>
+        <div class="maps-to">本部側の対応部門：<b>総務部</b>（総務課・広報課・施設課・装備課・留置管理課・府民応接センターなど）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の総務課は、公文書の管理や庶務、留置施設の管理、苦情・相談の受付など、署内の「内部管理」と「府民対応の窓口」を幅広く担う課です。本部の総務部は、この機能を大阪府警察全体のレベルで統括しています。</p>
+      <dl class="duties">
+        <div class="row"><dt>総務課</dt><dd>公安委員会に関する事務、府議会など関係機関との連絡調整、公印の管理、警察の各種規程の審査、警察史の編さんなど、警察行政の根幹に関わる事務を担当します。</dd></div>
+        <div class="row"><dt>広報課</dt><dd>報道機関への対応や、府民向けの広報活動全般を担当します。</dd></div>
+        <div class="row"><dt>施設課</dt><dd>警察庁舎や交通安全施設（信号機の設置に関わる工事契約など）の整備・管理を担当します。</dd></div>
+        <div class="row"><dt>装備課</dt><dd>拳銃・車両・警察手帳・被服など、警察装備全般の調達・管理・研究を担当します。</dd></div>
+        <div class="row"><dt>留置管理課</dt><dd>府内の留置施設の管理指導や、被留置者の護送、留置に関する苦情対応を統括します。</dd></div>
+        <div class="row"><dt>府民応接センター</dt><dd>大阪府警察全体に寄せられる要望・苦情・相談の受付、犯罪被害者等支援、情報公開・個人情報保護に関する窓口業務を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="kaikei">
+    <div class="ka-head">
+      <div class="ka-num">02</div>
+      <div>
+        <h3>会計課</h3>
+        <div class="maps-to">本部側の対応部門：<b>総務部 会計課</b></div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の会計課は、署の日々の会計事務を担当するシンプルな課です。本部の会計課は、これを府警察全体の予算・決算の視点で管理しています。</p>
+      <dl class="duties">
+        <div class="row"><dt>会計課</dt><dd>予算の編成・執行・決算、旅費の支出、警察手数料の管理、物品の調達・管理・処分、遺失物の取扱いなど、お金とモノに関する事務全般を府警察全体で統括します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="seikatsu">
+    <div class="ka-head">
+      <div class="ka-num">03</div>
+      <div>
+        <h3>生活安全課</h3>
+        <div class="maps-to">本部側の対応部門：<b>生活安全部</b>（生活安全総務課・府民安全対策課・サイバー犯罪捜査課・保安課・生活経済課・生活環境課・少年課）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の生活安全課は、防犯・少年問題・風俗営業関係の許認可・ストーカーやDVなど、「暮らしの安全」に関わる幅広い業務をまとめて扱う課です。本部の生活安全部では、これを分野ごとに専門の課へ分けています。</p>
+      <dl class="duties">
+        <div class="row"><dt>生活安全総務課</dt><dd>生活安全警察全体の企画のほか、ストーカー規制法・DV防止法・児童虐待防止法・高齢者/障害者虐待防止法など、要保護者の安全に関する法律の運用を統括します。</dd></div>
+        <div class="row"><dt>府民安全対策課</dt><dd>防犯カメラシステムの運用、自治体や地域住民と協働した防犯まちづくり、子どもや女性を対象とした犯罪への対策を担当します。</dd></div>
+        <div class="row"><dt>サイバー犯罪捜査課</dt><dd>インターネットやコンピューターに関わるサイバー犯罪の捜査を専門に担当します。</dd></div>
+        <div class="row"><dt>保安課</dt><dd>風俗営業やキャバレー・パチンコ店等の営業許可、警備業・探偵業の届出、質屋・古物営業の許可、銃刀類の所持許可、火薬類の取扱いなど、営業許認可に関わる業務の多くを担います。</dd></div>
+        <div class="row"><dt>生活経済課</dt><dd>金融や不動産に関わる経済事犯、知的財産権（偽ブランド品など）に関する事犯の取締りを担当します。</dd></div>
+        <div class="row"><dt>生活環境課</dt><dd>公害や保健衛生に関する法令違反、危険物の取扱いに関する事犯などを取り締まります。</dd></div>
+        <div class="row"><dt>少年課</dt><dd>少年による事件の捜査や補導、被害を受けた少年の保護、少年の福祉を害する犯罪の捜査など、少年に関わる業務全般を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="chiiki">
+    <div class="ka-head">
+      <div class="ka-num">04</div>
+      <div>
+        <h3>地域課</h3>
+        <div class="maps-to">本部側の対応部門：<b>地域部</b>（地域総務課・通信指令室）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の地域課は、交番・パトカーによる警らなど、いわゆる「おまわりさん」の活動を担う課です。本部の地域部は、その運用の企画立案と、110番通報の受理・指令を担当します。</p>
+      <dl class="duties">
+        <div class="row"><dt>地域総務課</dt><dd>地域警察活動全体の企画、パトカー・警察用船舶の運用、水難や山岳遭難への対応、水上警察、鉄道警察隊や方面機動警ら隊の運用などを統括します。</dd></div>
+        <div class="row"><dt>通信指令室</dt><dd>110番通報の受理と、事件発生時の緊急配備の手配、警察無線の運用・統制を担当します。府民の通報が最初に届く司令塔です。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="keiji">
+    <div class="ka-head">
+      <div class="ka-num">05</div>
+      <div>
+        <h3>刑事課</h3>
+        <div class="maps-to">本部側の対応部門：<b>刑事部</b>（刑事総務課・捜査第一〜四課・薬物対策課・国際捜査課・特殊詐欺捜査課・捜査共助課・鑑識課・検視調査課）と<b>組織犯罪対策本部</b></div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の刑事課は「刑事事件全般」を扱いますが、本部の刑事部では、事件の種類ごとに課が細かく分かれています。刑事ドラマでおなじみの「捜査一課」「マル暴」も、この刑事部の一員です。</p>
+      <dl class="duties">
+        <div class="row"><dt>刑事総務課</dt><dd>刑事警察全体の企画や捜査の指導、機動捜査隊・刑事特別捜査隊の運用を担当します。</dd></div>
+        <div class="row"><dt>捜査第一課</dt><dd>殺人、強盗、不同意性交等、傷害、放火といった「強行犯」と呼ばれる凶悪事件の捜査を担当します。いわゆる「捜査一課」です。</dd></div>
+        <div class="row"><dt>捜査第二課</dt><dd>詐欺、横領、背任、贈収賄、選挙違反、偽造など、「知能犯」と呼ばれる経済関係の犯罪を担当します。</dd></div>
+        <div class="row"><dt>捜査第三課</dt><dd>空き巣や車上ねらいなど、窃盗犯や盗品等に関する犯罪の捜査を担当します。</dd></div>
+        <div class="row"><dt>捜査第四課</dt><dd>暴力団に関する犯罪の捜査や暴力団対策、拳銃など銃器犯罪の取締りを担当します。いわゆる「マル暴」です。</dd></div>
+        <div class="row"><dt>薬物対策課</dt><dd>麻薬・覚醒剤など、習慣性のある薬物に関する犯罪の取締りを専門に担当します。</dd></div>
+        <div class="row"><dt>国際捜査課</dt><dd>外国人が関わる犯罪や、国外へ逃亡した被疑者の捜査、海外の捜査機関との協力を担当します。</dd></div>
+        <div class="row"><dt>特殊詐欺捜査課</dt><dd>「オレオレ詐欺」などの特殊詐欺や、SNSを利用した投資詐欺・ロマンス詐欺の捜査を専門に担当します。</dd></div>
+        <div class="row"><dt>捜査共助課</dt><dd>指名手配された被疑者の追跡捜査や、他の都道府県警察との捜査協力の窓口を担当します。</dd></div>
+        <div class="row"><dt>鑑識課</dt><dd>現場に残された指紋や足跡、写真の記録・鑑定など、いわゆる「鑑識」業務を担当します。</dd></div>
+        <div class="row"><dt>検視調査課</dt><dd>変死体などが発見された際の検視や、死因の調査・研究を担当します。</dd></div>
+        <div class="row"><dt>組織犯罪対策本部</dt><dd>暴力団などの組織犯罪に対する捜査や対策を、部をまたいで総合的に企画・調整する、本部長直属の組織です。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="koutsu">
+    <div class="ka-head">
+      <div class="ka-num">06</div>
+      <div>
+        <h3>交通課</h3>
+        <div class="maps-to">本部側の対応部門：<b>交通部</b>（交通総務課・交通規制課・駐車管理課・交通指導課・交通捜査課・運転免許課）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の交通課は、交通取締りから道路使用許可、交通事故の捜査まで、交通に関する業務を一手に担います。本部の交通部では、これを「規制」「取締り」「事故捜査」「免許」といった機能ごとに分けています。道路使用許可や車庫証明を申請する際に窓口となるのも、この系統の業務です。</p>
+      <dl class="duties">
+        <div class="row"><dt>交通総務課</dt><dd>交通安全教育、緊急自動車の指定、自転車の安全利用対策など、交通警察全体の企画を担当します。</dd></div>
+        <div class="row"><dt>交通規制課</dt><dd>信号機や道路標識・標示の整備、交通規制、道路使用の許可、駐車場に関する事務を担当します。</dd></div>
+        <div class="row"><dt>駐車管理課</dt><dd>放置違反金の処理や、放置車両の確認事務、駐車監視員に関する業務を担当します。</dd></div>
+        <div class="row"><dt>交通指導課</dt><dd>交通違反の取締り、交通反則通告制度の運用、交通機動隊・高速道路交通警察隊の運用などを担当します。</dd></div>
+        <div class="row"><dt>交通捜査課</dt><dd>交通事故事件の捜査や、ひき逃げ事件への対応、暴走族対策を担当します。</dd></div>
+        <div class="row"><dt>運転免許課</dt><dd>運転免許の交付・更新・取消し・停止や、自動車教習所の指導監督を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="keibi">
+    <div class="ka-head">
+      <div class="ka-num">07</div>
+      <div>
+        <h3>警備課</h3>
+        <div class="maps-to">本部側の対応部門：<b>警備部</b>（警備総務課・警備第一課・警備第二課・公安第一〜三課・外事課）</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">署の警備課は、要人警護や災害対応、デモ・集会への対応などを担う課です。本部の警備部では、災害・雑踏警備などを扱う「警備」系の課と、思想・団体に関する情報収集や外国人関連事案を扱う「公安」系の課に分かれています。</p>
+      <dl class="duties">
+        <div class="row"><dt>警備総務課</dt><dd>警備警察全体の企画や、関西国際空港における危機管理を担当します。</dd></div>
+        <div class="row"><dt>警備第一課</dt><dd>警備計画の立案、集会・デモ行進の許可、機動隊の運用、要人の警護（警衛・警護）を担当します。</dd></div>
+        <div class="row"><dt>警備第二課</dt><dd>災害対策の企画や災害警備の実施、航空隊の運用、特殊部隊による検挙活動を担当します。</dd></div>
+        <div class="row"><dt>公安第一課</dt><dd>公安第二課・第三課・外事課が扱う範囲を除く警備情報の収集や、破壊活動防止法に関する犯罪の捜査を担当します。</dd></div>
+        <div class="row"><dt>公安第二課</dt><dd>国家主義的な主張に基づく団体に関する警備情報の収集・捜査を担当します。</dd></div>
+        <div class="row"><dt>公安第三課</dt><dd>極左的な主張に基づく暴力主義的破壊活動に関する警備情報の収集・捜査を担当します。</dd></div>
+        <div class="row"><dt>外事課</dt><dd>外国人に関する警備情報の収集、出入国管理法違反の捜査、国際テロ対策を担当します。</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="ka-card" id="tai">
+    <div class="ka-head">
+      <div class="ka-num">＋</div>
+      <div>
+        <h3>課に属さない「隊」</h3>
+        <div class="maps-to">7つの課とは別枠で、<b>署長・部長・本部長に直属</b>する機動部隊です</div>
+      </div>
+    </div>
+    <div class="ka-body">
+      <p class="lead">
+        大阪府警察組織規則では、「課」とは別の条文で「隊」が定められています。隊は特定の課の下部組織ではなく、署長・部長・本部長の判断で機動的に動かせる、いわば直轄の実働部隊という位置づけです。
+      </p>
+
+      <div class="tai-group">
+        <h3 class="group-title">警察署に置かれる隊（署長直轄）</h3>
+        <div class="tai-list">
+          <div class="tai-item">
+            <span class="tag">全署（一部を除く）</span>
+            <h4>直轄警察隊</h4>
+            <p>大阪水上・豊能・関西空港の3署を除く全ての警察署に設置。重要犯罪の検挙・抑止活動のほか、「署長が特に命ずる事務」を担当します。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">曾根崎警察署のみ</span>
+            <h4>キタ特別警察隊</h4>
+            <p>キタの繁華街における集団での警戒警ら活動のほか、「署長が特に命ずる事務」を担当します。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">南警察署のみ</span>
+            <h4>ミナミ特別警察隊</h4>
+            <p>ミナミの繁華街における集団での警戒警ら活動のほか、「署長が特に命ずる事務」を担当します。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tai-group">
+        <h3 class="group-title">本部に置かれる隊（部長・本部長直轄）</h3>
+        <div class="tai-list">
+          <div class="tai-item">
+            <span class="tag">刑事部付置</span>
+            <h4>機動捜査隊</h4>
+            <p>本部庁舎内に設置。覆面パトカーなどの機動力を用いて、事件発生直後の初動捜査を専門に行います。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">刑事部付置</span>
+            <h4>刑事特別捜査隊</h4>
+            <p>本部長が指定する事件の捜査や、警察署の刑事事件捜査に対する応援・支援を担当します。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">交通部付置</span>
+            <h4>交通機動隊</h4>
+            <p>パトカーや白バイの機動力を活かした、交通指導取締りの専門部隊です。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">交通部付置</span>
+            <h4>高速道路交通警察隊</h4>
+            <p>高速自動車国道や自動車専用道路を担当区域とし、その区間の交通取締り・交通事故捜査・交通規制を一手に担います。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">警備部付置</span>
+            <h4>機動隊（第一〜第三）</h4>
+            <p>大規模警備や雑踏警備、災害警備など、警戒警備を専門に担う部隊です。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">警備部付置</span>
+            <h4>航空隊</h4>
+            <p>ヘリコプターを運用し、災害時の警備活動や、警ら・遭難者の捜索救助など警察業務全般を空から支援します。</p>
+          </div>
+          <div class="tai-item">
+            <span class="tag">地域部付置</span>
+            <h4>方面機動警ら隊・鉄道警察隊</h4>
+            <p>方面機動警ら隊は方面区ごとに機動力を用いた警ら活動を、鉄道警察隊は鉄道施設内の警戒警らを担当します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site">
+  <div class="footer-inner">
+    <div class="footer-nav">
+      <a href="kankatsu-kensaku.html">管轄検索</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="about.html">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <div class="disclaimer">
+      当サイトは大阪府警察の公式サイトではなく、個人が運営する情報サイトです。掲載内容は大阪府警察組織規則（大阪府公安委員会規則）等の公開情報をもとにまとめた一般的な参考情報であり、内部の係の名称や事務分担は改正により変更される場合があります。正確な最新情報は、必ず大阪府警察本部または各警察署の公式発表をご確認ください。
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
