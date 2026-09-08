@@ -488,7 +488,7 @@ table.info-table th{
 .contact-form label{
   display: block;
   font-size: .88rem;
-  color: var(--ink-soft);
+  color: var(--ink);
   margin-bottom: 6px;
 }
 .contact-form label .required{
@@ -507,6 +507,9 @@ table.info-table th{
   border: 1px solid var(--line);
   border-radius: 2px;
   background: var(--white);
+  color: var(--ink);
+}
+.contact-form option{
   color: var(--ink);
 }
 .contact-form input:focus,
