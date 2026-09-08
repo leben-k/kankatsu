@@ -414,6 +414,58 @@ table.info-table th{
   line-height: 1.5;
 }
 
+/* ---------- 広告枠（楽天アフィリエイト） ---------- */
+.ad-box{
+  margin: 34px 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 4px;
+}
+.ad-box .ad-label{
+  display: inline-block;
+  font-size: .7rem;
+  color: var(--white);
+  background: var(--ink-soft);
+  padding: 2px 9px;
+  border-radius: 2px;
+  letter-spacing: .05em;
+  margin-bottom: 12px;
+}
+.ad-box .ad-title{
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--navy-deep);
+  margin: 0 0 10px;
+}
+.ad-items{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+.ad-item{
+  display: block;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.ad-item:hover{ border-color: var(--brass); }
+.ad-item .ad-item-name{
+  color: var(--navy);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+.ad-item .ad-item-desc{
+  color: var(--ink-soft);
+  font-size: .82rem;
+}
+
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 600px){
   .wrap{ padding: 0 18px; }
