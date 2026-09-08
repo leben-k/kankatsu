@@ -1,0 +1,11 @@
+# 警察署管轄ガイド（大阪・京都・兵庫版）
+# クロールはすべて許可しています。
+# 「運営者情報」ページなど、検索結果に出したくないページは
+# robots.txtでの拒否ではなく、各ページの <meta name="robots" content="noindex">
+# で個別に制御しています（robots.txtで拒否すると、Googleがそのページの
+# noindex指定自体を読みに行けなくなり、かえって望ましくない挙動になるため）。
+
+User-agent: *
+Allow: /
+
+Sitemap: https://leben-k.github.io/kankatsu/sitemap.xml

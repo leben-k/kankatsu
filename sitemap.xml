@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  サイトマップ（検索エンジンの巡回用）
+
+  ご注意：URLの先頭は仮に「https://leben-k.github.io/kankatsu/」としています。
+  実際に使っているGitHub PagesのURL、または独自ドメインに置き換えたドメインが
+  これと違う場合は、このファイル内のすべての <loc> のドメイン部分を
+  実際のURLに書き換えてから公開してください（下記コマンドで一括置換できます）。
+
+    sed -i 's#https://leben-k.github.io/kankatsu/#実際のURL/#g' sitemap.xml
+
+  運営者情報ページ（about.html）は、ページ側に noindex を設定しているため、
+  このサイトマップには含めていません。管轄検索の旧URL（kankatsu-kensaku.html）は
+  トップページへの単純な転送ページのため、同様に含めていません。
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/index.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/keisatsusho.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/honbu-ka-taiou.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/honbu-ka-taiou-kyoto.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/honbu-ka-taiou-hyogo.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/fuzoku-eigyo.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/shinya-inshoku.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/keibigyo.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/tanteigyo.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/doro-shiyo.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/shako-shomei.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/privacy.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://leben-k.github.io/kankatsu/contact.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

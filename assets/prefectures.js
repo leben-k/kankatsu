@@ -54,12 +54,21 @@ function getPrefById(id){
   return PREFECTURES.find(p => p.id === id) || PREFECTURES[0];
 }
 
-// 読み込み済みの府県データをキャッシュしておき、タブを切り替えるたびに
-// グローバル変数（STATIONS / JURISDICTION_RULES）へ明示的に反映し直す。
-// こうすることで「表示は大阪なのに、中身のデータは前に見ていた兵庫のまま」
-// といった、表示と実データのズレを防ぐ。
-const _prefDataCache = {};
-let _prefLoadToken = 0;
+// 指定された府県のデータスクリプトを読み込む（すでに読み込み済みの府県は再取得しない）
+const _loadedPrefScripts = {};
+function loadPrefData(prefId){
+  const pref = getPrefById(prefId);
+  const cacheKey = pref.id;
+  if(_loadedPrefScripts[cacheKey]){
+    return _loadedPrefScripts[cacheKey];
+  }
+  const promise = Promise.all([
+    loadScript(pref.stationsUrl),
+    loadScript(pref.jurisdictionUrl)
+  ]);
+  _loadedPrefScripts[cacheKey] = promise;
+  return promise;
+}
 
 function loadScript(src){
   return new Promise((resolve, reject) => {
@@ -69,24 +78,4 @@ function loadScript(src){
     el.onerror = () => reject(new Error('読み込み失敗: ' + src));
     document.body.appendChild(el);
   });
-}
-
-async function loadPrefData(prefId){
-  const myToken = ++_prefLoadToken; // 連打対策：後から呼ばれた読み込みだけを有効にする
-
-  if(_prefDataCache[prefId]){
-    if(myToken !== _prefLoadToken) return; // すでに別の府県への切り替えが割り込んでいたら何もしない
-    STATIONS = _prefDataCache[prefId].stations;
-    JURISDICTION_RULES = _prefDataCache[prefId].rules;
-    return;
-  }
-
-  const pref = getPrefById(prefId);
-  await loadScript(pref.stationsUrl);
-  await loadScript(pref.jurisdictionUrl);
-
-  if(myToken !== _prefLoadToken) return; // 読み込み中に、さらに別の府県へ切り替えられていたら反映しない
-
-  // スクリプト実行直後のグローバル変数の中身をキャッシュに保存しておく
-  _prefDataCache[prefId] = { stations: STATIONS, rules: JURISDICTION_RULES };
 }
