@@ -61,6 +61,7 @@ function rangeMatches(input, range){
 // city名の「短縮キー」が複数の市区町村で衝突しないかを事前計算
 // 大阪市・堺市・京都市・神戸市など、区を持つ政令指定都市名のプレフィックスを想定
 const CITY_PREFIXES = /^(大阪市|堺市|京都市|神戸市)/;
+const CITY_PREFIX_LIST = ["大阪市", "堺市", "京都市", "神戸市"];
 
 function buildAliasMap(rules){
   const shortToFull = {};
@@ -79,16 +80,43 @@ function buildAliasMap(rules){
   return safeAlias; // { "都島区": "大阪市都島区", ... }（北区・西区など複数市に存在するものは含まれない）
 }
 
+// 入力住所が、あるルールの city（例：「大阪市東淀川区」）にヒットするかどうかを判定する。
+// 完全一致（fullHit）を優先し、それが無い場合のみ短縮名（エイリアス）でのヒットを認める。
+// エイリアスは、入力住所に別の政令市名が明示されている場合には使わない
+// （例：「神戸市西区」への誤爆を防ぐため）。
+function cityMatches(input, city, aliasMap, mentionedCityPrefix){
+  const fullHit = input.includes(normalizeAddress(city));
+  if(fullHit) return true;
+
+  const shortCity = city.replace(CITY_PREFIXES, '');
+  if(shortCity === city) return false; // エイリアス対象外（市名のみのルール）
+
+  const cityPrefixMatch = city.match(CITY_PREFIXES);
+  const cityPrefix = cityPrefixMatch ? cityPrefixMatch[0] : null;
+  const aliasSafe = aliasMap[shortCity] === city;
+  const noConflict = !mentionedCityPrefix || mentionedCityPrefix === cityPrefix;
+
+  return aliasSafe && noConflict && input.includes(normalizeAddress(shortCity));
+}
+
 function matchStation(inputRaw, rules){
   const input = normalizeAddress(inputRaw);
   const aliasMap = buildAliasMap(rules);
+  const mentionedCityPrefix = CITY_PREFIX_LIST.find(p => input.includes(normalizeAddress(p))) || null;
 
-  for(const rule of rules){
-    const cityHit = input.includes(normalizeAddress(rule.city))
-      || (aliasMap[rule.city.replace(CITY_PREFIXES, '')] === rule.city
-          && input.includes(normalizeAddress(rule.city.replace(CITY_PREFIXES, ''))));
-    if(!cityHit) continue;
+  // 1. 入力にヒットする可能性のある city（市区町村）の候補をすべて集める。
+  const allCities = [...new Set(rules.map(r => r.city))];
+  const hitCities = allCities.filter(city => cityMatches(input, city, aliasMap, mentionedCityPrefix));
+  if(hitCities.length === 0) return null;
 
+  // 2. 「東淀川区」が「淀川区」を、「東住吉区」が「住吉区」を部分文字列として含んでしまう
+  //    ような入れ子のケースに対応するため、ヒットした候補のうち、文字列としてもっとも
+  //    長い（＝もっとも具体的な）ものを優先して採用する。
+  const bestCity = hitCities.reduce((a, b) => (b.length > a.length ? b : a));
+
+  // 3. 採用した city に属するルールだけを、元の並び順（明示ルール→包括ルールの順）で試す。
+  const candidateRules = rules.filter(r => r.city === bestCity);
+  for(const rule of candidateRules){
     if(rule.whole){
       return { station: rule.station, rule, matchedBy: 'ward' };
     }
