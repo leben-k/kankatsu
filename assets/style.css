@@ -455,6 +455,14 @@ table.info-table th{
   line-height: 1.6;
 }
 .ad-item:hover{ border-color: var(--brass); }
+.ad-item .ad-item-img{
+  display: block;
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  margin: 0 0 10px;
+  border-radius: 2px;
+}
 .ad-item .ad-item-name{
   color: var(--navy);
   font-weight: 500;
