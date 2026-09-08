@@ -43,12 +43,40 @@
 
 <div class="article-body">
   <div class="wrap">
-    <p>現在、当サイトでは以下の方法でお問い合わせを受け付けております。メールアドレスは、独自ドメインでの運用開始後にあわせて設定予定です。</p>
+    <p>掲載情報の誤りのご指摘、ご意見・ご要望などがございましたら、下記のフォームからご連絡ください。いただいた内容は、お問い合わせへの回答の目的にのみ使用します。</p>
 
     <div class="callout">
       <strong>ご連絡の際のお願い</strong><br>
       当サイトは個人が運営する情報サイトのため、警察に関する事件・相談・緊急のご連絡はお受けできません。事件・事故・110番通報が必要な内容については、最寄りの警察署または110番へ直接ご連絡ください。緊急でない相談については、大阪府警察の相談窓口（＃9110）をご利用ください。
     </div>
+
+    <h3>問い合わせ・連絡フォーム</h3>
+    <form class="contact-form" action="https://formspree.io/f/xeaqpayg" method="POST">
+      <div class="form-row">
+        <label for="subject">要件は何についてですか<span class="required">必須</span></label>
+        <select id="subject" name="要件" required>
+          <option value="">選択してください</option>
+          <option value="掲載情報の誤りについて">掲載情報の誤りについて</option>
+          <option value="記事内容についてのご意見・改善提案">記事内容についてのご意見・改善提案</option>
+          <option value="広告・掲載に関するお問い合わせ">広告・掲載に関するお問い合わせ</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="email">あなたのメールアドレス<span class="required">必須</span></label>
+        <input type="email" id="email" name="_replyto" required placeholder="example@example.com">
+      </div>
+      <div class="form-row">
+        <label for="name">お名前<span class="required">必須</span></label>
+        <input type="text" id="name" name="お名前" required placeholder="山田 太郎">
+      </div>
+      <div class="form-row">
+        <label for="message">内容<span class="required">必須</span></label>
+        <textarea id="message" name="内容" required placeholder="お問い合わせの内容をご記入ください"></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="【警察署管轄ガイド】お問い合わせ">
+      <button type="submit">送信</button>
+    </form>
 
     <p>掲載している警察署の住所・電話番号・管轄区域などの情報に誤りがある場合や、記事内容についての改善提案がありましたら、お気軽にお知らせください。順次確認のうえ、修正いたします。</p>
   </div>

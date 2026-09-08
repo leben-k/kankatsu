@@ -474,6 +474,64 @@ table.info-table th{
   font-size: .82rem;
 }
 
+/* ---------- お問い合わせフォーム ---------- */
+.contact-form{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 28px;
+  margin: 26px 0;
+}
+.contact-form .form-row{
+  margin-bottom: 18px;
+}
+.contact-form label{
+  display: block;
+  font-size: .88rem;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+.contact-form label .required{
+  color: var(--alert);
+  margin-left: 4px;
+  font-size: .78rem;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea{
+  width: 100%;
+  padding: 12px 14px;
+  font-size: .95rem;
+  font-family: var(--sans);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--white);
+  color: var(--ink);
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+  outline: 2px solid var(--brass);
+  border-color: var(--brass);
+}
+.contact-form textarea{
+  min-height: 140px;
+  resize: vertical;
+}
+.contact-form button{
+  padding: 13px 30px;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 2px;
+  font-size: .95rem;
+  font-family: var(--sans);
+  cursor: pointer;
+  border-bottom: 3px solid var(--brass);
+}
+.contact-form button:hover{ background: var(--navy-deep); }
+
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 600px){
   .wrap{ padding: 0 18px; }
