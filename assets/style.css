@@ -414,15 +414,20 @@ table.info-table th{
   line-height: 1.5;
 }
 
-/* ---------- 広告枠（楽天アフィリエイト） ---------- */
-.ad-box{
+/* ---------- 広告枠（楽天アフィリエイト） ----------
+   ここは「枠」だけを用意し、中身のデザインには一切干渉しません。
+   楽天アフィリエイトの「リンク作成」で発行されたソースコードは、
+   テキスト・画像とも改変が禁止されているため、.ad-slot の中には
+   発行されたコードをそのまま（無加工で）貼り付けてください。       */
+.ad-slot{
   margin: 34px 0;
-  padding: 22px;
+  padding: 18px;
   border: 1px solid var(--line);
   background: var(--card);
   border-radius: 4px;
+  overflow-x: auto; /* 楽天のソースが横に広い場合の保険 */
 }
-.ad-box .ad-label{
+.ad-slot .ad-label{
   display: inline-block;
   font-size: .7rem;
   color: var(--white);
@@ -432,46 +437,10 @@ table.info-table th{
   letter-spacing: .05em;
   margin-bottom: 12px;
 }
-.ad-box .ad-title{
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: var(--navy-deep);
-  margin: 0 0 10px;
-}
-.ad-items{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-}
-.ad-item{
-  display: block;
-  padding: 14px 16px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  text-decoration: none;
-  color: var(--ink);
-  font-size: .88rem;
-  line-height: 1.6;
-}
-.ad-item:hover{ border-color: var(--brass); }
-.ad-item .ad-item-img{
-  display: block;
-  width: 100%;
-  max-width: 160px;
-  height: auto;
-  margin: 0 0 10px;
-  border-radius: 2px;
-}
-.ad-item .ad-item-name{
-  color: var(--navy);
-  font-weight: 500;
-  display: block;
-  margin-bottom: 4px;
-}
-.ad-item .ad-item-desc{
+.ad-slot .ad-placeholder{
+  font-size: .85rem;
   color: var(--ink-soft);
-  font-size: .82rem;
+  margin: 0;
 }
 
 /* ---------- お問い合わせフォーム ---------- */
