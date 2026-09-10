@@ -12,7 +12,14 @@
   /* ▼「申請・届出」ドロップダウンメニュー ▼ */
   .nav-dropdown{position:relative;display:inline-block;}
   .nav-dropdown-toggle{display:inline-flex;align-items:center;gap:.3rem;cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
-  .nav-caret{font-size:.65em;line-height:1;transition:transform .2s ease;}
+  .nav-caret{
+    display:inline-block;width:0;height:0;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:5px solid currentColor;
+    transition:transform .2s ease;
+    position:relative;top:1px;
+  }
   .nav-dropdown:hover .nav-caret,
   .nav-dropdown.is-open .nav-caret{transform:rotate(180deg);}
   .nav-dropdown-menu{
@@ -181,7 +188,7 @@
       <a href="keisatsusho.html">警察署一覧</a>
       <a href="honbu-ka-taiou.html">本部と署の課対応</a>
       <div class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true">▾</span></a>
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
         <ul class="nav-dropdown-menu">
           <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
           <li><a href="keibigyo.html">警備業の届出</a></li>
@@ -391,7 +398,7 @@
       <a href="keisatsusho.html">警察署一覧</a>
       <a href="honbu-ka-taiou.html">本部と署の課対応</a>
       <div class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true">▾</span></a>
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
         <ul class="nav-dropdown-menu">
           <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
           <li><a href="keibigyo.html">警備業の届出</a></li>
