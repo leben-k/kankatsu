@@ -8,6 +8,69 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ▼「申請・届出」ドロップダウンメニュー ▼ */
+  .nav-dropdown{position:relative;display:inline-block;}
+  .nav-dropdown-toggle{display:inline-flex;align-items:center;gap:.3rem;cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
+  .nav-caret{font-size:.65em;line-height:1;transition:transform .2s ease;}
+  .nav-dropdown:hover .nav-caret,
+  .nav-dropdown.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown-menu{
+    list-style:none;margin:0;padding:.5rem 0;
+    position:absolute;top:100%;left:0;margin-top:.5rem;
+    min-width:16rem;
+    background:#fff;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:.6rem;
+    box-shadow:0 14px 30px rgba(0,0,0,.16);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transform:translateY(6px);
+    transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+    z-index:300;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
+  .nav-dropdown.is-open .nav-dropdown-menu{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+  }
+  .nav-dropdown-menu li{margin:0;}
+  .nav-dropdown-menu a{
+    display:block;
+    padding:.65rem 1.15rem;
+    white-space:nowrap;
+    color:var(--navy,#1a2a44);
+    text-decoration:none;
+    font-size:.92rem;
+  }
+  .nav-dropdown-menu a:hover{background:rgba(0,0,0,.05);}
+  .nav-dropdown-menu a.is-current{
+    color:var(--brass,#a3763f);
+    font-weight:700;
+    background:rgba(0,0,0,.03);
+  }
+  .nav-dropdown-menu a.is-current::after{content:"（このページ）";font-weight:400;font-size:.8em;color:var(--brass-soft,#a3763f);margin-left:.3em;}
+  /* フッター側は上に開く */
+  .site-footer .nav-dropdown-menu{
+    top:auto;bottom:100%;margin-top:0;margin-bottom:.5rem;
+    transform:translateY(-6px);
+  }
+  .site-footer .nav-dropdown:hover .nav-dropdown-menu,
+  .site-footer .nav-dropdown:focus-within .nav-dropdown-menu,
+  .site-footer .nav-dropdown.is-open .nav-dropdown-menu{
+    transform:translateY(0);
+  }
+  @media (max-width:760px){
+    .nav-dropdown-menu{
+      position:static;margin:0;padding:0 0 0 1rem;
+      opacity:1;visibility:visible;pointer-events:auto;transform:none;
+      box-shadow:none;border:none;background:transparent;
+      display:none;
+    }
+    .nav-dropdown.is-open .nav-dropdown-menu{display:block;}
+    .nav-dropdown:hover .nav-dropdown-menu:not(.is-open .nav-dropdown-menu){display:none;}
+  }
+  /* ▲「申請・届出」ドロップダウンメニュー ▲ */
+</style>
 <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
 <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -23,6 +86,17 @@
       <a href="index.html">トップ</a>
       <a href="keisatsusho.html">警察署一覧</a>
       <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true">▾</span></a>
+        <ul class="nav-dropdown-menu">
+                  <li><a href="fuzoku-eigyo.html" class="is-current">風俗営業許可</a></li>
+                  <li><a href="keibigyo.html">警備業の届出</a></li>
+                  <li><a href="shako-shomei.html">車庫証明</a></li>
+                  <li><a href="shinya-inshoku.html">深夜酒類提供飲食店営業届出</a></li>
+                  <li><a href="tanteigyo.html">探偵業の届出</a></li>
+                  <li><a href="doro-shiyo.html">道路使用許可</a></li>
+                </ul>
+      </div>
       <a href="about.html">運営者情報</a>
     </nav>
   </div>
@@ -114,6 +188,17 @@
       <a href="index.html">トップ</a>
       <a href="keisatsusho.html">警察署一覧</a>
       <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true">▾</span></a>
+        <ul class="nav-dropdown-menu">
+                  <li><a href="fuzoku-eigyo.html" class="is-current">風俗営業許可</a></li>
+                  <li><a href="keibigyo.html">警備業の届出</a></li>
+                  <li><a href="shako-shomei.html">車庫証明</a></li>
+                  <li><a href="shinya-inshoku.html">深夜酒類提供飲食店営業届出</a></li>
+                  <li><a href="tanteigyo.html">探偵業の届出</a></li>
+                  <li><a href="doro-shiyo.html">道路使用許可</a></li>
+                </ul>
+      </div>
       <a href="about.html">運営者情報</a>
       <a href="privacy.html">プライバシーポリシー</a>
       <a href="contact.html">お問い合わせ</a>
@@ -124,5 +209,44 @@
 </footer>
 
 <script src="assets/copyright.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown){
+    var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if(!toggle) return;
+    toggle.addEventListener('click', function(e){
+      e.preventDefault();
+      var willOpen = !dropdown.classList.contains('is-open');
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        if(d !== dropdown){
+          d.classList.remove('is-open');
+          var t = d.querySelector('.nav-dropdown-toggle');
+          if(t) t.setAttribute('aria-expanded','false');
+        }
+      });
+      dropdown.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+      if(!d.contains(e.target)){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+})();
+</script>
 </body>
 </html>
