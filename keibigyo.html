@@ -73,6 +73,18 @@
       box-shadow:none;border:none;background:transparent;
       display:none;
     }
+    /* モバイルはヘッダー／フッターの紺色の帯の上に直接乗るため、
+       デスクトップ用の紺文字（白背景前提）ではなく白文字にする */
+    .nav-dropdown-menu a{
+      color:#fff;
+    }
+    .nav-dropdown-menu a:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .nav-dropdown-menu a.is-current{
+      color:var(--brass,#d9b26a);
+      background:rgba(255,255,255,.08);
+    }
     .nav-dropdown.is-open .nav-dropdown-menu{display:block;}
     .nav-dropdown:hover .nav-dropdown-menu:not(.is-open .nav-dropdown-menu){display:none;}
   }
