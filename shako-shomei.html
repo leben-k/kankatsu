@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>車庫証明（自動車保管場所証明）の取り方｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
+<meta name="description" content="事業用車両の購入時などに必要な車庫証明（自動車保管場所証明書）について、要件と申請の流れ、必要書類を解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ▼「申請・届出」ドロップダウンメニュー ▼ */
+  .nav-dropdown{position:relative;display:inline-block;}
+  .nav-dropdown-toggle{display:inline-flex;align-items:center;gap:.3rem;cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
+  .nav-caret{
+    display:inline-block;width:0;height:0;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:5px solid currentColor;
+    transition:transform .2s ease;
+    position:relative;top:1px;
+  }
+  .nav-dropdown:hover .nav-caret,
+  .nav-dropdown.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown-menu{
+    list-style:none;margin:0;padding:.5rem 0;
+    position:absolute;top:100%;left:0;margin-top:0;
+    min-width:16rem;
+    background:#fff;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:.6rem;
+    box-shadow:0 14px 30px rgba(0,0,0,.16);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transform:translateY(6px);
+    transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+    z-index:300;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
+  .nav-dropdown.is-open .nav-dropdown-menu{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+  }
+  .nav-dropdown-menu li{margin:0;}
+  .nav-dropdown-menu a{
+    display:block;
+    padding:.65rem 1.15rem;
+    white-space:nowrap;
+    color:var(--navy,#1a2a44);
+    text-decoration:none;
+    font-size:.92rem;
+  }
+  .nav-dropdown-menu a:hover{background:rgba(0,0,0,.05);}
+  .nav-dropdown-menu a.is-current{
+    color:var(--brass,#a3763f);
+    font-weight:700;
+    background:rgba(0,0,0,.03);
+  }
+  .nav-dropdown-menu a.is-current::after{content:"（このページ）";font-weight:400;font-size:.8em;color:var(--brass-soft,#a3763f);margin-left:.3em;}
+  /* フッター側は上に開く */
+  .site-footer .nav-dropdown-menu{
+    top:auto;bottom:100%;margin-top:0;margin-bottom:0;
+    transform:translateY(-6px);
+  }
+  .site-footer .nav-dropdown:hover .nav-dropdown-menu,
+  .site-footer .nav-dropdown:focus-within .nav-dropdown-menu,
+  .site-footer .nav-dropdown.is-open .nav-dropdown-menu{
+    transform:translateY(0);
+  }
+  @media (max-width:760px){
+    .nav-dropdown-menu{
+      position:static;margin:0;padding:0 0 0 1rem;
+      opacity:1;visibility:visible;pointer-events:auto;transform:none;
+      box-shadow:none;border:none;background:transparent;
+      display:none;
+    }
+    /* モバイルはヘッダー／フッターの紺色の帯の上に直接乗るため、
+       デスクトップ用の紺文字（白背景前提）ではなく白文字にする */
+    .nav-dropdown-menu a{
+      color:#fff;
+    }
+    .nav-dropdown-menu a:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .nav-dropdown-menu a.is-current{
+      color:var(--brass,#d9b26a);
+      background:rgba(255,255,255,.08);
+    }
+    .nav-dropdown.is-open .nav-dropdown-menu{display:block;}
+    .nav-dropdown:hover .nav-dropdown-menu:not(.is-open .nav-dropdown-menu){display:none;}
+  }
+  /* ▲「申請・届出」ドロップダウンメニュー ▲ */
+</style>
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="assets/icons/site.webmanifest">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">警察署管轄ガイド<small>大阪・京都・兵庫版</small></a>
+    <nav class="site-nav">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
+        <ul class="nav-dropdown-menu">
+                  <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
+                  <li><a href="keibigyo.html">警備業の届出</a></li>
+                  <li><a href="shako-shomei.html" class="is-current">車庫証明</a></li>
+                  <li><a href="shinya-inshoku.html">深夜酒類提供飲食店営業届出</a></li>
+                  <li><a href="tanteigyo.html">探偵業の届出</a></li>
+                  <li><a href="doro-shiyo.html">道路使用許可</a></li>
+                </ul>
+      </div>
+      <a href="about.html">運営者情報</a>
+    </nav>
+  </div>
+</header>
+
+<div class="article-head">
+  <div class="wrap">
+    <div class="article-head-inner">
+      <div class="article-head-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 28 L32 12 L56 28" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M12 28 V52 H52 V28" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="20" y="38" width="24" height="10" rx="3" stroke="var(--brass)" stroke-width="2.3"/>
+          <circle cx="25" cy="48" r="2.2" fill="var(--brass)"/>
+          <circle cx="39" cy="48" r="2.2" fill="var(--brass)"/>
+        </svg>
+      </div>
+      <div class="article-head-text">
+    <p class="kicker">手続きガイド 06 ／ 車両</p>
+    <h1>車庫証明（自動車保管場所証明）の取り方</h1>
+    <p class="dek">事業用の車両を購入・登録する際には、保管場所（車庫）を確保していることを証明する「自動車保管場所証明書」、いわゆる車庫証明が必要になります。営業所の開設にあわせて社用車を用意する場合にも関わる手続きです。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="wrap">
+
+    <h3>車庫証明が必要な場面</h3>
+    <p>「自動車の保管場所の確保等に関する法律」（車庫法）にもとづき、普通自動車の新規登録・移転登録（名義変更）・車庫の位置を変更する際などに、保管場所証明書の取得と提出が必要です。軽自動車は多くの地域で届出のみで足りますが、大阪・京都・兵庫それぞれに「軽自動車の保管場所届出」の対象地域（京都市・宇治市・長岡京市、神戸市域など）が定められており、該当地域では軽自動車にも保管場所の届出が求められる場合があります。</p>
+
+    <h3>保管場所の要件</h3>
+    <table class="info-table">
+      <tr><th>使用の本拠との距離</th><td>自動車の使用の本拠（自宅や営業所）から、保管場所までの距離が直線で2キロメートルを超えないことが必要です。</td></tr>
+      <tr><th>道路からの出入り</th><td>道路から支障なく出入りができ、かつ車両全体を収容できる広さがあることが必要です。</td></tr>
+      <tr><th>保管場所の使用権原</th><td>自己所有の土地であれば所有権を、賃借している駐車場であれば賃貸借契約などにより、その場所を保管場所として使用する権原を有していることが必要です。</td></tr>
+    </table>
+
+    <h3>申請の流れ</h3>
+    <ol class="step-list">
+      <li><strong>必要書類の準備</strong>：自動車保管場所証明申請書、保管場所の所在図・配置図、保管場所使用権原疎明書面（自己の土地の場合）または保管場所使用承諾証明書（賃借の場合）などを準備します。</li>
+      <li><strong>管轄警察署への申請</strong>：保管場所の所在地を管轄する警察署の窓口（交通課）に申請します。使用の本拠地ではなく、<strong>保管場所（駐車場）の住所</strong>で管轄が決まる点に注意してください。管轄警察署は<a href="keisatsusho.html">警察署一覧・検索ページ</a>から確認できます。</li>
+      <li><strong>手数料の納付</strong>：申請時に手数料（申請手数料）、証明書交付時に標章交付手数料がかかります。金額は都道府県の手数料条例で定められているため、申請窓口でご確認ください。</li>
+      <li><strong>審査・現地確認</strong>：警察官による現地確認が行われることがあります。</li>
+      <li><strong>証明書の交付</strong>：審査には数日程度かかるのが一般的です。交付された保管場所証明書は、運輸支局での車両登録手続きに使用します。証明書には有効期間があるため、登録手続きまでの期間にも注意が必要です。</li>
+    </ol>
+
+    <div class="callout">
+      <strong>法人・事業用車両の場合</strong>：営業所を新規開設して社用車を配備する場合、保管場所（駐車場）の契約と車庫証明の取得が完了しないと車両の登録ができません。開業スケジュールに車両の納車日が含まれる場合は、駐車場の契約を早めに済ませておくと安心です。
+    </div>
+
+    <div class="warn">
+      <strong>車庫飛ばしは違法です</strong>：実際には使用しない場所を保管場所として申請したり、証明書取得後に別の場所へ車両を保管したりする、いわゆる「車庫飛ばし」は車庫法違反であり、罰則の対象になります。</div>
+
+    <div class="ad-slot">
+      <span class="ad-label">広告</span>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756fb19.d437325c.5756fb1a.d0d618a5/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsecupcs%2F001-mm43%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5756fb19.d437325c.5756fb1a.d0d618a5/?me_id=1300680&item_id=10000538&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fsecupcs%2Fcabinet%2F1st-img%2Fred%2Fdmmm.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]" title="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]"></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756fb19.d437325c.5756fb1a.d0d618a5/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsecupcs%2F001-mm43%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">【 最大55％OFF ★ 配線不要 ソーラー付き 】 防犯カメラ 360° 首振り ソーラーパネル 屋外 家庭用 玄関 工事不要 無線 ワイヤレス wifi対応 スマホ 遠隔監視 バッテリー 充電式 電源不要 センサーライト 防犯灯 夜間カラー パンチルト DM44 MM43W MM45W【 SecuSTATION 】</a><br><span >価格：8,800円～（税込、送料別)</span> <span style="color:#BBB">(2026/9/9時点)</span></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756fb19.d437325c.5756fb1a.d0d618a5/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsecupcs%2F001-mm43%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/5756fb19.d437325c.5756fb1a.d0d618a5/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsecupcs%2F001-mm43%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+
+    <div class="ad-slot">
+      <span class="ad-label">広告</span>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/575701dd.30dbb48d.575701de.7691b06c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhitstore%2Fc11-18ax2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/575701dd.30dbb48d.575701de.7691b06c/?me_id=1405260&item_id=10000833&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fhitstore%2Fcabinet%2F1204-1-5bai%2Fc11-18a-10x2.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]" title="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]"></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/575701dd.30dbb48d.575701de.7691b06c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhitstore%2Fc11-18ax2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">★期間限定！最大20%OFF★ソーラーライト 2台セット 122LED 3灯式 リモコン付き 5mコード付き センサーライト 防犯ライト ガーデンライト アウトドア ソーラーフラッドライト キュリティライト 照明 IP65防水 防犯 人感</a><br><span >価格：3,480円（税込、送料別)</span> <span style="color:#BBB">(2026/9/9時点)</span></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/575701dd.30dbb48d.575701de.7691b06c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhitstore%2Fc11-18ax2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/575701dd.30dbb48d.575701de.7691b06c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhitstore%2Fc11-18ax2%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+
+    <div class="related">
+      <a href="doro-shiyo.html">道路使用許可について見る</a>
+      <a href="keisatsusho.html">管轄警察署を調べる</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
+        <ul class="nav-dropdown-menu">
+                  <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
+                  <li><a href="keibigyo.html">警備業の届出</a></li>
+                  <li><a href="shako-shomei.html" class="is-current">車庫証明</a></li>
+                  <li><a href="shinya-inshoku.html">深夜酒類提供飲食店営業届出</a></li>
+                  <li><a href="tanteigyo.html">探偵業の届出</a></li>
+                  <li><a href="doro-shiyo.html">道路使用許可</a></li>
+                </ul>
+      </div>
+      <a href="about.html">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p class="footer-note">当サイトはいずれの府県警察の公式サイトでもなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。</p>
+    <p class="footer-copyright js-copyright" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.15); font-size:.8rem; color:var(--brass-soft);">© 2026 警察署管轄ガイド</p>
+  </div>
+</footer>
+
+<script src="assets/copyright.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown){
+    var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if(!toggle) return;
+    toggle.addEventListener('click', function(e){
+      e.preventDefault();
+      var willOpen = !dropdown.classList.contains('is-open');
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        if(d !== dropdown){
+          d.classList.remove('is-open');
+          var t = d.querySelector('.nav-dropdown-toggle');
+          if(t) t.setAttribute('aria-expanded','false');
+        }
+      });
+      dropdown.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+      if(!d.contains(e.target)){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>

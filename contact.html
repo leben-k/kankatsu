@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
+<meta name="description" content="警察署管轄ガイド（大阪・京都・兵庫版）へのお問い合わせページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ▼「申請・届出」ドロップダウンメニュー ▼ */
+  .nav-dropdown{position:relative;display:inline-block;}
+  .nav-dropdown-toggle{display:inline-flex;align-items:center;gap:.3rem;cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
+  .nav-caret{
+    display:inline-block;width:0;height:0;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:5px solid currentColor;
+    transition:transform .2s ease;
+    position:relative;top:1px;
+  }
+  .nav-dropdown:hover .nav-caret,
+  .nav-dropdown.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown-menu{
+    list-style:none;margin:0;padding:.5rem 0;
+    position:absolute;top:100%;left:0;margin-top:0;
+    min-width:16rem;
+    background:#fff;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:.6rem;
+    box-shadow:0 14px 30px rgba(0,0,0,.16);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transform:translateY(6px);
+    transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+    z-index:300;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
+  .nav-dropdown.is-open .nav-dropdown-menu{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+  }
+  .nav-dropdown-menu li{margin:0;}
+  .nav-dropdown-menu a{
+    display:block;
+    padding:.65rem 1.15rem;
+    white-space:nowrap;
+    color:var(--navy,#1a2a44);
+    text-decoration:none;
+    font-size:.92rem;
+  }
+  .nav-dropdown-menu a:hover{background:rgba(0,0,0,.05);}
+  .nav-dropdown-menu a.is-current{
+    color:var(--brass,#a3763f);
+    font-weight:700;
+    background:rgba(0,0,0,.03);
+  }
+  .nav-dropdown-menu a.is-current::after{content:"（このページ）";font-weight:400;font-size:.8em;color:var(--brass-soft,#a3763f);margin-left:.3em;}
+  /* フッター側は上に開く */
+  .site-footer .nav-dropdown-menu{
+    top:auto;bottom:100%;margin-top:0;margin-bottom:0;
+    transform:translateY(-6px);
+  }
+  .site-footer .nav-dropdown:hover .nav-dropdown-menu,
+  .site-footer .nav-dropdown:focus-within .nav-dropdown-menu,
+  .site-footer .nav-dropdown.is-open .nav-dropdown-menu{
+    transform:translateY(0);
+  }
+  @media (max-width:760px){
+    .nav-dropdown-menu{
+      position:static;margin:0;padding:0 0 0 1rem;
+      opacity:1;visibility:visible;pointer-events:auto;transform:none;
+      box-shadow:none;border:none;background:transparent;
+      display:none;
+    }
+    /* モバイルはヘッダー／フッターの紺色の帯の上に直接乗るため、
+       デスクトップ用の紺文字（白背景前提）ではなく白文字にする */
+    .nav-dropdown-menu a{
+      color:#fff;
+    }
+    .nav-dropdown-menu a:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .nav-dropdown-menu a.is-current{
+      color:var(--brass,#d9b26a);
+      background:rgba(255,255,255,.08);
+    }
+    .nav-dropdown.is-open .nav-dropdown-menu{display:block;}
+    .nav-dropdown:hover .nav-dropdown-menu:not(.is-open .nav-dropdown-menu){display:none;}
+  }
+  /* ▲「申請・届出」ドロップダウンメニュー ▲ */
+</style>
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="assets/icons/site.webmanifest">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">警察署管轄ガイド<small>大阪・京都・兵庫版</small></a>
+    <nav class="site-nav">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
+          <li><a href="keibigyo.html">警備業の届出</a></li>
+          <li><a href="shako-shomei.html">車庫証明</a></li>
+          <li><a href="shinya-inshoku.html">深夜酒類提供飲食店営業届出</a></li>
+          <li><a href="tanteigyo.html">探偵業の届出</a></li>
+          <li><a href="doro-shiyo.html">道路使用許可</a></li>
+        </ul>
+      </div>
+      <a href="about.html">運営者情報</a>
+    </nav>
+  </div>
+</header>
+
+<div class="article-head">
+  <div class="wrap">
+    <div class="article-head-inner">
+      <div class="article-head-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="16" width="44" height="32" rx="2" stroke="var(--navy)" stroke-width="2.5"/>
+          <path d="M10 18 L32 36 L54 18" stroke="var(--brass)" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="article-head-text">
+    <p class="kicker">お問い合わせ</p>
+    <h1>お問い合わせ</h1>
+    <p class="dek">掲載情報の誤りのご指摘、ご意見・ご要望などがございましたら、下記の方法でご連絡ください。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="wrap">
+    <p>いただいた内容は、お問い合わせへの回答の目的にのみ使用します。</p>
+
+    <div class="callout">
+      <strong>ご連絡の際のお願い</strong><br>
+      当サイトは情報サイトのため、警察に関する事件・相談・緊急のご連絡はお受けできません。事件・事故・110番通報が必要な内容については、最寄りの警察署または110番へ直接ご連絡ください。緊急でない相談については、警察の相談窓口（＃9110）をご利用ください。
+    </div>
+
+    <h3>問い合わせ・連絡フォーム</h3>
+    <form class="contact-form" action="https://formspree.io/f/xeaqpayg" method="POST">
+      <div class="form-row">
+        <label for="subject">要件は何についてですか<span class="required">必須</span></label>
+        <select id="subject" name="要件" required>
+          <option value="">選択してください</option>
+          <option value="掲載情報の誤りについて">掲載情報の誤りについて</option>
+          <option value="記事内容についてのご意見・改善提案">記事内容についてのご意見・改善提案</option>
+          <option value="広告・掲載に関するお問い合わせ">広告・掲載に関するお問い合わせ</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="email">あなたのメールアドレス<span class="required">必須</span></label>
+        <input type="email" id="email" name="_replyto" required placeholder="example@example.com">
+      </div>
+      <div class="form-row">
+        <label for="name">お名前<span class="required">必須</span></label>
+        <input type="text" id="name" name="お名前" required placeholder="山田 太郎">
+      </div>
+      <div class="form-row">
+        <label for="message">内容<span class="required">必須</span></label>
+        <textarea id="message" name="内容" required placeholder="お問い合わせの内容をご記入ください"></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="【警察署管轄ガイド】お問い合わせ">
+      <button type="submit">送信</button>
+    </form>
+
+    <p>掲載している警察署の住所・電話番号・管轄区域などの情報に誤りがある場合や、記事内容についての改善提案がありましたら、お気軽にお知らせください。順次確認のうえ、修正いたします。</p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
+          <li><a href="keibigyo.html">警備業の届出</a></li>
+          <li><a href="shako-shomei.html">車庫証明</a></li>
+          <li><a href="shinya-inshoku.html">深夜酒類提供飲食店営業届出</a></li>
+          <li><a href="tanteigyo.html">探偵業の届出</a></li>
+          <li><a href="doro-shiyo.html">道路使用許可</a></li>
+        </ul>
+      </div>
+      <a href="about.html">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p class="footer-note">当サイトはいずれの府県警察の公式サイトでもなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。</p>
+    <p class="footer-copyright js-copyright" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.15); font-size:.8rem; color:var(--brass-soft);">© 2026 警察署管轄ガイド</p>
+  </div>
+</footer>
+
+<script src="assets/copyright.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown){
+    var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if(!toggle) return;
+    toggle.addEventListener('click', function(e){
+      e.preventDefault();
+      var willOpen = !dropdown.classList.contains('is-open');
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        if(d !== dropdown){
+          d.classList.remove('is-open');
+          var t = d.querySelector('.nav-dropdown-toggle');
+          if(t) t.setAttribute('aria-expanded','false');
+        }
+      });
+      dropdown.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+      if(!d.contains(e.target)){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>

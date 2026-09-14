@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
+<meta name="description" content="警察署管轄ガイド（大阪・京都・兵庫版）のプライバシーポリシーです。位置情報の取り扱い、Cookie、広告配信について記載しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ▼「申請・届出」ドロップダウンメニュー ▼ */
+  .nav-dropdown{position:relative;display:inline-block;}
+  .nav-dropdown-toggle{display:inline-flex;align-items:center;gap:.3rem;cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
+  .nav-caret{
+    display:inline-block;width:0;height:0;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:5px solid currentColor;
+    transition:transform .2s ease;
+    position:relative;top:1px;
+  }
+  .nav-dropdown:hover .nav-caret,
+  .nav-dropdown.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown-menu{
+    list-style:none;margin:0;padding:.5rem 0;
+    position:absolute;top:100%;left:0;margin-top:0;
+    min-width:16rem;
+    background:#fff;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:.6rem;
+    box-shadow:0 14px 30px rgba(0,0,0,.16);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transform:translateY(6px);
+    transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+    z-index:300;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
+  .nav-dropdown.is-open .nav-dropdown-menu{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+  }
+  .nav-dropdown-menu li{margin:0;}
+  .nav-dropdown-menu a{
+    display:block;
+    padding:.65rem 1.15rem;
+    white-space:nowrap;
+    color:var(--navy,#1a2a44);
+    text-decoration:none;
+    font-size:.92rem;
+  }
+  .nav-dropdown-menu a:hover{background:rgba(0,0,0,.05);}
+  .nav-dropdown-menu a.is-current{
+    color:var(--brass,#a3763f);
+    font-weight:700;
+    background:rgba(0,0,0,.03);
+  }
+  .nav-dropdown-menu a.is-current::after{content:"（このページ）";font-weight:400;font-size:.8em;color:var(--brass-soft,#a3763f);margin-left:.3em;}
+  /* フッター側は上に開く */
+  .site-footer .nav-dropdown-menu{
+    top:auto;bottom:100%;margin-top:0;margin-bottom:0;
+    transform:translateY(-6px);
+  }
+  .site-footer .nav-dropdown:hover .nav-dropdown-menu,
+  .site-footer .nav-dropdown:focus-within .nav-dropdown-menu,
+  .site-footer .nav-dropdown.is-open .nav-dropdown-menu{
+    transform:translateY(0);
+  }
+  @media (max-width:760px){
+    .nav-dropdown-menu{
+      position:static;margin:0;padding:0 0 0 1rem;
+      opacity:1;visibility:visible;pointer-events:auto;transform:none;
+      box-shadow:none;border:none;background:transparent;
+      display:none;
+    }
+    /* モバイルはヘッダー／フッターの紺色の帯の上に直接乗るため、
+       デスクトップ用の紺文字（白背景前提）ではなく白文字にする */
+    .nav-dropdown-menu a{
+      color:#fff;
+    }
+    .nav-dropdown-menu a:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .nav-dropdown-menu a.is-current{
+      color:var(--brass,#d9b26a);
+      background:rgba(255,255,255,.08);
+    }
+    .nav-dropdown.is-open .nav-dropdown-menu{display:block;}
+    .nav-dropdown:hover .nav-dropdown-menu:not(.is-open .nav-dropdown-menu){display:none;}
+  }
+  /* ▲「申請・届出」ドロップダウンメニュー ▲ */
+</style>
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="assets/icons/site.webmanifest">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">警察署管轄ガイド<small>大阪・京都・兵庫版</small></a>
+    <nav class="site-nav">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
+          <li><a href="keibigyo.html">警備業の届出</a></li>
+          <li><a href="shako-shomei.html">車庫証明</a></li>
+          <li><a href="shinya-inshoku.html">深夜酒類提供飲食店営業届出</a></li>
+          <li><a href="tanteigyo.html">探偵業の届出</a></li>
+          <li><a href="doro-shiyo.html">道路使用許可</a></li>
+        </ul>
+      </div>
+      <a href="about.html">運営者情報</a>
+    </nav>
+  </div>
+</header>
+
+<div class="article-head">
+  <div class="wrap">
+    <div class="article-head-inner">
+      <div class="article-head-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="16" y="28" width="32" height="24" rx="3" stroke="var(--navy)" stroke-width="2.5"/>
+          <path d="M22 28 V20 A10 10 0 0 1 42 20 V28" stroke="var(--navy)" stroke-width="2.5"/>
+          <circle cx="32" cy="40" r="3.2" fill="var(--brass)"/>
+          <line x1="32" y1="43" x2="32" y2="47" stroke="var(--brass)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="article-head-text">
+    <p class="kicker">プライバシーポリシー</p>
+    <h1>プライバシーポリシー</h1>
+    <p class="dek">「警察署管轄ガイド（大阪・京都・兵庫版）」（以下「当サイト」）における個人情報およびアクセス情報の取り扱いについて、以下のとおり定めます。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="wrap">
+
+    <h3>1. 位置情報について</h3>
+    <p>当サイトの一部機能では、端末の位置情報（GPS等）の利用許可をブラウザから求める場合があります。位置情報は、現在地に近い、または該当する警察署を表示する目的にのみ利用します。</p>
+    <p>「現在地から調べる」機能をご利用の場合、取得した緯度・経度は、住所に変換（逆ジオコーディング）するために、外部サービスであるOpenStreetMap Nominatim（OpenStreetMap Foundationが提供する無料のAPI）に送信されます。当サイト自身のサーバーに位置情報を保存・記録することはありませんが、この外部サービスへの送信が行われる点はあらかじめご了承ください。Nominatimでの情報の取り扱いについては、以下の公式ページをご確認ください。</p>
+    <ul>
+      <li><a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">OpenStreetMap Foundation プライバシーポリシー（公式・英語）</a></li>
+    </ul>
+    <p>位置情報の利用を許可するかどうかはブラウザの設定でいつでも変更できます。位置情報の利用を許可しない場合でも、住所やキーワードによる検索機能はご利用いただけます。</p>
+
+    <h3>2. アクセス解析ツールについて</h3>
+    <p>当サイトでは、サイトの利用状況を把握するためにアクセス解析ツールを使用することがあります。アクセス解析ツールは、Cookieを利用してデータを収集しますが、氏名・住所・電話番号など個人を特定する情報は含まれません。この機能はCookieを無効にすることで収集を拒否することが可能です。詳しくはお使いのブラウザの設定をご確認ください。</p>
+
+    <h3>3. 広告（楽天アフィリエイト）について</h3>
+    <p>当サイトの一部の記事では、楽天アフィリエイトプログラムを利用し、記事の内容に関連する商品を紹介しています。該当箇所には「広告」と明記しており、リンクを経由してお申し込み・ご購入いただいた場合、当サイトに紹介料が支払われることがあります。紹介する商品は、価格・品質・在庫状況等が変動する場合がありますので、実際の購入にあたっては、リンク先の商品ページで最新の情報をご確認ください。</p>
+    <p>アフィリエイトリンクを経由して楽天市場のサイトに移動された場合、リンクの計測のためにCookie等が使用されることがあります。楽天における個人情報の取り扱いについては、以下の公式ページをご確認ください。</p>
+    <ul>
+      <li><a href="https://privacy.rakuten.co.jp/" target="_blank" rel="noopener">楽天グループ プライバシーポリシー（楽天公式）</a></li>
+    </ul>
+
+    <h3>4. お問い合わせフォームについて</h3>
+    <p>お問い合わせフォームは、フォーム送信サービス「Formspree」（Formspree, Inc.が提供）を利用しています。フォームにご入力いただいた氏名・メールアドレス・お問い合わせ内容は、Formspreeのサーバーを経由して当サイト運営者に届けられ、お問い合わせへの回答の目的にのみ使用します。ご本人の同意なく第三者に開示・提供することはありません。Formspreeにおけるデータの取り扱いについては、以下の公式ページをご確認ください。</p>
+    <ul>
+      <li><a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree プライバシーポリシー（Formspree公式・英語）</a></li>
+    </ul>
+
+    <h3>5. 免責事項</h3>
+    <p>当サイトに掲載する情報の正確性には努めていますが、その内容を保証するものではありません。当サイトは警察の公式サイトではなく、個人が運営する情報サイトです。掲載情報の利用によって生じたいかなる損害についても、当サイトは一切責任を負いません。正式な手続きにあたっては、必ず管轄警察署等の公式情報をご確認ください。</p>
+
+    <h3>6. プライバシーポリシーの変更について</h3>
+    <p>当サイトは、必要に応じて事前の予告なくプライバシーポリシーの内容を変更することがあります。変更後のプライバシーポリシーは、当ページに掲載した時点から効力を生じるものとします。</p>
+
+    <div class="callout">
+      <strong>制定日</strong>：2026年9月<br>
+      お問い合わせは<a href="contact.html">お問い合わせページ</a>よりお願いいたします。
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
+          <li><a href="keibigyo.html">警備業の届出</a></li>
+          <li><a href="shako-shomei.html">車庫証明</a></li>
+          <li><a href="shinya-inshoku.html">深夜酒類提供飲食店営業届出</a></li>
+          <li><a href="tanteigyo.html">探偵業の届出</a></li>
+          <li><a href="doro-shiyo.html">道路使用許可</a></li>
+        </ul>
+      </div>
+      <a href="about.html">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p class="footer-note">当サイトはいずれの府県警察の公式サイトでもなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。</p>
+    <p class="footer-copyright js-copyright" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.15); font-size:.8rem; color:var(--brass-soft);">© 2026 警察署管轄ガイド</p>
+  </div>
+</footer>
+
+<script src="assets/copyright.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown){
+    var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if(!toggle) return;
+    toggle.addEventListener('click', function(e){
+      e.preventDefault();
+      var willOpen = !dropdown.classList.contains('is-open');
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        if(d !== dropdown){
+          d.classList.remove('is-open');
+          var t = d.querySelector('.nav-dropdown-toggle');
+          if(t) t.setAttribute('aria-expanded','false');
+        }
+      });
+      dropdown.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+      if(!d.contains(e.target)){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>

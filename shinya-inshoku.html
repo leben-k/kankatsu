@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深夜における酒類提供飲食店営業の届出｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
+<meta name="description" content="深夜0時以降にお酒を提供するバーや居酒屋などが必要な「深夜酒類提供飲食店営業」の届出について、対象となる営業、届出の要件と流れを解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ▼「申請・届出」ドロップダウンメニュー ▼ */
+  .nav-dropdown{position:relative;display:inline-block;}
+  .nav-dropdown-toggle{display:inline-flex;align-items:center;gap:.3rem;cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
+  .nav-caret{
+    display:inline-block;width:0;height:0;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:5px solid currentColor;
+    transition:transform .2s ease;
+    position:relative;top:1px;
+  }
+  .nav-dropdown:hover .nav-caret,
+  .nav-dropdown.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown-menu{
+    list-style:none;margin:0;padding:.5rem 0;
+    position:absolute;top:100%;left:0;margin-top:0;
+    min-width:16rem;
+    background:#fff;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:.6rem;
+    box-shadow:0 14px 30px rgba(0,0,0,.16);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transform:translateY(6px);
+    transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+    z-index:300;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
+  .nav-dropdown.is-open .nav-dropdown-menu{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);
+  }
+  .nav-dropdown-menu li{margin:0;}
+  .nav-dropdown-menu a{
+    display:block;
+    padding:.65rem 1.15rem;
+    white-space:nowrap;
+    color:var(--navy,#1a2a44);
+    text-decoration:none;
+    font-size:.92rem;
+  }
+  .nav-dropdown-menu a:hover{background:rgba(0,0,0,.05);}
+  .nav-dropdown-menu a.is-current{
+    color:var(--brass,#a3763f);
+    font-weight:700;
+    background:rgba(0,0,0,.03);
+  }
+  .nav-dropdown-menu a.is-current::after{content:"（このページ）";font-weight:400;font-size:.8em;color:var(--brass-soft,#a3763f);margin-left:.3em;}
+  /* フッター側は上に開く */
+  .site-footer .nav-dropdown-menu{
+    top:auto;bottom:100%;margin-top:0;margin-bottom:0;
+    transform:translateY(-6px);
+  }
+  .site-footer .nav-dropdown:hover .nav-dropdown-menu,
+  .site-footer .nav-dropdown:focus-within .nav-dropdown-menu,
+  .site-footer .nav-dropdown.is-open .nav-dropdown-menu{
+    transform:translateY(0);
+  }
+  @media (max-width:760px){
+    .nav-dropdown-menu{
+      position:static;margin:0;padding:0 0 0 1rem;
+      opacity:1;visibility:visible;pointer-events:auto;transform:none;
+      box-shadow:none;border:none;background:transparent;
+      display:none;
+    }
+    /* モバイルはヘッダー／フッターの紺色の帯の上に直接乗るため、
+       デスクトップ用の紺文字（白背景前提）ではなく白文字にする */
+    .nav-dropdown-menu a{
+      color:#fff;
+    }
+    .nav-dropdown-menu a:hover{
+      background:rgba(255,255,255,.12);
+    }
+    .nav-dropdown-menu a.is-current{
+      color:var(--brass,#d9b26a);
+      background:rgba(255,255,255,.08);
+    }
+    .nav-dropdown.is-open .nav-dropdown-menu{display:block;}
+    .nav-dropdown:hover .nav-dropdown-menu:not(.is-open .nav-dropdown-menu){display:none;}
+  }
+  /* ▲「申請・届出」ドロップダウンメニュー ▲ */
+</style>
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="assets/icons/site.webmanifest">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">警察署管轄ガイド<small>大阪・京都・兵庫版</small></a>
+    <nav class="site-nav">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
+        <ul class="nav-dropdown-menu">
+                  <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
+                  <li><a href="keibigyo.html">警備業の届出</a></li>
+                  <li><a href="shako-shomei.html">車庫証明</a></li>
+                  <li><a href="shinya-inshoku.html" class="is-current">深夜酒類提供飲食店営業届出</a></li>
+                  <li><a href="tanteigyo.html">探偵業の届出</a></li>
+                  <li><a href="doro-shiyo.html">道路使用許可</a></li>
+                </ul>
+      </div>
+      <a href="about.html">運営者情報</a>
+    </nav>
+  </div>
+</header>
+
+<div class="article-head">
+  <div class="wrap">
+    <div class="article-head-inner">
+      <div class="article-head-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 12 A16 16 0 1 0 40 44 A13 13 0 1 1 40 12 Z" stroke="var(--brass)" stroke-width="2.3" stroke-linejoin="round"/>
+          <path d="M16 34 H32 L28 50 H20 Z" stroke="var(--navy)" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="24" y1="50" x2="24" y2="56" stroke="var(--navy)" stroke-width="2.5"/>
+          <line x1="18" y1="56" x2="30" y2="56" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="article-head-text">
+    <p class="kicker">手続きガイド 02 ／ 飲食</p>
+    <h1>深夜に酒類を提供する飲食店に必要な届出</h1>
+    <p class="dek">深夜0時から日の出までの間、お酒をメインに提供する飲食店を営業する場合、風俗営業の「許可」とは別の枠組みで、警察署への「届出」が必要になることがあります。バーや居酒屋の深夜営業を考えている方は確認しておきましょう。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="wrap">
+
+    <h3>対象となる営業</h3>
+    <p>風営法33条は、主として酒類を提供する飲食店営業で、接待（お客の隣に座って歓談する、お酌をするなど）を行わないものが、深夜0時から日の出までの時間帯に営業しようとする場合、営業所の所在地を管轄する公安委員会への<strong>届出</strong>を義務付けています。接待を行う場合は、この届出ではなく「風俗営業（1号営業）」の許可が必要になる点が異なります。</p>
+    <p>典型的には、深夜まで営業するバー、スナック（接待を伴わない形態）、居酒屋などが対象になります。逆に、主食を提供する飲食店（ラーメン店、牛丼店など、通常主食と認められる食事を提供する営業）は対象外とされています。</p>
+
+    <h3>許可制ではなく届出制</h3>
+    <p>風俗営業が「許可」を要するのに対し、深夜酒類提供飲食店営業は「届出」で足ります。届出が受理されれば営業を開始できる点で、審査に一定期間を要する許可制とは仕組みが異なります。ただし、届出には次のような要件があります。</p>
+    <ul>
+      <li>営業所が、都道府県の条例で定める用途地域（住居専用地域など）に該当しないこと（大阪・京都・兵庫それぞれで基準が異なるため、事前に管轄警察署にご確認ください）</li>
+      <li>客室の床面積などの構造基準を満たしていること</li>
+      <li>照度・音響に関する基準を満たしていること</li>
+      <li>申請者が風営法上の欠格事由に該当しないこと</li>
+    </ul>
+
+    <h3>届出の流れ</h3>
+    <ol class="step-list">
+      <li><strong>営業所の立地確認</strong>：物件を契約する前に、用途地域の制限に抵触しないかを確認します。住居専用地域や近隣商業地域の一部などでは営業できない場合があります。</li>
+      <li><strong>届出書類の準備</strong>：営業開始届出書、営業の方法を記載した書面、営業所の平面図、周辺図、賃貸借契約書の写しなどを準備します。</li>
+      <li><strong>管轄警察署への届出</strong>：営業を開始する日の10日前までに、営業所を管轄する警察署の生活安全課へ届出書類を提出します。管轄警察署は<a href="keisatsusho.html">警察署一覧・検索ページ</a>から確認できます。</li>
+      <li><strong>届出書の受理・控えの保管</strong>：届出が受理されると、受理印のある届出書の写しが返却されます。営業所に備え付けておきましょう。</li>
+    </ol>
+
+    <div class="callout">
+      <strong>営業開始日の10日前までに</strong>：届出は営業開始の10日前までに行う必要があります。オープン日から逆算して、余裕を持って準備を進めることをおすすめします。
+    </div>
+
+    <div class="warn">
+      <strong>接待の有無で扱いが変わります</strong>：営業の実態として「接待」を行っている場合、深夜酒類提供飲食店営業の届出だけでは足りず、風俗営業の許可が必要になります。開業後に接待サービスを追加する場合も、あらためて許可の要否を確認してください。
+    </div>
+
+    <div class="ad-slot">
+      <span class="ad-label">広告</span>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756c4ed.9e9f092a.5756c4ee.6e571a25/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgrowthshop%2F1921469222966267905%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5756c4ed.9e9f092a.5756c4ee.6e571a25/?me_id=1427841&item_id=10004254&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fgrowthshop%2Fcabinet%2F13044315%2F13044433%2Fimgrc0111991948.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]" title="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]"></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756c4ed.9e9f092a.5756c4ee.6e571a25/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgrowthshop%2F1921469222966267905%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">テーブル・飲食店用商用テーブル、ダイニングテーブル、長方形の食事用テーブル、麺屋、スナック店、速食レストラン、椅子</a><br><span >価格：30,099円（税込、送料別)</span> <span style="color:#BBB">(2026/9/9時点)</span></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756c4ed.9e9f092a.5756c4ee.6e571a25/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgrowthshop%2F1921469222966267905%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/5756c4ed.9e9f092a.5756c4ee.6e571a25/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgrowthshop%2F1921469222966267905%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+
+    <div class="ad-slot">
+      <span class="ad-label">広告</span>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756cde5.7741cdeb.5756cde6.e2d3c848/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmarumono%2F1879858277840338945%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5756cde5.7741cdeb.5756cde6.e2d3c848/?me_id=1435568&item_id=10085371&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fmarumono%2Fcabinet%2F12640229%2F12640255%2Fimgrc0133972421.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]" title="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]"></a></td><td style="vertical-align:top;width:248px;display: block;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756cde5.7741cdeb.5756cde6.e2d3c848/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmarumono%2F1879858277840338945%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">ミルクティースイーツ店レストランテーブルビジネスエコノミースナックラーメン店バーベキュー朝食レストランファーストテーブルセットです</a><br><span >価格：21,162円（税込、送料別)</span> <span style="color:#BBB">(2026/9/9時点)</span></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5756cde5.7741cdeb.5756cde6.e2d3c848/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmarumono%2F1879858277840338945%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0" ></a><a href="https://hb.afl.rakuten.co.jp/ichiba/5756cde5.7741cdeb.5756cde6.e2d3c848/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmarumono%2F1879858277840338945%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>
+    </div>
+
+    <h3>関連する手続き</h3>
+    <p>接待を伴う営業形態を検討している場合は、風俗営業許可の記事もあわせてご確認ください。</p>
+
+    <div class="related">
+      <a href="fuzoku-eigyo.html">風俗営業許可について見る</a>
+      <a href="keisatsusho.html">管轄警察署を調べる</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="keisatsusho.html">警察署一覧</a>
+      <a href="honbu-ka-taiou.html">本部と署の課対応</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">申請・届出<span class="nav-caret" aria-hidden="true"></span></a>
+        <ul class="nav-dropdown-menu">
+                  <li><a href="fuzoku-eigyo.html">風俗営業許可</a></li>
+                  <li><a href="keibigyo.html">警備業の届出</a></li>
+                  <li><a href="shako-shomei.html">車庫証明</a></li>
+                  <li><a href="shinya-inshoku.html" class="is-current">深夜酒類提供飲食店営業届出</a></li>
+                  <li><a href="tanteigyo.html">探偵業の届出</a></li>
+                  <li><a href="doro-shiyo.html">道路使用許可</a></li>
+                </ul>
+      </div>
+      <a href="about.html">運営者情報</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p class="footer-note">当サイトはいずれの府県警察の公式サイトでもなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。</p>
+    <p class="footer-copyright js-copyright" style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.15); font-size:.8rem; color:var(--brass-soft);">© 2026 警察署管轄ガイド</p>
+  </div>
+</footer>
+
+<script src="assets/copyright.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown){
+    var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if(!toggle) return;
+    toggle.addEventListener('click', function(e){
+      e.preventDefault();
+      var willOpen = !dropdown.classList.contains('is-open');
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        if(d !== dropdown){
+          d.classList.remove('is-open');
+          var t = d.querySelector('.nav-dropdown-toggle');
+          if(t) t.setAttribute('aria-expanded','false');
+        }
+      });
+      dropdown.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+      if(!d.contains(e.target)){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d){
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav-dropdown-toggle');
+        if(t) t.setAttribute('aria-expanded','false');
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>
