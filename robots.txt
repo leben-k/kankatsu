@@ -1,0 +1,15 @@
+# 警察署管轄ガイド（大阪・京都・兵庫版）
+#
+# 注意：robots.txt は「ホストの直下」（https://leben-k.github.io/robots.txt）に
+# 置いたものしか読まれません。GitHub Pages のプロジェクトサイト（/kankatsu/）では、
+# このファイルは検索エンジンに読まれず、下の Sitemap 指定も無視されます。
+# サイトマップは Google Search Console の「サイトマップ」から
+#   https://leben-k.github.io/kankatsu/sitemap.xml
+# を直接送信してください。
+# 独自ドメインに移行してサイトがドメイン直下に来た場合は、このファイルが有効になります
+# （その際は Sitemap の URL を新しいドメインに書き換えてください）。
+
+User-agent: *
+Allow: /
+
+Sitemap: https://leben-k.github.io/kankatsu/sitemap.xml
