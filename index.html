@@ -459,9 +459,11 @@ function showResult(addr){
   document.getElementById('resultUrl').innerHTML = detail ? `<a href="${detail.url}" target="_blank" rel="noopener">${currentPref.label}警察の公式サイトで見る</a>` : '-';
 
   const caveatEl = document.getElementById('resultCaveat');
-  if(result.rule.caveat){
+  const notes = [result.rule.cityNote, result.rule.caveat].filter(Boolean);
+  if(notes.length){
     caveatEl.style.display = 'block';
-    caveatEl.textContent = '※ ' + result.rule.caveat;
+    caveatEl.textContent = notes.map(t => '※ ' + t).join('\n');
+    caveatEl.style.whiteSpace = 'pre-line';
   } else {
     caveatEl.style.display = 'none';
   }

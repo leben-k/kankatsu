@@ -119,6 +119,7 @@ function groupCity(pref, city){
     }
     const g = byStation[r.station];
     if(r.names) g.names.push(...r.names);
+    if(r.displayNames) g.names.push(...r.displayNames);
     if(r.ranges) g.ranges.push(...r.ranges);
     if(r.whole) g.whole = true;
     if(r.caveat && !g.caveats.includes(r.caveat)) g.caveats.push(r.caveat);
@@ -230,6 +231,8 @@ function cityPage(pref, city, allCities){
   const groups = groupCity(pref, city);
   const stNames = groups.map(g => g.station);
   const extra = noteOnlyStations(pref, city, groups);
+  const cityNote = (pref.rules.find(r => r.city === city && r.cityNote) || {}).cityNote;
+  const splitBy = cityNote ? '町名・番地' : '町丁目';
   const extraNames = extra.map(e => e.station);
   const multi = groups.length > 1;
   const canonical = `${BASE}area/${slug}.html`;
@@ -239,12 +242,12 @@ function cityPage(pref, city, allCities){
     ? `${city}の管轄警察署（${allNames.map(shortSt).join('・')}）｜${SITE_NAME}`
     : `${city}の管轄警察署は${stNames[0]}｜住所・電話番号｜${SITE_NAME}`;
   const description = multi
-    ? `${pref.label}${city}は、町丁目によって${stNames.join('・')}の${groups.length}署に管轄が分かれています。町丁目ごとの管轄区域と、各警察署の住所・電話番号を掲載。`
+    ? `${pref.label}${city}は、${splitBy}によって${stNames.join('・')}の${groups.length}署に管轄が分かれています。町丁目ごとの管轄区域と、各警察署の住所・電話番号を掲載。`
     : `${pref.label}${city}を管轄する警察署は${stNames[0]}です${extraNames.length ? `（一部区域は${extraNames.join('・')}）` : ''}。所在地・電話番号・公式ページと、風俗営業許可や車庫証明など開業時の手続きの窓口を確認できます。`;
 
   let dek;
   if(multi){
-    dek = `${city}は、町丁目によって${stNames.join('・')}の${groups.length}つの警察署に管轄が分かれています。下の一覧で、出店・開業予定地の町丁目がどの警察署の区域に入るかをご確認ください。`;
+    dek = `${city}は、${splitBy}によって${stNames.join('・')}の${groups.length}つの警察署に管轄が分かれています。下の一覧で、出店・開業予定地の${cityNote ? '町名' : '町丁目'}がどの警察署の区域に入るかをご確認ください。`;
   } else {
     dek = `${city}は、${stNames[0]}が管轄しています。風俗営業許可・深夜酒類提供の届出・警備業・探偵業の手続きや、道路使用許可・車庫証明の申請は、原則としてこの警察署が窓口です。`;
   }
@@ -295,6 +298,12 @@ function cityPage(pref, city, allCities){
   const others = allCities.filter(c => c !== city)
     .map(c => `        <li><a href="${SLUGS[c]}.html">${esc(c)}</a></li>`).join('\n');
 
+  const cityNoteBlock = cityNote ? `    <div class="callout">
+      <strong>番地による違いにご注意ください</strong><br>
+      ${esc(cityNote)}
+    </div>
+` : '';
+
   const lookupUrl = `../?pref=${pref.id}&amp;q=${encodeURIComponent(city)}`;
 
   const jsonld = breadcrumbLd([
@@ -323,7 +332,7 @@ function cityPage(pref, city, allCities){
 <div class="article-body">
   <div class="wrap">
 
-${stationBlocks}
+${cityNoteBlock}${cityNoteBlock ? '\n' : ''}${stationBlocks}
 ${extraBlocks ? '\n' + extraBlocks + '\n' : ''}
     <div class="callout">
       <strong>番地まで入れて確認する</strong><br>
