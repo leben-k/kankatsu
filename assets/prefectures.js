@@ -16,7 +16,8 @@ const PREFECTURES = [
       "堺市西区鳳東町4-388",
       "東大阪市稲葉1丁目7-1",
       "豊中市服部本町3丁目"
-    ]
+    ],
+    placeExamples: ["通天閣", "大阪城", "あべのハルカス", "海遊館"]
   },
   {
     id: "kyoto",
@@ -25,13 +26,14 @@ const PREFECTURES = [
     stationCount: 24,
     stationsUrl: "assets/pref/kyoto-stations.js",
     jurisdictionUrl: "assets/pref/kyoto-jurisdiction.js",
-    source: "京都府警察公式サイト「警察本部・警察署・交番等所在地」",
+    source: "京都府警察公式サイト「警察本部・警察署・交番等所在地」、および京都府条例「京都府警察署の名称、位置及び管轄区域に関する条例」",
     examples: [
       "京都市中京区壬生坊城町48-16",
       "宇治市宇治宇文字2-12",
       "向日市上植野町上川原5",
       "京丹後市峰山町長岡469-1"
-    ]
+    ],
+    placeExamples: ["清水寺", "伏見稲荷大社", "京都タワー", "平等院"]
   },
   {
     id: "hyogo",
@@ -46,7 +48,8 @@ const PREFECTURES = [
       "西宮市甲子園口4丁目1-1",
       "姫路市飾磨区中島1130-9",
       "尼崎市南塚口町3丁目1-1"
-    ]
+    ],
+    placeExamples: ["姫路城", "阪神甲子園球場", "神戸ポートタワー", "生田神社"]
   }
 ];
 

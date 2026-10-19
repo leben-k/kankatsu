@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>警察署管轄ガイド（大阪・京都・兵庫版）｜住所から管轄警察署を調べる</title>
 <link rel="canonical" href="https://leben-k.github.io/kankatsu/">
-<meta name="description" content="大阪府・京都府・兵庫県の136警察署に対応。出店・開業予定地の住所を入力すると、管轄警察署がすぐにわかります。市区町村別の管轄一覧や、風俗営業許可・深夜酒類提供・警備業・探偵業・道路使用許可・車庫証明の手続きガイドも掲載。">
+<meta name="description" content="大阪府・京都府・兵庫県の136警察署に対応。出店・開業予定地の住所や、駅名・施設名・名所の名前を入力すると、管轄警察署がすぐにわかります。市区町村別の管轄一覧や、風俗営業許可・深夜酒類提供・警備業・探偵業・道路使用許可・車庫証明の手続きガイドも掲載。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
@@ -130,6 +130,24 @@
   .disclaimer strong{ display: block; color: var(--ink); margin-bottom: 4px; font-size: .88rem; }
   .disclaimer p{ margin: 0; }
   .loading-note{ font-size: .82rem; color: var(--ink-soft); margin-top: 8px; }
+  .example-group{ margin-top: 12px; }
+  .example-group .example-list{ margin-top: 6px; }
+  .example-caption{ font-size: .78rem; color: var(--ink-soft); }
+  .search-status{ margin-top: 14px; font-size: .88rem; color: var(--ink-soft); display: none; }
+  .search-status.show{ display: block; }
+  .result-place td:last-child{ font-weight: 500; }
+  .result-place small{ display: block; font-weight: 400; color: var(--ink-soft); margin-top: 2px; }
+  .candidate-box{ margin-top: 16px; font-size: .85rem; }
+  .candidate-box p{ margin: 0 0 6px; color: var(--ink-soft); }
+  .candidate-list{ display: flex; flex-wrap: wrap; gap: 8px; }
+  .candidate-list button{
+    font-size: .8rem; padding: 6px 12px; text-align: left;
+    background: var(--white); border: 1px solid var(--line); border-radius: 2px;
+    color: var(--ink); cursor: pointer; font-family: var(--sans);
+  }
+  .candidate-list button:hover{ border-color: var(--brass); color: var(--brass); }
+  .osm-credit{ margin-top: 10px; font-size: .75rem; color: var(--ink-soft); }
+  .osm-credit a{ color: inherit; }
 </style>
 </head>
 <body>
@@ -161,7 +179,7 @@
   <div class="wrap">
     <p class="section-label">大阪・京都・兵庫　136警察署 対応</p>
     <h1>その住所は、<br>どこの警察署の管轄？</h1>
-    <p class="lead">「現在地から調べる」ボタンを押すか、出店予定地の住所を入力してください。各府県の公式データにもとづき、管轄警察署をその場で判定します。風俗営業、警備業、探偵業の届出、道路使用許可、車庫証明など、開業前に必要な手続きの解説もあわせてご覧いただけます。</p>
+    <p class="lead">「現在地から調べる」ボタンを押すか、出店予定地の住所、または駅名・施設名・名所の名前を入力してください。各府県の公式データにもとづき、管轄警察署をその場で判定します。風俗営業、警備業、探偵業の届出、道路使用許可、車庫証明など、開業前に必要な手続きの解説もあわせてご覧いただけます。</p>
 
     <div class="lookup-box">
       <button type="button" id="geoBtn" class="geo-btn">
@@ -175,7 +193,7 @@
         </span>
       </button>
 
-      <div class="lookup-or"><span>または、住所を入力して調べる</span></div>
+      <div class="lookup-or"><span>または、住所・駅名・施設名で調べる</span></div>
 
       <div class="pref-tabs" id="prefTabs">
         <button type="button" data-pref="osaka" class="pref-tab is-active">大阪府</button>
@@ -183,35 +201,49 @@
         <button type="button" data-pref="hyogo" class="pref-tab">兵庫県</button>
       </div>
 
-      <label for="addr">住所（市区町村・町名まで入力すると精度が上がります）</label>
+      <label for="addr">住所、または駅名・施設名・名所の名前（住所は町名まで入力すると精度が上がります）</label>
       <div class="lookup-row">
-        <input type="text" id="addr" placeholder="例：大阪市北区曽根崎2-16-14／東大阪市稲葉1丁目">
+        <input type="text" id="addr" enterkeyhint="search" placeholder="例：大阪市北区曽根崎2-16-14／通天閣／京都駅">
         <button id="searchBtn">管轄署を調べる</button>
       </div>
-      <div class="example-list" id="exampleList">
-        <span style="font-size:.8rem; color:var(--ink-soft); align-self:center;">例：</span>
+      <div class="example-group">
+        <span class="example-caption">住所の例</span>
+        <div class="example-list" id="exampleList"></div>
       </div>
+      <div class="example-group">
+        <span class="example-caption">名所・施設名の例</span>
+        <div class="example-list" id="placeExampleList"></div>
+      </div>
+
+      <p class="search-status" id="searchStatus" role="status" aria-live="polite"></p>
 
       <div class="result-card" id="resultCard">
         <p class="result-label">管轄警察署</p>
         <h3 id="resultStation"></h3>
         <table>
-          <tr><td>住所</td><td id="resultAddr"></td></tr>
+          <tr class="result-place" id="resultPlaceRow" hidden><td id="resultPlaceLabel">検索した場所</td><td id="resultPlace"></td></tr>
+          <tr><td>警察署の住所</td><td id="resultAddr"></td></tr>
           <tr><td>電話番号</td><td id="resultTel"></td></tr>
           <tr><td>公式ページ</td><td id="resultUrl"></td></tr>
         </table>
         <p id="resultCaveat" style="margin-top:14px; font-size:.88rem; color:var(--ink-soft); display:none;"></p>
+        <p class="osm-credit" id="resultCredit" hidden>所在地の推定：<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a></p>
       </div>
 
       <div class="result-empty" id="resultEmpty">
-        <strong>この住所からは、このツールでは管轄署を判定できませんでした。</strong><br>
-        管轄する警察署は必ず存在します。今回は、入力された住所の表記から自動判定できなかっただけです。次のいずれかをお試しください。
-        <ul style="margin:10px 0 0; padding-left:1.3em;">
-          <li>「大阪府・京都府・兵庫県」のうち、正しい都道府県のタブを選んでいるかご確認ください</li>
-          <li>市区町村名（例：「東大阪市」「堺市西区」）を含めて、もう一度入力してみてください</li>
+        <strong id="emptyTitle">このツールでは管轄署を判定できませんでした。</strong><br>
+        <span id="emptyBody">管轄する警察署は必ず存在します。今回は、入力された内容から自動判定できなかっただけです。</span><span id="emptyTipsLead">次のいずれかをお試しください。</span>
+        <ul id="emptyTips" style="margin:10px 0 0; padding-left:1.3em;">
+          <li>住所は、市区町村名（例：「東大阪市」「堺市西区」）から町名まで含めて入力してみてください</li>
+          <li>施設名・名所は、略さずに正式な名前で入力してみてください（例：「ユニバーサル・スタジオ・ジャパン」）。地図データに載っていない施設や、新しい施設は見つからないことがあります</li>
           <li><a href="keisatsusho.html">警察署一覧ページ</a>で、お近くの警察署を直接お探しください</li>
           <li>それでも分からない場合は、選択中の都道府県警察本部（代表電話）にお問い合わせください</li>
         </ul>
+      </div>
+
+      <div class="candidate-box" id="candidateBox" hidden>
+        <p>探していた場所と違う場合は、ほかの候補を選んでください。</p>
+        <div class="candidate-list" id="candidateList"></div>
       </div>
     </div>
 
@@ -401,12 +433,13 @@
       <a href="privacy.html">プライバシーポリシー</a>
       <a href="contact.html">お問い合わせ</a>
     </div>
-    <p class="footer-note">当サイトはいずれの府県警察の公式サイトでもなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。「現在地から調べる」機能を使うと、緯度・経度が住所変換のため外部サービス（OpenStreetMap Nominatim）に送信されます。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+    <p class="footer-note">当サイトはいずれの府県警察の公式サイトでもなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。「現在地から調べる」機能を使うと緯度・経度が、住所として判定できなかった検索語（駅名・施設名など）は入力した文字が、所在地を調べるため外部サービス（OpenStreetMap Nominatim）に送信されます。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
   </div>
 </footer>
 
 <script src="assets/jurisdiction-match.js"></script>
 <script src="assets/prefectures.js"></script>
+<script src="assets/place-search.js"></script>
 <script>
 const addrInput = document.getElementById('addr');
 const searchBtn = document.getElementById('searchBtn');
@@ -415,20 +448,46 @@ const geoMain = document.getElementById('geoMain');
 const resultCard = document.getElementById('resultCard');
 const resultEmpty = document.getElementById('resultEmpty');
 const exampleList = document.getElementById('exampleList');
+const placeExampleList = document.getElementById('placeExampleList');
 const prefTabs = document.getElementById('prefTabs');
+const searchStatus = document.getElementById('searchStatus');
+const candidateBox = document.getElementById('candidateBox');
+const candidateList = document.getElementById('candidateList');
 
 let currentPref = getPrefById('osaka');
+let searchSeq = 0;   // 新しい検索が始まったら、古い検索の結果は表示しない
+let busy = false;
+
+/* ---------- 表示まわり ---------- */
+
+function setBusy(on){
+  busy = on;
+  searchBtn.disabled = on;
+  searchBtn.textContent = on ? '検索中…' : '管轄署を調べる';
+}
+
+function setStatus(text){
+  searchStatus.textContent = text || '';
+  searchStatus.classList.toggle('show', !!text);
+}
+
+function hideResults(){
+  resultCard.classList.remove('show');
+  resultEmpty.classList.remove('show');
+  candidateBox.hidden = true;
+}
+
+function makeExampleButton(text){
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = text;
+  b.addEventListener('click', () => { addrInput.value = text; runSearch(text); });
+  return b;
+}
 
 function renderExamples(){
-  exampleList.querySelectorAll('button[data-ex]').forEach(b => b.remove());
-  currentPref.examples.forEach(ex => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.dataset.ex = ex;
-    b.textContent = ex;
-    b.addEventListener('click', () => { addrInput.value = ex; showResult(ex); });
-    exampleList.appendChild(b);
-  });
+  exampleList.replaceChildren(...currentPref.examples.map(makeExampleButton));
+  placeExampleList.replaceChildren(...(currentPref.placeExamples || []).map(makeExampleButton));
 }
 
 async function switchPref(prefId, {silent}={}){
@@ -436,38 +495,64 @@ async function switchPref(prefId, {silent}={}){
   prefTabs.querySelectorAll('.pref-tab').forEach(t => {
     t.classList.toggle('is-active', t.dataset.pref === prefId);
   });
-  resultCard.classList.remove('show');
-  resultEmpty.classList.remove('show');
-  addrInput.placeholder = `例：${currentPref.examples[0]}`;
+  hideResults();
+  addrInput.placeholder = `例：${currentPref.examples[0]}／${(currentPref.placeExamples || ['通天閣'])[0]}`;
   if(!silent){
     addrInput.value = '';
   }
-  searchBtn.disabled = true;
-  searchBtn.textContent = '読み込み中…';
+  if(!busy){ searchBtn.disabled = true; searchBtn.textContent = '読み込み中…'; }
   try{
     await loadPrefData(prefId);
   } catch(e){
     alert('データの読み込みに失敗しました。通信環境をご確認のうえ、再度お試しください。');
   }
-  searchBtn.disabled = false;
-  searchBtn.textContent = '管轄署を調べる';
+  if(!busy){ searchBtn.disabled = false; searchBtn.textContent = '管轄署を調べる'; }
   renderExamples();
   try{ localStorage.setItem('kankatsu_pref', prefId); } catch(e){}
+}
+
+function showEmpty(title, body, {tips = true} = {}){
+  hideResults();
+  document.getElementById('emptyTipsLead').hidden = !tips;
+  document.getElementById('emptyTips').hidden = !tips;
+  document.getElementById('emptyTitle').textContent = title;
+  document.getElementById('emptyBody').textContent = body || '管轄する警察署は必ず存在します。今回は、入力された内容から自動判定できなかっただけです。';
+  resultEmpty.classList.add('show');
+  resultEmpty.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function renderCandidates(candidates, current){
+  const others = (candidates || []).filter(p => p !== current).slice(0, 5);
+  if(!others.length){ candidateBox.hidden = true; return; }
+  candidateList.replaceChildren(...others.map(p => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = `${p.name}（${p.address.replace(/^(大阪府|京都府|兵庫県)/, '')}）`;
+    b.addEventListener('click', () => {
+      const seq = ++searchSeq;
+      hideResults();
+      setBusy(true);
+      showPlaceResult(p, candidates, seq).finally(() => {
+        if(seq === searchSeq){ setBusy(false); setStatus(''); }
+      });
+    });
+    return b;
+  }));
+  candidateBox.hidden = false;
 }
 
 function findStationDetail(name){
   return STATIONS.find(s => s.name === name);
 }
 
-function showResult(addr){
-  const result = matchStation(addr, JURISDICTION_RULES);
-  resultCard.classList.remove('show');
-  resultEmpty.classList.remove('show');
-
-  if(!result){
-    resultEmpty.classList.add('show');
-    return;
+// result: matchStation の結果。opts.place があれば「検索した場所」の行と注記を出す
+async function showMatch(prefId, result, opts={}){
+  if(prefId !== currentPref.id){
+    await switchPref(prefId, {silent:true});
+  } else {
+    await loadPrefData(prefId); // ほかの府県を試した後でも、表示用データを選択中の府県に戻す
   }
+  hideResults();
 
   const detail = findStationDetail(result.station);
   document.getElementById('resultStation').textContent = result.station;
@@ -475,8 +560,33 @@ function showResult(addr){
   document.getElementById('resultTel').innerHTML = detail ? `<a href="tel:${detail.tel.replace(/-/g,'')}">${detail.tel}</a>` : '-';
   document.getElementById('resultUrl').innerHTML = detail ? `<a href="${detail.url}" target="_blank" rel="noopener">${currentPref.label}警察の公式サイトで見る</a>` : '-';
 
+  const placeRow = document.getElementById('resultPlaceRow');
+  const placeCell = document.getElementById('resultPlace');
+  const notes = [];
+  if(opts.place){
+    document.getElementById('resultPlaceLabel').textContent = opts.kind === 'geo' ? '現在地' : '検索した場所';
+    const small = document.createElement('small');
+    small.textContent = `推定した所在地：${opts.address}`;
+    placeCell.replaceChildren(document.createTextNode(opts.kind === 'geo' ? opts.address : opts.place.name));
+    if(opts.kind !== 'geo') placeCell.appendChild(small);
+    placeRow.hidden = false;
+    if(opts.kind === 'geo'){
+      notes.push('現在地の緯度・経度から住所を推定して判定しています。位置情報には誤差（数十m〜数km）があるため、管轄の境界付近では実際の管轄と異なることがあります。');
+    } else if(opts.kind === 'refine'){
+      notes.push('入力された住所だけでは町丁目まで分からなかったため、地図データ（OpenStreetMap）で所在地を推定して判定しました。推定した所在地が正しいかご確認ください。');
+    } else {
+      notes.push('駅名・施設名・名所の名前から、地図データ（OpenStreetMap）で所在地を推定して判定しています。敷地の広い施設や、管轄の境界付近では、実際の管轄と異なることがあります。');
+    }
+  } else {
+    placeRow.hidden = true;
+  }
+  document.getElementById('resultCredit').hidden = !opts.place;
+
   const caveatEl = document.getElementById('resultCaveat');
-  const notes = [result.rule.cityNote, result.rule.caveat].filter(Boolean);
+  if(result.alsoStations && result.alsoStations.length){
+    notes.push(`この町丁目は、${[result.station, ...result.alsoStations].join('と')}の管轄に分かれています（番地によって異なります）。申請の前に、どちらの警察署の管轄か電話でご確認ください。`);
+  }
+  notes.push(...[result.rule.cityNote, result.rule.caveat].filter(Boolean));
   if(notes.length){
     caveatEl.style.display = 'block';
     caveatEl.textContent = notes.map(t => '※ ' + t).join('\n');
@@ -486,57 +596,244 @@ function showResult(addr){
   }
 
   resultCard.classList.add('show');
+  renderCandidates(opts.candidates, opts.place);
   resultCard.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
-searchBtn.addEventListener('click', () => {
-  if(addrInput.value.trim()) showResult(addrInput.value.trim());
-});
-addrInput.addEventListener('keydown', (e) => {
-  if(e.key === 'Enter') searchBtn.click();
-});
+/* ---------- 判定まわり ---------- */
 
-prefTabs.querySelectorAll('.pref-tab').forEach(tab => {
-  tab.addEventListener('click', () => switchPref(tab.dataset.pref));
-});
+async function getPrefData(prefId){
+  await loadPrefData(prefId);
+  return _prefDataCache[prefId] || null;
+}
+
+// 同じ市区の中で複数の警察署に分かれているか
+function isSplitCity(rules, city){
+  return new Set(rules.filter(r => r.city === city).map(r => r.station)).size > 1;
+}
+
+// 入力から府県名・市区名を取り除いた残り（「梅田」「花園ラグビー場」など）
+function textWithoutCity(text, city){
+  const short = city.replace(CITY_PREFIXES, '');
+  return text.replace(/大阪府|京都府|兵庫県/g, '').replace(city, '').replace(short, '')
+    .replace(CITY_PREFIXES, '').replace(/^[\s　、,]+|[\s　、,]+$/g, '');
+}
+
+// 住所として判定する。府県名が書かれていればその府県、なければ選択中の府県→ほかの府県の順。
+async function findLocal(text){
+  const explicit = PREFECTURES.find(p => text.includes(p.label));
+  const order = explicit ? [explicit.id]
+    : [currentPref.id, ...PREFECTURES.map(p => p.id).filter(id => id !== currentPref.id)];
+  for(const id of order){
+    const d = await getPrefData(id);
+    if(!d) continue;
+    const r = matchStation(text, d.rules);
+    if(r) return { prefId: id, result: r, rules: d.rules };
+  }
+  return null;
+}
+
+// 地図データで見つかった場所を、管轄データに当てはめる。
+// 住所が町丁目まで分からず、その市区が複数の署に分かれている場合は、
+// 緯度経度から住所を引き直して（逆ジオコーディング）判定する。
+async function evaluatePlace(place){
+  if(!place.prefId) return null;
+  const d = await getPrefData(place.prefId);
+  if(!d) return null;
+  let address = place.address;
+  let result = matchStation(address, d.rules);
+  const precise = r => r && r.matchedBy !== 'ward';
+  if(!precise(result) && (!result || isSplitCity(d.rules, result.rule.city)) && isFinite(place.lat)){
+    try{
+      const rev = await reverseGeocode(place.lat, place.lon);
+      if(rev && rev.prefId === place.prefId){
+        const r2 = matchStation(rev.address, d.rules);
+        if(r2 && (!result || precise(r2))){ result = r2; address = rev.address; }
+      }
+    } catch(e){ /* 引き直しに失敗したら最初の結果のまま */ }
+  }
+  return result ? { prefId: place.prefId, result, address } : null;
+}
+
+async function showPlaceResult(place, candidates, seq){
+  setStatus(`「${place.name}」の管轄を判定しています…`);
+  const ev = await evaluatePlace(place);
+  if(seq !== searchSeq) return;
+  if(ev){
+    await showMatch(ev.prefId, ev.result, { place, address: ev.address, candidates, kind: 'place' });
+  } else {
+    await loadPrefData(currentPref.id);
+    showEmpty(`「${place.name}」は見つかりましたが、管轄署を自動判定できませんでした。`,
+      `地図データ上の所在地は「${place.address}」です。この住所の町名をもとに、市区町村別の管轄一覧などでご確認ください。`);
+    renderCandidates(candidates, place);
+  }
+}
+
+async function runSearch(raw){
+  const text = String(raw || '').trim();
+  if(!text) return;
+  const seq = ++searchSeq;
+  hideResults();
+  setBusy(true);
+  try{
+    // 1. 住所として判定
+    const local = await findLocal(text);
+    if(seq !== searchSeq) return;
+    const extra = local ? textWithoutCity(text, local.result.rule.city) : '';
+    const needRefine = local && local.result.matchedBy === 'ward'
+      && isSplitCity(local.rules, local.result.rule.city)
+      && extra.replace(/[\s　0-9０-９\-－−‐の番地号丁目]/g, '') !== '';
+    // 「大阪市北区」のように、町丁目で管轄が分かれる区・市の名前だけが入力された場合は、
+    // 「その他の区域」の警察署を答えにせず、町名まで入力してもらう
+    if(local && local.result.matchedBy === 'ward' && isSplitCity(local.rules, local.result.rule.city)
+       && extra.replace(/[\s　]/g, '') === ''){
+      const city = local.result.rule.city;
+      const stations = [...new Set(local.rules.filter(r => r.city === city).map(r => r.station))];
+      if(local.prefId !== currentPref.id) await switchPref(local.prefId, {silent:true});
+      else await loadPrefData(local.prefId);
+      showEmpty(`${city}は、町丁目によって管轄の警察署が分かれています。`,
+        `${city}は、${stations.join('・')}の${stations.length}署に分かれています。町名（丁目）まで続けて入力してください。`, {tips:false});
+      addrInput.focus();
+      return;
+    }
+    if(local && !needRefine){
+      await showMatch(local.prefId, local.result);
+      return;
+    }
+
+    // 2. 駅名・施設名・名所として地図データで探す
+    //    （住所でも、市区まではわかったが町丁目が判定できなかった場合は、地図データで補う）
+    setStatus(local ? '町名を地図データで確認しています…' : '駅名・施設名・名所として場所を探しています…');
+    let places = [];
+    try{
+      places = await searchPlaces(text);
+      if(!places.length && local && extra.length >= 2) places = await searchPlaces(extra);
+    } catch(e){
+      if(seq !== searchSeq) return;
+      if(local){ await showMatch(local.prefId, local.result); return; }
+      await loadPrefData(currentPref.id);
+      showEmpty('場所の検索に失敗しました。', '通信環境をご確認のうえ、しばらくしてから再度お試しください。住所での検索は、通信がなくても利用できます。');
+      return;
+    }
+    if(seq !== searchSeq) return;
+
+    if(local){
+      const p = places.find(p => p.prefId === local.prefId);
+      if(p){
+        const ev = await evaluatePlace(p);
+        if(seq !== searchSeq) return;
+        if(ev && ev.result.rule.city === local.result.rule.city && ev.result.matchedBy !== 'ward'){
+          await showMatch(ev.prefId, ev.result, { place: p, address: ev.address, kind: 'refine' });
+          return;
+        }
+      }
+      await showMatch(local.prefId, local.result);
+      return;
+    }
+
+    if(!places.length){
+      await loadPrefData(currentPref.id);
+      showEmpty('住所としても、駅名・施設名・名所としても見つかりませんでした。',
+        '大阪府・京都府・兵庫県の住所か、地図データに載っている施設・名所の名前を入力してください。');
+      return;
+    }
+    await showPlaceResult(places[0], places, seq);
+  } catch(e){
+    if(seq === searchSeq){
+      try{ await loadPrefData(currentPref.id); } catch(_){}
+      showEmpty('検索中にエラーが発生しました。', 'ページを再読み込みしてから、もう一度お試しください。');
+    }
+  } finally {
+    if(seq === searchSeq){ setBusy(false); setStatus(''); }
+  }
+}
+
+/* ---------- 現在地から調べる ---------- */
+
+function resetGeoButton(){
+  geoMain.textContent = '現在地から調べる';
+  geoBtn.disabled = false;
+}
+
+async function handlePosition(pos){
+  const seq = ++searchSeq;
+  hideResults();
+  geoMain.textContent = '住所を確認中…';
+  try{
+    const { latitude, longitude } = pos.coords;
+    const place = await reverseGeocode(latitude, longitude);
+    if(seq !== searchSeq) return;
+    if(!place || !place.address){
+      showEmpty('現在地の住所を取得できませんでした。', '海上や山間部など、地図データに住所がない場所の可能性があります。住所を直接入力してください。');
+      return;
+    }
+    if(!place.prefId){
+      // 対応エリア外（大阪・京都・兵庫以外）
+      const where = place.country && place.country !== 'jp'
+        ? '日本国外'
+        : [place.prefName, place.cityName].filter(Boolean).join('') || '対応エリア外';
+      const police = place.country === 'jp' && place.prefName
+        ? `${place.prefName === '東京都' ? '警視庁' : place.prefName + '警察'}の公式サイトで、警察署の管轄区域をご確認ください。`
+        : '';
+      addrInput.value = '';
+      showEmpty(`現在地（${where}）は、このサイトの対応エリア外です。`,
+        `このサイトは大阪府・京都府・兵庫県の警察署のみに対応しています。${police}対応エリア内の場所を調べる場合は、住所や施設名を入力してください。`, {tips:false});
+      return;
+    }
+    addrInput.value = place.address;
+    const d = await getPrefData(place.prefId);
+    const result = d ? matchStation(place.address, d.rules) : null;
+    if(seq !== searchSeq) return;
+    if(!result){
+      await switchPref(place.prefId, {silent:true});
+      addrInput.value = place.address;
+      showEmpty(`現在地の住所（${place.address}）から管轄署を自動判定できませんでした。`);
+      return;
+    }
+    await showMatch(place.prefId, result, { place: { name: '現在地' }, address: place.address, kind: 'geo' });
+  } catch(e){
+    if(seq === searchSeq) showEmpty('住所の取得に失敗しました。', '通信環境をご確認のうえ再度お試しいただくか、住所を直接入力してください。');
+  } finally {
+    resetGeoButton();
+  }
+}
+
+function handlePositionError(err){
+  resetGeoButton();
+  if(err && err.code === 1){
+    showEmpty('位置情報の利用が許可されていません。',
+      'ブラウザ（スマートフォンの場合は端末の設定も）で、このサイトの位置情報の利用を許可してから、もう一度お試しください。住所や施設名を入力して調べることもできます。');
+  } else if(err && err.code === 3){
+    showEmpty('現在地の取得に時間がかかっています。', '電波の良い場所で再度お試しいただくか、住所や施設名を入力してください。');
+  } else {
+    showEmpty('現在地を取得できませんでした。', '端末の位置情報サービスがオンになっているかご確認ください。住所や施設名を入力して調べることもできます。');
+  }
+}
 
 geoBtn.addEventListener('click', () => {
   if(!navigator.geolocation){
-    alert('お使いのブラウザは位置情報に対応していません。住所を直接入力してください。');
+    showEmpty('お使いのブラウザは位置情報に対応していません。', '住所や施設名を入力して調べてください。');
     return;
   }
   geoMain.textContent = '現在地を取得中…';
   geoBtn.disabled = true;
-  navigator.geolocation.getCurrentPosition(async (pos) => {
-    const { latitude, longitude } = pos.coords;
-    try{
-      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&accept-language=ja&zoom=18`);
-      const data = await res.json();
-      // display_name は「16, 曽根崎二丁目, 北区, 大阪市, 大阪府, 530-0057, 日本」のように
-      // 小さい単位から並ぶため、郵便番号・国名を除いて逆順につなぎ、日本の住所の順にする。
-      const parts = (data.display_name || '').split(',').map(t => t.trim())
-        .filter(t => t && t !== '日本' && !/^\d{3}-?\d{4}$/.test(t));
-      const addr = parts.reverse().join('');
-      const detected = PREFECTURES.find(p => addr.includes(p.label));
-      if(!detected){
-        alert('現在地は、このサイトの対応エリア（大阪府・京都府・兵庫県）の外のようです。');
-        return;
-      }
-      if(detected.id !== currentPref.id){
-        await switchPref(detected.id, {silent:true});
-      }
-      addrInput.value = addr;
-      showResult(addr);
-    } catch(e){
-      alert('住所の取得に失敗しました。お手数ですが住所を直接入力してください。');
-    } finally {
-      geoMain.textContent = '現在地から調べる';
-      geoBtn.disabled = false;
-    }
-  }, () => {
-    alert('位置情報を取得できませんでした。ブラウザの設定をご確認のうえ、住所を直接入力してください。');
-    geoMain.textContent = '現在地から調べる';
-    geoBtn.disabled = false;
+  navigator.geolocation.getCurrentPosition(handlePosition, handlePositionError,
+    { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+});
+
+/* ---------- 入力・タブ ---------- */
+
+searchBtn.addEventListener('click', () => runSearch(addrInput.value));
+addrInput.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' && !e.isComposing) runSearch(addrInput.value);
+});
+
+prefTabs.querySelectorAll('.pref-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    searchSeq++;          // 検索中にタブを押したら、その検索は打ち切る
+    setBusy(false);
+    setStatus('');
+    switchPref(tab.dataset.pref);
   });
 });
 
@@ -553,7 +850,7 @@ if(qPref && PREFECTURES.some(p => p.id === qPref)) initialPref = qPref;
 switchPref(initialPref, {silent:true}).then(() => {
   if(qAddr){
     addrInput.value = qAddr;
-    showResult(qAddr);
+    runSearch(qAddr);
   }
 });
 </script>

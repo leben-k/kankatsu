@@ -56,7 +56,7 @@ const SLUGS = {
   '京都市下京区':'kyoto-shi-shimogyo-ku','京都市左京区':'kyoto-shi-sakyo-ku','京都市伏見区':'kyoto-shi-fushimi-ku',
   '京都市山科区':'kyoto-shi-yamashina-ku','京都市右京区':'kyoto-shi-ukyo-ku','京都市南区':'kyoto-shi-minami-ku',
   '京都市北区':'kyoto-shi-kita-ku','京都市西京区':'kyoto-shi-nishikyo-ku',
-  '向日市':'muko-shi','長岡京市':'nagaokakyo-shi','乙訓郡':'otokuni-gun','宇治市':'uji-shi','久世郡':'kuse-gun',
+  '向日市':'muko-shi','長岡京市':'nagaokakyo-shi','乙訓郡':'otokuni-gun','宇治市':'uji-shi','久世郡':'kuse-gun','綴喜郡':'tsuzuki-gun',
   '城陽市':'joyo-shi','八幡市':'yawata-shi','京田辺市':'kyotanabe-shi','木津川市':'kizugawa-shi','相楽郡':'soraku-gun',
   '亀岡市':'kameoka-shi','南丹市':'nantan-shi','船井郡':'funai-gun','綾部市':'ayabe-shi','福知山市':'fukuchiyama-shi',
   '舞鶴市':'maizuru-shi','宮津市':'miyazu-shi','与謝郡':'yosa-gun','京丹後市':'kyotango-shi',
@@ -428,6 +428,20 @@ ${sections}
 // ---------- 書き出し ----------
 const outDir = path.join(ROOT, 'area');
 fs.mkdirSync(outDir, { recursive: true });
+
+// 古いページを消す前に、ファイル名の登録漏れ・重複がないかを先に確かめる
+// （途中でエラーになると、ページが消えたままになってしまうため）
+{
+  const seen = new Set();
+  prefs.forEach(pref => {
+    [...new Set(pref.rules.map(r => r.city))].forEach(city => {
+      const slug = SLUGS[city];
+      if(!slug) throw new Error(`SLUGS に未登録の市区町村があります：${city}（何も変更していません）`);
+      if(seen.has(slug)) throw new Error(`ファイル名が重複しています：${slug}（何も変更していません）`);
+      seen.add(slug);
+    });
+  });
+}
 fs.readdirSync(outDir).filter(f => f.endsWith('.html')).forEach(f => fs.unlinkSync(path.join(outDir, f)));
 
 const usedSlugs = new Set();

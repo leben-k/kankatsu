@@ -3,7 +3,7 @@
    https://www.pref.kyoto.jp/fukei/site/keimu_k/shozaiti/index.html （2026年7月8日更新版） */
 
 var STATIONS = [
-  // ---- 京都市内（11署。京都市の11区とそれぞれ1対1で対応） ----
+  // ---- 京都市内（11署。区名と同名の署が各区を管轄。伏見区の一部は山科署・向日町署） ----
   {name:"上京警察署", zip:"602-8386", addr:"京都市上京区御前通今小路下る馬喰町692-1", tel:"075-465-0110", area:"京都市内", url:"https://www.pref.kyoto.jp/fukei/site/policemap/kamigyo/index.html"},
   {name:"東山警察署", zip:"605-0862", addr:"京都市東山区清水4丁目185-6", tel:"075-525-0110", area:"京都市内", url:"https://www.pref.kyoto.jp/fukei/site/policemap/higashiyama/index.html"},
   {name:"中京警察署", zip:"604-8804", addr:"京都市中京区壬生坊城町48-16", tel:"075-823-0110", area:"京都市内", url:"https://www.pref.kyoto.jp/fukei/site/policemap/nakagyo/index.html"},
