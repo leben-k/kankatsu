@@ -8,6 +8,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>警察署管轄ガイド（大阪・京都・兵庫版）｜住所から管轄警察署を調べる</title>
 <link rel="canonical" href="https://leben-k.github.io/kankatsu/">
+<script>if(location.protocol === 'http:' && /github\.io$/.test(location.hostname)) location.replace('https://' + location.host + location.pathname + location.search + location.hash);</script>
 <meta name="description" content="大阪府・京都府・兵庫県の136警察署に対応。出店・開業予定地の住所や、駅名・施設名・名所の名前を入力すると、管轄警察署がすぐにわかります。市区町村別の管轄一覧や、風俗営業許可・深夜酒類提供・警備業・探偵業・道路使用許可・車庫証明の手続きガイドも掲載。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -798,16 +799,91 @@ async function handlePosition(pos){
   }
 }
 
-function handlePositionError(err){
-  resetGeoButton();
-  if(err && err.code === 1){
-    showEmpty('位置情報の利用が許可されていません。',
-      'ブラウザ（スマートフォンの場合は端末の設定も）で、このサイトの位置情報の利用を許可してから、もう一度お試しください。住所や施設名を入力して調べることもできます。');
-  } else if(err && err.code === 3){
-    showEmpty('現在地の取得に時間がかかっています。', '電波の良い場所で再度お試しいただくか、住所や施設名を入力してください。');
-  } else {
-    showEmpty('現在地を取得できませんでした。', '端末の位置情報サービスがオンになっているかご確認ください。住所や施設名を入力して調べることもできます。');
+// 利用環境の判定（エラー時の案内を、端末ごとに具体的に出すため）
+function detectEnv(){
+  const ua = navigator.userAgent || '';
+  const inApp = /Line\/|FBAN|FBAV|Instagram|Twitter|MicroMessenger|KAKAOTALK|YJApp|GSA\//i.test(ua);
+  const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  const android = /Android/.test(ua);
+  const iosChrome = ios && /CriOS/.test(ua);
+  return { inApp, ios, android, iosChrome, pc: !ios && !android };
+}
+
+function geoHelpSteps(env, siteBlocked){
+  if(env.inApp){
+    return ['LINE・Instagram・X などのアプリ内で開いたページでは、位置情報が使えないことがあります。画面の右上（または右下）のメニューから「Safariで開く」「ブラウザで開く」を選び、もう一度お試しください。'];
   }
+  const steps = [];
+  if(env.ios){
+    steps.push(`iPhone の「設定」→「プライバシーとセキュリティ」→「位置情報サービス」がオンになっていることを確認し、同じ画面の下にある「${env.iosChrome ? 'Chrome' : 'Safari Webサイト'}」を開いて「このAppの使用中のみ許可」（または「次回または共有時に確認」）にしてください。端末の位置情報がオンでも、ここが「なし」だと使えません。`);
+    steps.push(env.iosChrome
+      ? 'Chrome のアドレスバー右の「…」→「設定」→「コンテンツの設定」などで、このサイトの位置情報がブロックされていないかもご確認ください。'
+      : 'Safari では、アドレスバー左のアイコン（「ぁあ」または □ のマーク）→「Webサイトの設定」→「位置情報」を「確認」か「許可」にしてください。');
+  } else if(env.android){
+    steps.push('Android の「設定」→「アプリ」→「Chrome」（お使いのブラウザ）→「権限」→「位置情報」を「アプリの使用中のみ許可」にしてください。端末の位置情報がオンでも、ブラウザに許可がないと使えません。');
+    steps.push('Chrome では、アドレスバー左のアイコン →「権限」（または「サイトの設定」）→「位置情報」を「許可」にしてください。');
+  } else {
+    steps.push('アドレスバー左のアイコン（鍵や設定のマーク）をクリックし、このサイトの「位置情報」を「許可」にしてから、ページを再読み込みしてください。');
+    steps.push('Windows は「設定」→「プライバシーとセキュリティ」→「位置情報」で「位置情報サービス」と「アプリに位置情報へのアクセスを許可する」がオンか、Mac は「システム設定」→「プライバシーとセキュリティ」→「位置情報サービス」でお使いのブラウザがオンになっているかもご確認ください。');
+  }
+  return steps;
+}
+
+function showGeoHelp(title, lead, steps, err){
+  showEmpty(title, lead, {tips:false});
+  const body = document.getElementById('emptyBody');
+  const ol = document.createElement('ol');
+  ol.style.cssText = 'margin:10px 0 0; padding-left:1.4em;';
+  steps.forEach(t => { const li = document.createElement('li'); li.textContent = t; li.style.marginBottom = '6px'; ol.appendChild(li); });
+  const tail = document.createElement('p');
+  tail.style.cssText = 'margin:10px 0 0;';
+  tail.textContent = '設定を変えたら、ページを再読み込みしてから「現在地から調べる」をもう一度押してください。住所や施設名を入力して調べることもできます。';
+  const code = document.createElement('p');
+  code.style.cssText = 'margin:8px 0 0; font-size:.75rem; color:var(--ink-soft);';
+  code.textContent = err ? `（エラー情報：code ${err.code}${err.message ? ' / ' + err.message : ''}）` : '';
+  body.append(ol, tail, code);
+}
+
+async function handlePositionError(err){
+  resetGeoButton();
+  const env = detectEnv();
+  let siteBlocked = false;
+  try{
+    if(navigator.permissions && navigator.permissions.query){
+      siteBlocked = (await navigator.permissions.query({ name: 'geolocation' })).state === 'denied';
+    }
+  } catch(e){}
+
+  if(!window.isSecureContext){
+    showGeoHelp('このページの開き方では、位置情報を使えません。',
+      '位置情報は「https://」で始まるページでしか使えません。', ['アドレスを「https://leben-k.github.io/kankatsu/」にして開き直してください。'], err);
+  } else if(err && err.code === 1){
+    showGeoHelp('位置情報の利用が許可されていません。',
+      siteBlocked
+        ? 'ブラウザの設定で、このサイトの位置情報が「ブロック」になっています。以前に一度「許可しない」を選ぶと、ブラウザがそれを記憶して、次からは確認の画面を出さなくなります。下の手順で「許可」に戻してください。'
+        : '端末の位置情報がオンでも、「ブラウザ」や「このサイト」に位置情報の利用が許可されていないと使えません。',
+      geoHelpSteps(env, siteBlocked), err);
+  } else if(err && err.code === 3){
+    showGeoHelp('現在地の取得に時間がかかり、途中で止まりました。',
+      '屋内や地下では、位置の測定に時間がかかることがあります。',
+      ['窓の近くや屋外で、もう一度お試しください。', 'Wi-Fi をオンにすると、屋内でも位置を測りやすくなります（接続していなくても構いません）。'], err);
+  } else {
+    showGeoHelp('現在地を測定できませんでした。',
+      '位置情報の利用は許可されていますが、端末が現在地を測定できませんでした。',
+      [ 'Wi-Fi をオンにしてから、もう一度お試しください（接続していなくても、位置の測定に使われます）。',
+        ...(env.pc ? ['パソコンでは、OSの位置情報サービスがオフだとこの表示になります。Windows は「設定」→「プライバシーとセキュリティ」→「位置情報」、Mac は「システム設定」→「プライバシーとセキュリティ」→「位置情報サービス」をご確認ください。'] : ['機内モードや省電力モードがオンになっていないかご確認ください。']) ], err);
+  }
+}
+
+// まず高精度（GPS）で測り、測れなかった・時間がかかった場合は、
+// 精度を下げて（Wi-Fi・基地局で）測り直す。許可がない場合は測り直さない。
+function getPositionWithFallback(onSuccess, onError){
+  navigator.geolocation.getCurrentPosition(onSuccess, (err) => {
+    if(err && err.code === 1){ onError(err); return; }
+    geoMain.textContent = '別の方法で現在地を測定中…';
+    navigator.geolocation.getCurrentPosition(onSuccess, onError,
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 600000 });
+  }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
 }
 
 geoBtn.addEventListener('click', () => {
@@ -817,8 +893,7 @@ geoBtn.addEventListener('click', () => {
   }
   geoMain.textContent = '現在地を取得中…';
   geoBtn.disabled = true;
-  navigator.geolocation.getCurrentPosition(handlePosition, handlePositionError,
-    { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+  getPositionWithFallback(handlePosition, handlePositionError);
 });
 
 /* ---------- 入力・タブ ---------- */
