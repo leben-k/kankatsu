@@ -820,11 +820,17 @@ function geoHelpSteps(env, siteBlocked){
       ? 'Chrome のアドレスバー右の「…」→「設定」→「コンテンツの設定」などで、このサイトの位置情報がブロックされていないかもご確認ください。'
       : 'Safari では、アドレスバー左のアイコン（「ぁあ」または □ のマーク）→「Webサイトの設定」→「位置情報」を「確認」か「許可」にしてください。');
   } else if(env.android){
-    steps.push('Android の「設定」→「アプリ」→「Chrome」（お使いのブラウザ）→「権限」→「位置情報」を「アプリの使用中のみ許可」にしてください。端末の位置情報がオンでも、ブラウザに許可がないと使えません。');
-    steps.push('Chrome では、アドレスバー左のアイコン →「権限」（または「サイトの設定」）→「位置情報」を「許可」にしてください。');
+    if(siteBlocked){
+      steps.push('Chrome 右上の「⋮」→「設定」→「サイトの設定」→「位置情報」を開き、いちばん上のスイッチをオンにしてください。下に「ブロック」の一覧があり、そこに leben-k.github.io があれば、タップして「許可」にしてください。');
+      steps.push('Android の「設定」→「アプリ」→「Chrome」→「権限」→「位置情報」が「アプリの使用中のみ許可」になっているかもご確認ください。');
+    } else {
+      steps.push('Android の「設定」→「アプリ」→「Chrome」→「権限」→「位置情報」を開き、「アプリの使用中のみ許可」を選んでください（「許可しない」になっていると、確認の画面が出ないまま拒否されます）。');
+      steps.push('同じ画面に「正確な位置情報を使用」があればオンにしてください。');
+      steps.push('Chrome を完全に終了（アプリの切り替え画面で上にスワイプ）してから開き直し、もう一度お試しください。');
+    }
   } else {
     steps.push('アドレスバー左のアイコン（鍵や設定のマーク）をクリックし、このサイトの「位置情報」を「許可」にしてから、ページを再読み込みしてください。');
-    steps.push('Windows は「設定」→「プライバシーとセキュリティ」→「位置情報」で「位置情報サービス」と「アプリに位置情報へのアクセスを許可する」がオンか、Mac は「システム設定」→「プライバシーとセキュリティ」→「位置情報サービス」でお使いのブラウザがオンになっているかもご確認ください。');
+    steps.push('Windows は「設定」→「プライバシーとセキュリティ」→「位置情報」で、「位置情報サービス」「アプリに位置情報へのアクセスを許可する」「デスクトップ アプリに位置情報へのアクセスを許可する」の3つがすべてオンか（Chrome・Edge は「デスクトップ アプリ」の扱いです）、Mac は「システム設定」→「プライバシーとセキュリティ」→「位置情報サービス」でお使いのブラウザがオンになっているかをご確認ください。設定を変えたら、ブラウザをいったん終了して開き直してください。');
   }
   return steps;
 }
@@ -840,7 +846,10 @@ function showGeoHelp(title, lead, steps, err){
   tail.textContent = '設定を変えたら、ページを再読み込みしてから「現在地から調べる」をもう一度押してください。住所や施設名を入力して調べることもできます。';
   const code = document.createElement('p');
   code.style.cssText = 'margin:8px 0 0; font-size:.75rem; color:var(--ink-soft);';
-  code.textContent = err ? `（エラー情報：code ${err.code}${err.message ? ' / ' + err.message : ''}）` : '';
+  const stateLabel = { granted: '許可', denied: 'ブロック', prompt: '未設定' };
+  code.textContent = err
+    ? `（エラー情報：code ${err.code}${err.message ? ' / ' + err.message : ''} / このサイトへの許可：${stateLabel[err.permState] || err.permState || '不明'}）`
+    : '';
   body.append(ol, tail, code);
 }
 
@@ -848,11 +857,14 @@ async function handlePositionError(err){
   resetGeoButton();
   const env = detectEnv();
   let siteBlocked = false;
+  let permState = '不明';
   try{
     if(navigator.permissions && navigator.permissions.query){
-      siteBlocked = (await navigator.permissions.query({ name: 'geolocation' })).state === 'denied';
+      permState = (await navigator.permissions.query({ name: 'geolocation' })).state;
+      siteBlocked = permState === 'denied';
     }
   } catch(e){}
+  if(err) err.permState = permState;
 
   if(!window.isSecureContext){
     showGeoHelp('このページの開き方では、位置情報を使えません。',
