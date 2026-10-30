@@ -106,6 +106,10 @@ node tools/build-area-pages.js
 - `robots.txt` は、GitHub Pages のプロジェクトサイト（`/kankatsu/`）では検索エンジンに読まれません。サイトマップは Search Console の「サイトマップ」から `https://leben-k.github.io/kankatsu/sitemap.xml` を直接送信してください。
 - 独自ドメインに移行した場合は、canonical・`tools/build-area-pages.js` の `BASE`・`robots.txt` のURLを新しいドメインに書き換えてください。
 
+## フッターの著作権表示
+
+すべてのページのフッターに「© 2026 警察署管轄ガイド（大阪・京都・兵庫版）」を表示しています。年は `assets/nav.js` が閲覧時に自動で更新し、2027年以降は「2026-2027」のように範囲で表示します（JavaScriptが動かない環境では「2026」のまま）。新しいページを作るときは、フッターに `<p class="copyright">…</p>` の行と `assets/nav.js` の読み込みを入れてください。市区町村ページは `tools/build-area-pages.js` が自動で入れます。
+
 ## データの出典・注意事項
 
 - 警察署の名称・住所・電話番号：大阪府警察・京都府警察・兵庫県警察 各公式サイト

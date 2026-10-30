@@ -370,6 +370,7 @@ table.info-table th{
   margin-bottom: 18px;
 }
 .footer-note{ color: #F0F3F6; line-height: 1.8; }
+.copyright{ margin-top: 14px; color: #F0F3F6; font-size: .8rem; letter-spacing: .02em; }
 
 /* ---------- 府県タブの色分け ---------- */
 /* 各ページの .pref-tab.is-active（青一色）より詳細度が高いため、こちらが優先されます */
