@@ -102,7 +102,6 @@
         <button type="button" id="thanks-close">終了</button>
         <a href="./">トップへ</a>
       </div>
-      <p class="form-thanks-note" id="thanks-close-note" hidden>このページは自動では閉じられませんでした。お手数ですが、ブラウザのタブ（スマートフォンの場合は画面）を閉じて終了してください。</p>
     </div>
 
     <p>掲載している警察署の住所・電話番号・管轄区域などの情報に誤りがある場合や、記事内容についての改善提案がありましたら、お気軽にお知らせください。順次確認のうえ、修正いたします。</p>
@@ -173,10 +172,14 @@
       });
   });
 
+  // 「終了」：連絡先ページに来る前に見ていたページに戻る。
+  // （ブラウザの決まりで、ページ内のボタンから画面を閉じることはできないため）
+  // 当サイトのページから来た場合はそのページへ、直接開いた場合などはトップページへ。
   document.getElementById('thanks-close').addEventListener('click', function () {
-    window.close();
-    // ブラウザの制限で閉じられなかった場合は、手で閉じるよう案内する
-    setTimeout(function () { document.getElementById('thanks-close-note').hidden = false; }, 300);
+    var ref = document.referrer;
+    var fromSite = ref && ref.indexOf(location.origin + '/kankatsu/') === 0 && ref.split('#')[0] !== location.href.split('#')[0];
+    if (fromSite && history.length > 1) history.back();
+    else location.href = './';
   });
 })();
 </script>

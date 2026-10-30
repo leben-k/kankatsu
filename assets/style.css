@@ -532,7 +532,6 @@ table.info-table th{
 .form-thanks-buttons button:hover{ background: var(--paper-deep); }
 .form-thanks-buttons a{ background: var(--navy); color: var(--white); border: none; border-bottom: 3px solid var(--brass); }
 .form-thanks-buttons a:hover{ background: var(--navy-deep); }
-.form-thanks-note{ margin: 16px 0 0; font-size: .88rem; color: var(--ink-soft); }
 
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 600px){
