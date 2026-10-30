@@ -19,7 +19,7 @@ doro-shiyo.html        道路使用許可の解説
 shako-shomei.html      車庫証明の解説
 about.html             運営者情報
 privacy.html           プライバシーポリシー
-contact.html           お問い合わせ
+contact.html           連絡先（連絡フォーム）
 favicon.svg / favicon.ico / apple-touch-icon.png  ファビコン（SVGが元データ。icoとpngはそこから書き出したもの）
 area/index.html        市区町村別の管轄警察署一覧（ハブページ）
 area/*.html            市区町村ごとの管轄警察署ページ（145ページ。tools/build-area-pages.js で自動生成）
@@ -109,6 +109,10 @@ node tools/build-area-pages.js
 ## フッターの著作権表示
 
 すべてのページのフッターに「© 2026 警察署管轄ガイド（大阪・京都・兵庫版）」を表示しています。年は `assets/nav.js` が閲覧時に自動で更新し、2027年以降は「2026-2027」のように範囲で表示します（JavaScriptが動かない環境では「2026」のまま）。新しいページを作るときは、フッターに `<p class="copyright">…</p>` の行と `assets/nav.js` の読み込みを入れてください。市区町村ページは `tools/build-area-pages.js` が自動で入れます。
+
+## 連絡先ページ（contact.html）
+
+個別の問い合わせには対応しない方針のため、ページ名・リンク名は「連絡先」、フォームは「連絡フォーム」としています。フォームは Formspree に送信し、送信後はページを移動せずに「送信が完了しました」と「終了」「トップへ」のボタンを表示します。Formspree のフォーム設定で reCAPTCHA が有効な場合など、この送り方が受け付けられないときは、自動的に通常の送信（Formspree の完了画面に移動）に切り替わります。
 
 ## データの出典・注意事項
 

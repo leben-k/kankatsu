@@ -6,9 +6,9 @@
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>お問い合わせ｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
+<title>連絡先｜警察署管轄ガイド（大阪・京都・兵庫版）</title>
 <link rel="canonical" href="https://leben-k.github.io/kankatsu/contact.html">
-<meta name="description" content="警察署管轄ガイド（大阪・京都・兵庫版）へのお問い合わせページです。">
+<meta name="description" content="警察署管轄ガイド（大阪・京都・兵庫版）の連絡先ページです。掲載情報の誤りのご指摘、ご意見・ご要望は連絡フォームからお送りください。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
@@ -48,8 +48,8 @@
         </svg>
       </div>
       <div class="article-head-text">
-    <p class="kicker">お問い合わせ</p>
-    <h1>お問い合わせ</h1>
+    <p class="kicker">連絡先</p>
+    <h1>連絡先</h1>
     <p class="dek">掲載情報の誤りのご指摘、ご意見・ご要望などがございましたら、下記の方法でご連絡ください。</p>
       </div>
     </div>
@@ -58,18 +58,18 @@
 
 <div class="article-body">
   <div class="wrap">
-    <p>いただいた内容は、お問い合わせへの回答の目的にのみ使用します。</p>
+    <p>いただいた内容は、掲載情報の確認・修正の目的にのみ使用します。なお、個別のご質問へのお答えや返信はしておりませんので、あらかじめご了承ください。</p>
 
     <div class="callout">
       <strong>ご連絡の際のお願い</strong><br>
       当サイトは情報サイトのため、警察に関する事件・相談・緊急のご連絡はお受けできません。事件・事故・110番通報が必要な内容については、最寄りの警察署または110番へ直接ご連絡ください。緊急でない相談については、警察の相談窓口（＃9110）をご利用ください。
     </div>
 
-    <h3>問い合わせ・連絡フォーム</h3>
-    <form class="contact-form" action="https://formspree.io/f/xeaqpayg" method="POST">
+    <h3>連絡フォーム</h3>
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xeaqpayg" method="POST">
       <div class="form-row">
-        <label for="subject">要件は何についてですか<span class="required">必須</span></label>
-        <select id="subject" name="要件" required>
+        <label for="subject">用件は何についてですか<span class="required">必須</span></label>
+        <select id="subject" name="用件" required>
           <option value="">選択してください</option>
           <option value="掲載情報の誤りについて">掲載情報の誤りについて</option>
           <option value="記事内容についてのご意見・改善提案">記事内容についてのご意見・改善提案</option>
@@ -87,11 +87,23 @@
       </div>
       <div class="form-row">
         <label for="message">内容<span class="required">必須</span></label>
-        <textarea id="message" name="内容" required placeholder="お問い合わせの内容をご記入ください"></textarea>
+        <textarea id="message" name="内容" required placeholder="ご連絡の内容をご記入ください"></textarea>
       </div>
-      <input type="hidden" name="_subject" value="【警察署管轄ガイド】お問い合わせ">
+      <input type="hidden" name="_subject" value="【警察署管轄ガイド】連絡フォーム">
       <button type="submit">送信</button>
+      <p class="form-error" id="form-error" role="alert" hidden>送信できませんでした。通信状況をご確認のうえ、少し時間をおいてもう一度「送信」を押してください。</p>
     </form>
+
+    <div class="form-thanks" id="form-thanks" tabindex="-1" hidden>
+      <p class="form-thanks-title">送信が完了しました</p>
+      <p>ご連絡ありがとうございます。いただいた内容は確認のうえ、必要に応じて対応いたします。</p>
+      <p>終了する場合は「終了」を、トップページに戻る場合は「トップへ」を押してください。</p>
+      <div class="form-thanks-buttons">
+        <button type="button" id="thanks-close">終了</button>
+        <a href="./">トップへ</a>
+      </div>
+      <p class="form-thanks-note" id="thanks-close-note" hidden>このページは自動では閉じられませんでした。お手数ですが、ブラウザのタブ（スマートフォンの場合は画面）を閉じて終了してください。</p>
+    </div>
 
     <p>掲載している警察署の住所・電話番号・管轄区域などの情報に誤りがある場合や、記事内容についての改善提案がありましたら、お気軽にお知らせください。順次確認のうえ、修正いたします。</p>
   </div>
@@ -117,7 +129,7 @@
       <a href="honbu-ka-taiou.html">本部と署の課対応</a>
       <a href="about.html">運営者情報</a>
       <a href="privacy.html">プライバシーポリシー</a>
-      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html">連絡先</a>
     </div>
     <p class="footer-note">当サイトはいずれの府県警察の公式サイトでもなく、個人が運営する情報サイトです。掲載情報は一般的な参考情報であり、法的助言ではありません。正式な手続き・最新の管轄区域については、必ず管轄警察署または各府県警察本部の公式発表をご確認ください。</p>
     <p class="copyright">&copy; <span class="copy-year" data-start="2026">2026</span> 警察署管轄ガイド（大阪・京都・兵庫版）</p>
@@ -125,5 +137,48 @@
 </footer>
 
 <script src="assets/nav.js" defer></script>
+<script>
+/* 連絡フォーム：ページを移動せずに送信し、送信後は「終了」「トップへ」の案内を表示する。
+   JavaScriptが動かない環境では、通常どおり Formspree の完了画面に移動します。 */
+(function () {
+  var form = document.getElementById('contact-form');
+  var thanks = document.getElementById('form-thanks');
+  var errBox = document.getElementById('form-error');
+  if (!form || !window.fetch || !window.FormData) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = '送信中…';
+    errBox.hidden = true;
+    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+      .then(function (res) {
+        if (!res.ok) {
+          // Formspree 側の設定（reCAPTCHA など）でこの送り方が受け付けられない場合は、
+          // 通常の送信に切り替える（Formspree の完了画面に移動します）
+          if (res.status !== 429) { HTMLFormElement.prototype.submit.call(form); return; }
+          throw new Error('HTTP ' + res.status);
+        }
+        form.reset();
+        form.hidden = true;
+        thanks.hidden = false;
+        thanks.focus();
+        thanks.scrollIntoView({ block: 'center' });
+      })
+      .catch(function () {
+        errBox.hidden = false;
+        btn.disabled = false;
+        btn.textContent = '送信';
+      });
+  });
+
+  document.getElementById('thanks-close').addEventListener('click', function () {
+    window.close();
+    // ブラウザの制限で閉じられなかった場合は、手で閉じるよう案内する
+    setTimeout(function () { document.getElementById('thanks-close-note').hidden = false; }, 300);
+  });
+})();
+</script>
 </body>
 </html>

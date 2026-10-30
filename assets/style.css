@@ -443,7 +443,7 @@ table.info-table th{
   margin: 0;
 }
 
-/* ---------- お問い合わせフォーム ---------- */
+/* ---------- 連絡フォーム ---------- */
 .contact-form{
   background: var(--card);
   border: 1px solid var(--line);
@@ -503,6 +503,36 @@ table.info-table th{
   border-bottom: 3px solid var(--brass);
 }
 .contact-form button:hover{ background: var(--navy-deep); }
+.contact-form button:disabled{ opacity: .6; cursor: wait; }
+.form-error{ margin: 14px 0 0; color: var(--alert); font-size: .9rem; }
+.form-thanks{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--brass);
+  border-radius: 4px;
+  padding: 28px;
+  margin: 26px 0;
+}
+.form-thanks:focus{ outline: none; }
+.form-thanks-title{ font-family: var(--serif); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin: 0 0 12px; }
+.form-thanks-buttons{ display: flex; gap: 14px; flex-wrap: wrap; margin-top: 20px; }
+.form-thanks-buttons button,
+.form-thanks-buttons a{
+  display: inline-block;
+  min-width: 140px;
+  padding: 13px 30px;
+  text-align: center;
+  font-size: .95rem;
+  font-family: var(--sans);
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.form-thanks-buttons button{ background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
+.form-thanks-buttons button:hover{ background: var(--paper-deep); }
+.form-thanks-buttons a{ background: var(--navy); color: var(--white); border: none; border-bottom: 3px solid var(--brass); }
+.form-thanks-buttons a:hover{ background: var(--navy-deep); }
+.form-thanks-note{ margin: 16px 0 0; font-size: .88rem; color: var(--ink-soft); }
 
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 600px){
